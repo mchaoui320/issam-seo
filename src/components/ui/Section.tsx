@@ -3,31 +3,33 @@ import { cn } from "@/lib/utils";
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   className?: string;
-  background?: "light" | "dark" | "accent";
-  py?: "sm" | "md" | "lg";
+  variant?: "base" | "subtle" | "muted" | "mesh";
+  py?: "sm" | "md" | "lg" | "xl";
 }
 
 export function Section({
   children,
   className,
-  background = "light",
+  variant = "base",
   py = "lg",
   ...props
 }: SectionProps) {
-  const bgStyles = {
-    light: "bg-[var(--bg)]",
-    dark: "dark:bg-dark-bg",
-    accent: "bg-accent-primary text-white",
+  const variants = {
+    base:   "bg-[var(--bg-base)]",
+    subtle: "bg-[var(--bg-subtle)]",
+    muted:  "bg-[var(--bg-muted)]",
+    mesh:   "mesh-bg",
   };
 
-  const pyStyles = {
-    sm: "py-8 sm:py-12",
-    md: "py-12 sm:py-16",
-    lg: "py-16 sm:py-24",
+  const pyMap = {
+    sm:  "py-12 sm:py-16",
+    md:  "py-16 sm:py-20",
+    lg:  "py-20 sm:py-28",
+    xl:  "py-28 sm:py-40",
   };
 
   return (
-    <section className={cn(bgStyles[background], pyStyles[py], className)} {...props}>
+    <section className={cn(variants[variant], pyMap[py], className)} {...props}>
       {children}
     </section>
   );

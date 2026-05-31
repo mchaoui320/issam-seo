@@ -1,8 +1,8 @@
-// Site
-export const SITE_NAME = "Issam Chaoui — Consultant SEO Freelance";
+// Site — pas de nom perso dans les meta, centré sur le service
+export const SITE_NAME = "Consultant SEO & GEO — Audit, Local, IA";
 export const SITE_DESCRIPTION =
-  "Consultant SEO à Marseille et Paris. Audit SEO, contenu optimisé, SEO local, netlinking. Générez du trafic qualifié.";
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.issam-chaoui.fr";
+  "Consultant SEO et GEO freelance à Marseille et Paris. Audit SEO, SEO local, stratégie de contenu, netlinking, et optimisation pour les moteurs IA (ChatGPT, Perplexity, Gemini).";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 // Contact
 export const CONTACT = {
@@ -23,12 +23,12 @@ export const CALENDLY_URL =
 
 // Navigation
 export const NAV_LINKS = [
-  { label: "Services", href: "#services" },
+  { label: "SEO", href: "/seo" },
+  { label: "GEO", href: "/geo" },
   { label: "Tarifs", href: "/tarifs" },
   { label: "Cas clients", href: "/etudes-de-cas" },
   { label: "Blog", href: "/blog" },
   { label: "À propos", href: "/a-propos" },
-  { label: "Contact", href: "/contact" },
 ];
 
 // Cities
