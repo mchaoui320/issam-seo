@@ -1,44 +1,34 @@
 import type { Metadata } from "next";
-import { inter, interTight } from "@/lib/fonts";
+import { fraunces, atkinson, ibmPlexMono } from "@/lib/fonts";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/constants";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: SITE_NAME,
-  description: SITE_DESCRIPTION,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.issam-chaoui.fr"),
+  title: "Consultant SEO & GEO à Marseille et Paris — Audit · Local · IA Search",
+  description:
+    "Consultant SEO freelance à Marseille et Paris. Audit SEO, SEO local, stratégie de contenu, netlinking et GEO pour être visible sur Google et les moteurs IA.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   openGraph: {
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
+    title: "Consultant SEO & GEO à Marseille et Paris",
+    description:
+      "Audit SEO, SEO local, stratégie de contenu, netlinking et GEO pour PME, indépendants et e-commerce.",
     type: "website",
     locale: "fr_FR",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-  },
+  twitter: { card: "summary_large_image" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="fr"
-      className={`${inter.variable} ${interTight.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${atkinson.variable} ${ibmPlexMono.variable}`}
       suppressHydrationWarning
     >
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body className="flex min-h-full flex-col bg-[var(--bg)] text-[var(--fg)] transition-colors duration-300">
+      <body style={{ position: "relative" }}>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
