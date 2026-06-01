@@ -1,72 +1,61 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Zap } from "lucide-react";
-import Link from "next/link";
+import { useEffect, useRef } from "react";
+
+function useReveal() {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const targets = el.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }),
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+    );
+    targets.forEach(t => io.observe(t));
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
 
 export function FinalCTA() {
-  return (
-    <section style={{ background: "var(--bg)", padding: "120px 0", position: "relative", overflow: "hidden" }}>
-      <div className="grid-decor" style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
-      <motion.div
-        style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 800, height: 800, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,232,122,0.06) 0%, transparent 65%)", pointerEvents: "none" }}
-        animate={{ scale: [1, 1.05, 1] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        style={{ position: "absolute", bottom: "-20%", right: "-10%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 70%)", pointerEvents: "none" }}
-        animate={{ scale: [1, 1.1, 1] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-      />
+  const sectionRef = useReveal();
 
-      <div className="container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
-            <div className="badge">
-              <Zap size={11} color="var(--green)" fill="var(--green)" />
-              Passons à l'action
-            </div>
+  return (
+    <section
+      className="section section--olive"
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      style={{ background: 'var(--grad-deep)' }}
+    >
+      <div className="container">
+        <div className="section-head center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
+
+          <div className="reveal">
+            <span className="eyebrow kicker" style={{ color: 'var(--ochre)' }}>Prochaine étape</span>
           </div>
 
-          <h2 className="display-lg" style={{ maxWidth: 700, margin: "0 auto 24px" }}>
-            Transformer votre site en{" "}
-            <span style={{ color: "var(--green)" }}>actif d'acquisition</span> ?
-          </h2>
+          <h1 className="t-h1 reveal reveal-d1" style={{ color: '#fff', maxWidth: '640px', textAlign: 'center' }}>
+            Construire une visibilité durable, sur Google et dans les moteurs IA.
+          </h1>
 
-          <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 520, margin: "0 auto 48px", lineHeight: 1.75 }}>
-            Partagez votre URL. Med Issam Chaoui analyse votre situation et identifie les priorités à traiter avant toute production de contenu supplémentaire.
+          <p className="t-lead reveal reveal-d2" style={{ color: 'rgba(255,255,255,0.75)', maxWidth: '480px', textAlign: 'center' }}>
+            Un échange de 30 minutes pour comprendre la situation et définir les priorités — sans engagement, sans prospectus.
           </p>
 
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" className="btn btn-green" style={{ fontSize: 16, padding: "16px 36px" }}>
-              Demander un diagnostic stratégique
-              <ArrowRight size={16} />
-            </Link>
-            <Link href="/contact" className="btn btn-outline" style={{ fontSize: 16, padding: "16px 36px" }}>
-              Poser une question
-            </Link>
+          <div className="reveal reveal-d3" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a href="#contact" className="btn btn--onolive btn--lg" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 2v4"/><path d="M16 2v4"/>
+                <rect width="18" height="18" x="3" y="4" rx="2"/>
+                <path d="M3 10h18"/>
+              </svg>
+              Réserver un diagnostic
+            </a>
+            <a href="#services" className="btn btn--linkonolive btn--lg">
+              Voir les services
+            </a>
           </div>
-
-          <motion.div
-            style={{ display: "flex", gap: 28, justifyContent: "center", marginTop: 40, flexWrap: "wrap" }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-          >
-            {["Réponse sous 24h", "Première orientation offerte", "Sans engagement"].map((t) => (
-              <div key={t} style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 14, color: "var(--muted)" }}>
-                <div style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--green)" }} />
-                {t}
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,17 +1,17 @@
-import { Fraunces, Atkinson_Hyperlegible, IBM_Plex_Mono } from "next/font/google";
+import { Space_Grotesk, Plus_Jakarta_Sans, IBM_Plex_Mono } from "next/font/google";
 
-export const fraunces = Fraunces({
+export const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  axes: ["opsz"],
+  weight: ["400", "500", "600", "700"],
 });
 
-export const atkinson = Atkinson_Hyperlegible({
+export const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const ibmPlexMono = IBM_Plex_Mono({

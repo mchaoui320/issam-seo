@@ -1,139 +1,147 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { useEffect, useRef } from "react";
 
-const categories = [
+function useReveal() {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const targets = el.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }),
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+    );
+    targets.forEach(t => io.observe(t));
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
+
+const TOOLS = [
   {
-    num: "01",
-    title: "Crawl & technique",
-    desc: "Identifier les problèmes d'indexation, de structure, de performance, de balisage, de profondeur de clic, de duplication et de données structurées.",
-    tools: ["Screaming Frog", "Sitebulb", "Search Console", "PageSpeed Insights", "Chrome DevTools", "Rich Results Test"],
-    color: "var(--green)",
-    tag: "tag-green",
+    name: 'Search Console',
+    cat: 'Indexation',
+    color: '#2563EB',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+        <path d="M2 12h20"/>
+      </svg>
+    ),
   },
   {
-    num: "02",
-    title: "Données & performance",
-    desc: "Mesurer les impressions, clics, CTR, pages qui progressent, pages qui stagnent, conversions et signaux de performance organique.",
-    tools: ["Google Search Console", "GA4", "Looker Studio", "Bing Webmaster Tools", "CrUX Dashboard"],
-    color: "var(--cyan)",
-    tag: "tag-cyan",
+    name: 'GA4',
+    cat: 'Analytics',
+    color: '#EC4899',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>
+      </svg>
+    ),
   },
   {
-    num: "03",
-    title: "Recherche sémantique",
-    desc: "Cartographier les requêtes par intention : informationnelle, commerciale, transactionnelle, locale, comparative et longue traîne.",
-    tools: ["Semrush", "Ahrefs", "AlsoAsked", "AnswerThePublic", "Google Trends", "Thruuu"],
-    color: "var(--amber)",
-    tag: "tag-amber",
+    name: 'Screaming Frog',
+    cat: 'Crawl',
+    color: '#A855F7',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+      </svg>
+    ),
   },
   {
-    num: "04",
-    title: "Contenu & sémantique",
-    desc: "Structurer les contenus autour des intentions, entités, questions, cooccurrences, preuves, angles différenciants et liens internes.",
-    tools: ["YourTextGuru", "1.fr", "Surfer SEO", "NLP / entités", "Briefs maison", "Notion"],
-    color: "var(--green)",
-    tag: "tag-green",
+    name: 'Ahrefs',
+    cat: 'Backlinks',
+    color: '#06B6D4',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+      </svg>
+    ),
   },
   {
-    num: "05",
-    title: "SEO local",
-    desc: "Travailler la visibilité locale sur Marseille, Paris, les zones de chalandise, les pages locales, les avis, les catégories et la cohérence NAP.",
-    tools: ["Google Business Profile", "Local Falcon", "BrightLocal", "PlePer", "Audit NAP"],
-    color: "var(--cyan)",
-    tag: "tag-cyan",
+    name: 'Semrush',
+    cat: 'Mots-clés',
+    color: '#2563EB',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="6"/>
+        <circle cx="12" cy="12" r="2"/>
+      </svg>
+    ),
   },
   {
-    num: "06",
-    title: "GEO / Moteurs de réponse",
-    desc: "Adapter le contenu aux moteurs de réponse : réponses claires, entités nommées, sources, structure logique, preuves d'expertise et données compréhensibles.",
-    tools: ["Analyse entités", "Structure FAQ", "JSON-LD", "Tests IA", "Cartographie sources"],
-    color: "var(--amber)",
-    tag: "tag-amber",
+    name: 'Looker Studio',
+    cat: 'Reporting',
+    color: '#EC4899',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/>
+      </svg>
+    ),
+  },
+  {
+    name: 'PageSpeed',
+    cat: 'Performance',
+    color: '#A855F7',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/>
+      </svg>
+    ),
+  },
+  {
+    name: 'Moteurs IA',
+    cat: 'GEO',
+    color: '#06B6D4',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/>
+        <path d="M2 14h2"/><path d="M20 14h2"/>
+        <path d="M15 13v2"/><path d="M9 13v2"/>
+      </svg>
+    ),
   },
 ];
 
-export function OutilsSection() {
+export function ToolsSection() {
+  const sectionRef = useReveal();
+
   return (
-    <section style={{ background: "var(--bg)", padding: "100px 0" }}>
+    <section className="section" ref={sectionRef as React.RefObject<HTMLElement>}>
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          style={{ marginBottom: 16 }}
-        >
-          <div className="section-eyebrow">Outillage</div>
-          <h2 className="display-lg" style={{ maxWidth: 680, marginBottom: 20 }}>
-            Des décisions SEO appuyées par des données,{" "}
-            <span style={{ color: "var(--muted)" }}>pas par l'intuition.</span>
+        <div className="section-head center">
+          <div className="reveal">
+            <span className="eyebrow kicker">Stack d&apos;analyse</span>
+          </div>
+          <h2 className="t-h2 reveal reveal-d1" style={{ maxWidth: '620px', margin: '0 auto' }}>
+            Une stack d&apos;analyse rigoureuse, pas de boîte noire.
           </h2>
-          <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 620, lineHeight: 1.75, marginBottom: 40 }}>
-            L'accompagnement s'appuie sur des outils d'analyse, de crawl, de mesure, de recherche sémantique et de structuration éditoriale. Les outils ne remplacent pas la stratégie — ils servent à objectiver les priorités.
+          <p className="t-lead reveal reveal-d2" style={{ maxWidth: '540px', margin: '0 auto' }}>
+            Les décisions s&apos;appuient sur des données vérifiables, croisées entre plusieurs sources de référence.
           </p>
-        </motion.div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 14 }}>
-          {categories.map((cat, i) => (
-            <motion.div
-              key={cat.num}
-              className="card"
-              style={{ padding: 28, position: "relative", overflow: "hidden" }}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: cat.color, opacity: 0.5 }} />
-
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, fontWeight: 700, color: cat.color, letterSpacing: "0.1em" }}>
-                  {cat.num}
-                </span>
-                <span className={`tag ${cat.tag}`}>{cat.title.split(" ")[0]}</span>
-              </div>
-
-              <h3 style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 650, marginBottom: 10, letterSpacing: "-0.02em", color: "var(--ink)", lineHeight: 1.2 }}>
-                {cat.title}
-              </h3>
-              <p style={{ fontSize: 13, color: "var(--ink-soft)", lineHeight: 1.65, marginBottom: 18 }}>
-                {cat.desc}
-              </p>
-
-              {/* Tags outils en mono */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
-                {cat.tools.map((tool) => (
-                  <span key={tool} style={{
-                    fontFamily: "var(--font-mono)", fontSize: 9, fontWeight: 600,
-                    padding: "3px 8px", borderRadius: 5,
-                    background: `${cat.color}10`, color: cat.color,
-                    border: `1px solid ${cat.color}20`,
-                    letterSpacing: "0.06em", textTransform: "uppercase",
-                  }}>
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
         </div>
 
-        <motion.div
-          style={{ marginTop: 36 }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-        >
-          <Link href="/outils-seo" className="btn btn-outline">
-            Voir tous les outils utilisés
-            <ArrowRight size={14} />
-          </Link>
-        </motion.div>
+        <div className="tools reveal reveal-d3">
+          {TOOLS.map((tool, i) => (
+            <div key={i} className="tool">
+              <div className="tool__ic" style={{ color: tool.color, background: `${tool.color}18` }}>
+                {tool.icon}
+              </div>
+              <span className="tool__name">{tool.name}</span>
+              <span className="tool__cat">{tool.cat}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
+
+// Backwards-compatible alias
+export { ToolsSection as OutilsSection };

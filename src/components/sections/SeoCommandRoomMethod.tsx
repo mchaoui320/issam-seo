@@ -1,165 +1,188 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
-const steps = [
-  {
-    n: "01", title: "Exploration",
-    desc: "L'analyse initiale couvre l'écosystème complet : état technique du site, indexation, architecture des contenus, intentions de recherche couvertes, positionnement concurrentiel, signaux locaux et parcours de conversion existant.",
-    livrable: "Cartographie initiale",
-    color: "var(--green)",
-    tags: ["Technique", "Contenu", "Concurrence", "Local"],
-  },
-  {
-    n: "02", title: "Diagnostic",
-    desc: "Chaque dimension est analysée en profondeur pour identifier les blocages réels : pages en cannibalisation, erreurs d'indexation, contenus sans intention claire, maillage interne défaillant et opportunités locales inexploitées.",
-    livrable: "Rapport de diagnostic priorisé",
-    color: "var(--cyan)",
-    tags: ["Indexation", "Sémantique", "Maillage", "GEO"],
-  },
-  {
-    n: "03", title: "Priorisation",
-    desc: "Les recommandations sont classées selon quatre critères : impact business attendu, complexité de mise en œuvre, délai avant résultats et dépendances techniques. La feuille de route est structurée en trois horizons : 30, 60 et 90 jours.",
-    livrable: "Roadmap SEO 30 / 60 / 90 jours",
-    color: "var(--amber)",
-    tags: ["Impact", "Effort", "Délai", "Priorités"],
-  },
-  {
-    n: "04", title: "Architecture",
-    desc: "La structure des pages est repensée autour de silos thématiques clairs : pages money, pages locales, pages services, contenus de soutien, ressources, preuves et pages de conversion. Chaque URL a un rôle défini.",
-    livrable: "Silo SEO + structure URL",
-    color: "var(--coral)",
-    tags: ["Silos", "Maillage", "URLs", "Hubs"],
-  },
-  {
-    n: "05", title: "Exécution",
-    desc: "Les recommandations deviennent des actions concrètes documentées : optimisations techniques, briefs de contenu, corrections à transmettre au développeur, données structurées, CTA, tracking et améliorations UX.",
-    livrable: "Backlog d'exécution documenté",
-    color: "var(--green)",
-    tags: ["Briefs", "Technique", "Schémas", "CTA"],
-  },
-  {
-    n: "06", title: "Mesure & ajustement",
-    desc: "La progression est pilotée avec des indicateurs utiles : impressions, clics, positions, pages qui progressent, leads, conversions et signaux locaux. Chaque point de suivi génère des décisions, pas uniquement des rapports.",
-    livrable: "Dashboard de suivi mensuel",
-    color: "var(--cyan)",
-    tags: ["KPIs", "Conversions", "GSC", "GA4"],
-  },
+const M_STEPS = [
+  { n: "01", t: "Diagnostic",   d: "Les problèmes SEO sont identifiés et rassemblés à partir de l'audit." },
+  { n: "02", t: "Priorisation", d: "Chaque action est classée selon son impact et son effort." },
+  { n: "03", t: "Architecture", d: "Les pages se regroupent en silos thématiques cohérents." },
+  { n: "04", t: "Maillage",     d: "Le maillage interne relie les pages et diffuse l'autorité." },
+  { n: "05", t: "Livrables",   d: "La feuille de route et les livrables sont remis." },
+  { n: "06", t: "Suivi",       d: "Les performances sont mesurées et pilotées dans la durée." },
 ];
 
-function StepBlock({ step, index }: { step: typeof steps[0]; index: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+const PROBLEMS = [
+  "Cannibalisation","Contenu mince","Vitesse mobile","Titles manquants",
+  "Maillage faible","404 non gérées","Intentions floues","Pas de pages locales",
+];
+const SCATTER = [
+  { x: 18, y: 18, r: -7 }, { x: 56, y: 14, r: 5 },  { x: 33, y: 38, r: 3 },
+  { x: 68, y: 42, r: -5 }, { x: 20, y: 62, r: 6 },  { x: 50, y: 66, r: -4 },
+  { x: 74, y: 72, r: 4 },  { x: 38, y: 84, r: -6 },
+];
+const MATRIX = [
+  { x: 26, y: 22, q: "win" }, { x: 68, y: 20, q: "big" }, { x: 33, y: 32, q: "win" },
+  { x: 74, y: 64, q: "low" }, { x: 22, y: 42, q: "win" }, { x: 62, y: 72, q: "low" },
+  { x: 40, y: 26, q: "win" }, { x: 76, y: 34, q: "big" },
+];
+const SILOS = [
+  { name: "Silo · Audit",   color: "var(--clay)",  pages: ["Audit SEO","Technique","Vitesse"] },
+  { name: "Silo · Local",   color: "var(--azur)",  pages: ["SEO local","Marseille","Paris"] },
+  { name: "Silo · Contenu", color: "var(--ochre)", pages: ["Stratégie","Briefs EEAT","Clusters"] },
+];
+const DELIVS = ["Roadmap priorisée","Briefs de contenu","Plan de maillage","Plan de redirections"];
+
+function useScrollProgress(ref: React.RefObject<HTMLElement | null>) {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const el = ref.current;
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const total = r.height - window.innerHeight;
+        setP(total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0);
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); cancelAnimationFrame(raf); };
+  }, [ref]);
+  return p;
+}
+
+function Stage({ step }: { step: number }) {
+  const wrapS: React.CSSProperties = { position: "absolute", inset: 0, padding: "clamp(20px,3vw,40px)", display: "flex", flexDirection: "column" };
+  const headS: React.CSSProperties = { fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--ochre)", marginBottom: 18 };
+  const chipS: React.CSSProperties = { position: "absolute", fontFamily: "var(--font-mono)", fontSize: 12, padding: "7px 12px", borderRadius: 8, background: "rgba(251,247,240,0.96)", color: "var(--ink)", boxShadow: "0 6px 16px rgba(0,0,0,0.22)", transition: "all 0.7s cubic-bezier(0.22,1,0.36,1)", whiteSpace: "nowrap" };
 
   return (
-    <motion.div
-      ref={ref}
-      style={{
-        display: "flex", gap: 28, alignItems: "flex-start",
-        paddingBottom: index < steps.length - 1 ? 40 : 0,
-        position: "relative", zIndex: 2,
-      }}
-      initial={{ opacity: 0, x: -28 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {/* Cercle étape */}
-      <div style={{
-        width: 52, height: 52, borderRadius: "50%", flexShrink: 0,
-        background: "var(--bg)",
-        border: `2px solid ${step.color}`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        boxShadow: `0 0 20px ${step.color}25`,
-      }}>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, fontWeight: 700, color: step.color, letterSpacing: "0.08em" }}>
-          {step.n}
-        </span>
+    <div className="method__stage">
+      {/* Scenes 0/1 */}
+      <div style={{ ...wrapS, opacity: step <= 1 ? 1 : 0, transition: "opacity .5s", pointerEvents: "none" }}>
+        <div style={headS}>{step === 0 ? "Problèmes identifiés" : "Matrice impact / effort"}</div>
+        <div style={{ position: "relative", flex: 1 }}>
+          <div style={{ position: "absolute", inset: 0, opacity: step === 1 ? 1 : 0, transition: "opacity .5s" }}>
+            <div style={{ position: "absolute", left: "50%", top: 0, bottom: 0, width: 1, background: "rgba(255,255,255,0.18)" }} />
+            <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1, background: "rgba(255,255,255,0.18)" }} />
+            <span style={{ position: "absolute", left: 0, top: -2, fontFamily: "var(--font-mono)", fontSize: 10, color: "rgba(255,255,255,0.6)" }}>↑ IMPACT</span>
+            <span style={{ position: "absolute", right: 0, bottom: 2, fontFamily: "var(--font-mono)", fontSize: 10, color: "rgba(255,255,255,0.6)" }}>EFFORT →</span>
+            <span style={{ position: "absolute", left: "8%", top: "8%", fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ochre)", fontWeight: 600 }}>QUICK WINS</span>
+          </div>
+          {PROBLEMS.map((prob, i) => {
+            const sc = SCATTER[i], mx = MATRIX[i];
+            const pos = step === 0
+              ? { left: sc.x + "%", top: sc.y + "%", transform: `translate(-50%,-50%) rotate(${sc.r}deg)` }
+              : { left: mx.x + "%", top: mx.y + "%", transform: "translate(-50%,-50%) rotate(0deg)" };
+            return <div key={prob} style={{ ...chipS, ...pos, background: step === 1 && mx.q === "win" ? "var(--ochre)" : "rgba(251,247,240,0.96)" }}>{prob}</div>;
+          })}
+        </div>
       </div>
 
-      {/* Carte étape */}
-      <div className="card" style={{ flex: 1, padding: "24px 28px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
-          <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 650, letterSpacing: "-0.025em", color: step.color }}>
-            {step.title}
-          </div>
-          <span style={{
-            fontFamily: "var(--font-mono)", fontSize: 10, fontWeight: 600,
-            padding: "3px 10px", borderRadius: 6, letterSpacing: "0.06em",
-            background: `${step.color}15`, color: step.color,
-            border: `1px solid ${step.color}25`, whiteSpace: "nowrap",
-          }}>
-            {step.livrable}
-          </span>
-        </div>
-        <p style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.75, marginBottom: 16 }}>{step.desc}</p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-          {step.tags.map(t => (
-            <span key={t} style={{
-              fontFamily: "var(--font-mono)", fontSize: 9, fontWeight: 600,
-              padding: "2px 8px", borderRadius: 4,
-              background: "var(--surface-2)", color: "var(--muted)",
-              border: "1px solid var(--border)", letterSpacing: "0.08em",
-              textTransform: "uppercase",
-            }}>{t}</span>
+      {/* Scenes 2/3 */}
+      <div style={{ ...wrapS, opacity: step === 2 || step === 3 ? 1 : 0, transition: "opacity .5s", pointerEvents: "none" }}>
+        <div style={headS}>{step === 3 ? "Maillage interne activé" : "Regroupement en silos"}</div>
+        <div style={{ position: "relative", flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "clamp(12px,2vw,28px)", alignItems: "start" }}>
+          <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", overflow: "visible", opacity: step === 3 ? 1 : 0, transition: "opacity .6s" }} preserveAspectRatio="none" viewBox="0 0 100 100">
+            <path d="M18 22 Q50 6 82 22" stroke="var(--ochre)" strokeWidth="0.6" fill="none" strokeDasharray="2 2" />
+            <path d="M18 40 Q50 58 82 40" stroke="var(--ochre)" strokeWidth="0.6" fill="none" strokeDasharray="2 2" />
+            <path d="M50 24 L50 58" stroke="var(--ochre)" strokeWidth="0.6" fill="none" strokeDasharray="2 2" />
+          </svg>
+          {SILOS.map((s) => (
+            <div key={s.name} style={{ transition: "transform .6s cubic-bezier(0.22,1,0.36,1)", transform: step >= 2 ? "none" : "translateY(16px)" }}>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "rgba(255,255,255,0.85)", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+                <span style={{ width: 8, height: 8, borderRadius: 2, background: s.color }} />{s.name}
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                {s.pages.map((pg) => (
+                  <div key={pg} style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 500, padding: "10px 12px", borderRadius: 8, background: "rgba(251,247,240,0.96)", color: "var(--ink)", boxShadow: "0 4px 12px rgba(0,0,0,0.18)", borderLeft: `3px solid ${s.color}` }}>{pg}</div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
-    </motion.div>
+
+      {/* Scene 4 */}
+      <div style={{ ...wrapS, opacity: step === 4 ? 1 : 0, transition: "opacity .5s", pointerEvents: "none" }}>
+        <div style={headS}>Livrables remis</div>
+        <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, alignContent: "center" }}>
+          {DELIVS.map((d, i) => (
+            <div key={d} style={{ display: "flex", alignItems: "center", gap: 12, padding: "16px 18px", borderRadius: 12, background: "rgba(251,247,240,0.96)", color: "var(--ink)", boxShadow: "0 8px 20px rgba(0,0,0,0.2)", transform: step === 4 ? "none" : "translateY(12px)", opacity: step === 4 ? 1 : 0, transition: `all .5s cubic-bezier(0.22,1,0.36,1) ${i * 90}ms` }}>
+              <span style={{ width: 30, height: 30, borderRadius: 8, background: "var(--clay-tint)", color: "var(--clay-deep)", display: "grid", placeItems: "center", flex: "none" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16 }}><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+              </span>
+              <span style={{ fontWeight: 600, fontSize: 14 }}>{d}</span>
+              <span style={{ marginLeft: "auto", color: "var(--positive)" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 18, height: 18 }}><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Scene 5 */}
+      <div style={{ ...wrapS, opacity: step === 5 ? 1 : 0, transition: "opacity .5s", pointerEvents: "none" }}>
+        <div style={headS}>Suivi de performance</div>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <svg viewBox="0 0 300 110" style={{ width: "100%", height: "auto", maxHeight: "60%" }}>
+            <line x1="6" y1="100" x2="294" y2="100" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
+            <path d="M6 92 L60 80 L114 84 L168 54 L222 40 L294 14" fill="none" stroke="var(--ochre)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+              style={{ strokeDasharray: 520, strokeDashoffset: step === 5 ? 0 : 520, transition: "stroke-dashoffset 1.1s cubic-bezier(0.22,1,0.36,1)" }} />
+            {([[6,92],[60,80],[114,84],[168,54],[222,40],[294,14]] as [number,number][]).map(([x,y],i) => (
+              <circle key={i} cx={x} cy={y} r="3.2" fill="var(--paper)" stroke="var(--ochre)" strokeWidth="2" style={{ opacity: step === 5 ? 1 : 0, transition: `opacity .4s ${i*120}ms` }} />
+            ))}
+          </svg>
+          <div style={{ display: "flex", gap: 10, marginTop: 18 }}>
+            {[["Trafic","+340%"],["Top 10","×4"],["Leads","×4,6"]].map(([l,v]) => (
+              <div key={l} style={{ flex: 1, padding: "12px 14px", borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 24, color: "var(--ochre)", lineHeight: 1 }}>{v}</div>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 10.5, color: "rgba(255,255,255,0.6)", marginTop: 5, textTransform: "uppercase", letterSpacing: "0.08em" }}>{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
 export function SeoCommandRoomMethod() {
-  const containerRef = useRef(null);
-  const inView = useInView(containerRef, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement>(null);
+  const p = useScrollProgress(ref);
+  const step = Math.min(M_STEPS.length - 1, Math.floor(p * M_STEPS.length));
 
   return (
-    <section id="methode" style={{ background: "var(--bg)", padding: "100px 0", position: "relative", overflow: "hidden" }}>
-      <div className="grid-decor" style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
-      <div style={{ position: "absolute", top: "30%", right: "-10%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,232,122,0.04) 0%, transparent 70%)", pointerEvents: "none" }} />
-
-      <div className="container" style={{ position: "relative", zIndex: 1 }}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          style={{ marginBottom: 64 }}
-        >
-          <div className="section-eyebrow">Méthode</div>
-          <h2 className="display-lg" style={{ maxWidth: 640 }}>
-            Une méthode construite autour de la{" "}
-            <span style={{ color: "var(--green)" }}>priorisation</span> et de la{" "}
-            <span style={{ color: "var(--cyan)" }}>mesure.</span>
-          </h2>
-          <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 580, marginTop: 20, lineHeight: 1.75 }}>
-            La priorité n'est pas de publier plus. La priorité est de structurer ce qui peut générer de la demande — en partant du diagnostic et en suivant chaque décision jusqu'à la conversion.
-          </p>
-        </motion.div>
-
-        {/* Timeline */}
-        <div ref={containerRef} style={{ position: "relative", maxWidth: 800 }}>
-          {/* Ligne de fond */}
-          <div style={{ position: "absolute", left: 25, top: 0, bottom: 0, width: 2, background: "rgba(255,255,255,0.05)", zIndex: 0 }} />
-          {/* Ligne animée */}
-          <motion.div
-            style={{
-              position: "absolute", left: 25, top: 0, width: 2, height: "100%",
-              background: "linear-gradient(180deg, var(--green) 0%, var(--cyan) 30%, var(--amber) 50%, var(--coral) 70%, var(--green) 85%, var(--cyan) 100%)",
-              transformOrigin: "top", zIndex: 1,
-            }}
-            initial={{ scaleY: 0 }}
-            animate={inView ? { scaleY: 1 } : {}}
-            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          />
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-            {steps.map((s, i) => (
-              <StepBlock key={s.n} step={s} index={i} />
-            ))}
+    <section className="method" id="methode" ref={ref as React.RefObject<HTMLElement>} style={{ minHeight: "320vh", paddingBlock: 0 }}>
+      <div style={{ position: "sticky", top: 0, paddingBlock: "clamp(56px,8vh,90px)", minHeight: "100vh", display: "flex", alignItems: "center" }}>
+        <div className="container" style={{ width: "100%" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(28px,4vw,64px)", alignItems: "center" }} className="method__layout">
+            <div>
+              <span className="eyebrow kicker" style={{ marginBottom: 16, display: "inline-block" }}>Méthode · SEO Strategy Table</span>
+              <h2 className="t-h2" style={{ color: "var(--ink-inverse)", margin: "0 0 14px" }}>
+                Une table stratégique qui se construit, étape par étape.
+              </h2>
+              <p className="t-body" style={{ color: "rgba(255,255,255,0.72)", maxWidth: "40ch", margin: "0 0 28px" }}>
+                La méthode repose sur une progression lisible&nbsp;: du diagnostic brut jusqu&rsquo;au pilotage de la performance.
+              </p>
+              <div className="method__rail">
+                {M_STEPS.map((s, i) => (
+                  <div key={s.n} className={`mstep${i === step ? " active" : ""}`}>
+                    <span className="mstep__n">{s.n} — {s.t}</span>
+                    <p style={{ marginTop: 6 }}>{s.d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <Stage step={step} />
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+export { SeoCommandRoomMethod as MethodTimeline };

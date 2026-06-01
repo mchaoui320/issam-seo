@@ -1,124 +1,64 @@
-"use client";
-
 import Link from "next/link";
+
+const LOGO_SVG = `<circle cx="7" cy="6" r="2.4"/><circle cx="17.5" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M8.8 7.4 11 16M15.7 7.5 13 16M9 6h6.5"/>`;
 
 export function Footer() {
   return (
-    <footer style={{ background: "var(--bg-soft)", borderTop: "1px solid var(--border)", padding: "64px 0 32px" }}>
+    <footer className="footer">
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 40, marginBottom: 48 }}>
-
-          {/* Brand — sans nom */}
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-              <div style={{
-                width: 32, height: 32, borderRadius: 9,
-                background: "var(--green)", display: "flex",
-                alignItems: "center", justifyContent: "center",
-                boxShadow: "0 0 16px rgba(0,232,122,0.3)",
-              }}>
-                <svg viewBox="0 0 20 20" width="16" height="16" fill="none">
-                  <polyline points="2,14 7,8 11,11 18,4" stroke="#080C0A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <polyline points="14,4 18,4 18,8" stroke="#080C0A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--green)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
-                Consultant SEO & GEO
-              </div>
+        <div className="footer__grid">
+          <div className="footer__col">
+            <div className="logo" style={{ marginBottom: 16 }}>
+              <span className="logo__mark" style={{ background: "var(--paper-2)", color: "var(--ink)" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                  dangerouslySetInnerHTML={{ __html: LOGO_SVG }} style={{ width: 21, height: 21 }} />
+              </span>
+              <span className="logo__txt">
+                <span className="logo__name" style={{ color: "var(--paper)" }}>Med Issam Chaoui</span>
+                <br />
+                <span className="logo__sub" style={{ color: "rgba(248,251,255,0.5)" }}>Consultant SEO · GEO</span>
+              </span>
             </div>
-            <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.65, marginBottom: 8 }}>
-              Marseille / Paris / Remote
-            </p>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.08em" }}>
-              DISPONIBLE POUR DE NOUVEAUX PROJETS
+            <p style={{ color: "rgba(248,251,255,0.6)", fontSize: 14.5, maxWidth: "32ch", margin: 0 }}>
+              Le SEO comme architecture d&apos;acquisition. Accompagnement des entreprises à Marseille, Paris et à distance.
             </p>
           </div>
-
-          {/* Services */}
-          <div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 16 }}>Services</div>
-            {["Audit SEO", "SEO local", "Stratégie de contenu", "SEO technique", "Netlinking", "GEO / IA Search"].map((s) => (
-              <div key={s} style={{ marginBottom: 8 }}>
-                <Link
-                  href={`/${s.toLowerCase().replace(/ /g, "-").replace(/\//g, "-")}`}
-                  style={{ fontSize: 14, color: "var(--ink-soft)", transition: "color 0.15s" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--green)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--ink-soft)"; }}
-                >
-                  {s}
-                </Link>
-              </div>
-            ))}
+          <div className="footer__col">
+            <h4>Expertise</h4>
+            <ul>
+              <li><Link href="/audit-seo">Audit SEO</Link></li>
+              <li><Link href="/seo-local">SEO local</Link></li>
+              <li><Link href="/strategie-contenu-seo">Stratégie de contenu</Link></li>
+              <li><Link href="/seo-technique">SEO technique</Link></li>
+              <li><Link href="/geo-referencement-ia">GEO · Référencement IA</Link></li>
+            </ul>
           </div>
-
-          {/* Local */}
-          <div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 16 }}>Local</div>
-            {[
-              { label: "Consultant SEO Marseille", href: "/consultant-seo-marseille" },
-              { label: "Consultant SEO Paris",     href: "/consultant-seo-paris" },
-              { label: "SEO local Marseille",      href: "/seo-local" },
-              { label: "SEO local Paris",          href: "/seo-local" },
-            ].map((l) => (
-              <div key={l.label} style={{ marginBottom: 8 }}>
-                <Link
-                  href={l.href}
-                  style={{ fontSize: 14, color: "var(--ink-soft)", transition: "color 0.15s" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--cyan)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--ink-soft)"; }}
-                >
-                  {l.label}
-                </Link>
-              </div>
-            ))}
+          <div className="footer__col">
+            <h4>Cabinet</h4>
+            <ul>
+              <li><Link href="/methode-seo">Méthode</Link></li>
+              <li><Link href="/livrables-seo">Livrables</Link></li>
+              <li><Link href="/outils-seo">Outils</Link></li>
+              <li><Link href="/consultant-seo-marseille">Marseille</Link></li>
+              <li><Link href="/consultant-seo-paris">Paris</Link></li>
+            </ul>
           </div>
-
-          {/* Ressources */}
-          <div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 16 }}>Ressources</div>
-            {[
-              { label: "Blog SEO",   href: "/blog" },
-              { label: "Tarifs",     href: "/tarifs" },
-              { label: "Cas clients",href: "/etudes-de-cas" },
-              { label: "À propos",   href: "/a-propos" },
-              { label: "Contact",    href: "/contact" },
-            ].map((l) => (
-              <div key={l.label} style={{ marginBottom: 8 }}>
-                <Link
-                  href={l.href}
-                  style={{ fontSize: 14, color: "var(--ink-soft)", transition: "color 0.15s" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--ink)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--ink-soft)"; }}
-                >
-                  {l.label}
-                </Link>
-              </div>
-            ))}
+          <div className="footer__col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:issam@issam-chaoui.fr">issam@issam-chaoui.fr</a></li>
+              <li><Link href="#contact">Réserver un diagnostic</Link></li>
+              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            </ul>
           </div>
         </div>
-
-        {/* Bottom */}
-        <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--muted)" }}>
-            © 2025 Consultant SEO & GEO · Marseille & Paris
+        <div className="footer__bottom">
+          <span>© 2026 Med Issam Chaoui · Consultant SEO &amp; GEO</span>
+          <span style={{ display: "flex", gap: 22 }}>
+            <Link href="/mentions-legales">Mentions légales</Link>
+            <Link href="/politique-confidentialite">Confidentialité</Link>
+            <Link href="/cookies">Cookies</Link>
           </span>
-          <div style={{ display: "flex", gap: 20 }}>
-            {[
-              { label: "Mentions légales",  href: "/mentions-legales" },
-              { label: "Confidentialité",   href: "/politique-confidentialite" },
-              { label: "Cookies",           href: "/cookies" },
-            ].map((l) => (
-              <Link
-                key={l.label}
-                href={l.href}
-                style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--muted)", transition: "color 0.15s" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--ink-soft)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--muted)"; }}
-              >
-                {l.label}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

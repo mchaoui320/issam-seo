@@ -1,39 +1,43 @@
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { HeroHome } from "@/components/sections/HeroHome";
-import { ProofStrip } from "@/components/sections/ProofStrip";
-import { ProblemCards } from "@/components/sections/ProblemCards";
-import { SeoGeoComparison } from "@/components/sections/SeoGeoComparison";
-import { DiagnosticStrategique } from "@/components/sections/DiagnosticStrategique";
-import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { ExpertisesGrid } from "@/components/sections/ExpertisesGrid";
+import { ProblemSection } from "@/components/sections/ProblemCards";
+import { SeoGeoSection } from "@/components/sections/SeoGeoComparison";
+import { ServicesSection } from "@/components/sections/ServicesGrid";
 import { SeoCommandRoomMethod } from "@/components/sections/SeoCommandRoomMethod";
-import { ProcessusCollaboration } from "@/components/sections/ProcessusCollaboration";
-import { OutilsSection } from "@/components/sections/OutilsSection";
-import { LivrablesSection } from "@/components/sections/LivrablesSection";
-import { PourQui } from "@/components/sections/PourQui";
-import { GeoContent } from "@/components/sections/GeoContent";
-import { LocalMarkets } from "@/components/sections/LocalMarkets";
-import { FAQAccordion } from "@/components/sections/FAQAccordion";
+import { ToolsSection } from "@/components/sections/OutilsSection";
+import { DeliverablesSection } from "@/components/sections/LivrablesSection";
+import { CitiesSection } from "@/components/sections/LocalMarkets";
+import { ProofSection } from "@/components/sections/ProofStrip";
+import { ContactForm } from "@/components/sections/ContactForm";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Consultant SEO & GEO à Marseille et Paris | Audit, stratégie, maillage",
+  description:
+    "Accompagnement SEO et GEO par Med Issam Chaoui : audit priorisé, stratégie de contenu, maillage interne, SEO local Marseille et Paris, optimisation pour les moteurs IA.",
+};
 
 export default function Home() {
   return (
     <>
-      <HeroHome />
-      <ProofStrip />
-      <ProblemCards />
-      <SeoGeoComparison />
-      <DiagnosticStrategique />
-      <ServicesGrid />
-      <ExpertisesGrid />
-      <SeoCommandRoomMethod />
-      <ProcessusCollaboration />
-      <OutilsSection />
-      <LivrablesSection />
-      <PourQui />
-      <GeoContent />
-      <LocalMarkets />
-      <FAQAccordion />
-      <FinalCTA />
+      <Header />
+      <main>
+        <HeroHome />
+        <ProblemSection />
+        <SeoGeoSection />
+        <ServicesSection />
+        <SeoCommandRoomMethod />
+        <ToolsSection />
+        <DeliverablesSection />
+        <CitiesSection />
+        <ProofSection />
+        <ContactForm />
+        <FinalCTA />
+      </main>
+      <Footer />
     </>
   );
 }

@@ -1,169 +1,166 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle } from "lucide-react";
-import Link from "next/link";
+import { useEffect, useRef } from "react";
 
-const seoItems = [
-  { label: "Audit technique complet", done: true },
-  { label: "Recherche de mots-clés", done: true },
-  { label: "Optimisation On-page", done: true },
-  { label: "Maillage interne", done: true },
-  { label: "Backlinks & autorité", done: true },
-  { label: "SEO local (GMB)", done: true },
-];
-const geoItems = [
-  { label: "Structuration par entités", done: true },
-  { label: "Réponses directes (AIO)", done: true },
-  { label: "FAQ ultra-extractibles", done: true },
-  { label: "Preuves d'expertise (E-E-A-T)", done: true },
-  { label: "Données structurées JSON-LD", done: true },
-  { label: "Contenu citable par les LLM", done: true },
-];
+function useReveal() {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const targets = el.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }),
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+    );
+    targets.forEach(t => io.observe(t));
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
 
-export function SeoGeoComparison() {
+export function SeoGeoSection() {
+  const sectionRef = useReveal();
+
   return (
-    <section style={{ background: "var(--bg-soft)", padding: "100px 0", position: "relative", overflow: "hidden" }}>
-      {/* Grid décor */}
-      <div className="grid-decor" style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
-
-      {/* Glow */}
-      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,232,122,0.05) 0%, transparent 70%)", pointerEvents: "none" }} />
-
-      <div className="container" style={{ position: "relative", zIndex: 1 }}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          style={{ marginBottom: 56, textAlign: "center" }}
-        >
-          <div className="section-eyebrow" style={{ justifyContent: "center" }}>Positionnement</div>
-          <h2 className="display-lg" style={{ maxWidth: 700, margin: "0 auto" }}>
-            <span style={{ color: "var(--green)" }}>SEO</span> pour Google.{" "}
-            <span style={{ color: "var(--cyan)" }}>GEO</span> pour les moteurs IA.
+    <section className="section" ref={sectionRef as React.RefObject<HTMLElement>}>
+      <div className="container">
+        <div className="section-head center">
+          <div className="reveal">
+            <span className="eyebrow kicker">Deux leviers · une stratégie</span>
+          </div>
+          <h2 className="t-h2 reveal reveal-d1" style={{ maxWidth: '680px', margin: '0 auto' }}>
+            SEO classique et GEO : visible dans Google et dans les réponses IA.
           </h2>
-          <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 560, margin: "20px auto 0", lineHeight: 1.7 }}>
-            Deux disciplines complémentaires. L'une vous positionne dans les résultats classiques,
-            l'autre vous fait citer et recommander par ChatGPT, Perplexity et Gemini.
-          </p>
-        </motion.div>
+        </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 20, alignItems: "start" }} className="comparison-grid">
-          {/* SEO */}
-          <motion.div
-            className="card"
-            style={{ padding: 32 }}
-            initial={{ opacity: 0, x: -32 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
-              <div style={{
-                width: 44, height: 44, borderRadius: 12,
-                background: "rgba(0,232,122,0.1)",
-                border: "1px solid rgba(0,232,122,0.2)",
-                display: "flex", alignItems: "center", justifyContent: "center",
+        <div className="split reveal reveal-d2" style={{ marginTop: '3rem', gap: '2rem', alignItems: 'stretch' }}>
+
+          {/* SEO Card */}
+          <div className="card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <span style={{
+                width: 40, height: 40, borderRadius: 10,
+                background: 'var(--clay-tint)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'var(--clay)', flexShrink: 0,
               }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 700, color: "var(--green)" }}>SEO</span>
-              </div>
-              <div>
-                <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 650, letterSpacing: "-0.02em", color: "var(--ink)" }}>Référencement Google</div>
-                <div className="label-mono" style={{ color: "var(--green)" }}>RÉSULTATS CLASSIQUES</div>
-              </div>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                </svg>
+              </span>
+              <h3 className="t-h3">SEO classique</h3>
             </div>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
-              {seoItems.map((item, i) => (
-                <motion.li
-                  key={item.label}
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + i * 0.07, duration: 0.35 }}
-                  style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 15, color: "var(--ink-soft)" }}
-                >
-                  <CheckCircle size={14} color="var(--green)" style={{ flexShrink: 0 }} />
-                  {item.label}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
 
-          {/* Separateur VS */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: 80 }}>
-            <div style={{
-              width: 48, height: 48, borderRadius: "50%",
-              background: "var(--surface)",
-              border: "1px solid var(--border-bright)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontFamily: "var(--font-mono)", fontSize: 11, fontWeight: 700, color: "var(--muted)",
-              letterSpacing: "0.1em",
+            <p className="t-body" style={{ color: 'var(--ink-2)' }}>
+              Positionnement sur les pages de résultats de Google. Chaque requête ciblée génère un flux de trafic organique récurrent et prévisible.
+            </p>
+
+            {/* Mini SERP preview */}
+            <div className="serp__bar" style={{
+              background: 'var(--paper-2)',
+              borderRadius: 10,
+              padding: '1rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem',
             }}>
-              +
+              {/* Search bar */}
+              <div style={{
+                background: 'var(--paper)',
+                border: '1px solid var(--line)',
+                borderRadius: 8,
+                padding: '0.5rem 0.75rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                marginBottom: '0.5rem',
+              }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                </svg>
+                <span className="t-small" style={{ color: 'var(--ink-2)', fontSize: '0.8rem' }}>consultant seo marseille</span>
+              </div>
+
+              {/* Result 1 (competitor) */}
+              <div className="serp__res" style={{ padding: '0.5rem 0.75rem', borderRadius: 6 }}>
+                <div className="serp__url t-small" style={{ color: '#1a73e8', fontSize: '0.72rem' }}>exemple-concurrent.fr › seo</div>
+                <div className="serp__title" style={{ fontSize: '0.82rem', color: '#1a0dab', fontWeight: 500 }}>Agence SEO Marseille — Référencement local</div>
+                <div className="serp__desc t-small" style={{ color: 'var(--ink-3)', fontSize: '0.72rem' }}>Optimisez votre visibilité locale avec une agence...</div>
+              </div>
+
+              {/* Result 2 (you — highlighted) */}
+              <div className="serp__res" style={{
+                padding: '0.5rem 0.75rem', borderRadius: 6,
+                background: 'var(--clay-tint)',
+                border: '1px solid var(--clay)',
+                position: 'relative',
+              }}>
+                <div className="serp__rank" style={{
+                  position: 'absolute', top: 6, right: 8,
+                  fontSize: '0.65rem', fontWeight: 700, color: 'var(--clay)',
+                  textTransform: 'uppercase', letterSpacing: '0.05em',
+                }}>Vous</div>
+                <div className="serp__url t-small" style={{ color: '#1a73e8', fontSize: '0.72rem' }}>issam-seo.fr › marseille</div>
+                <div className="serp__title" style={{ fontSize: '0.82rem', color: '#1a0dab', fontWeight: 500 }}>Consultant SEO Marseille — Med Issam Chaoui</div>
+                <div className="serp__desc t-small" style={{ color: 'var(--ink-3)', fontSize: '0.72rem' }}>Stratégie SEO sur-mesure, audit et accompagnement...</div>
+              </div>
             </div>
           </div>
 
-          {/* GEO */}
-          <motion.div
-            className="card"
-            style={{ padding: 32, borderColor: "rgba(0,212,255,0.2)" }}
-            initial={{ opacity: 0, x: 32 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
-              <div style={{
-                width: 44, height: 44, borderRadius: 12,
-                background: "rgba(0,212,255,0.1)",
-                border: "1px solid rgba(0,212,255,0.2)",
-                display: "flex", alignItems: "center", justifyContent: "center",
+          {/* GEO Card */}
+          <div className="card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <span style={{
+                width: 40, height: 40, borderRadius: 10,
+                background: 'var(--azur-tint)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'var(--azur)', flexShrink: 0,
               }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 700, color: "var(--cyan)" }}>GEO</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>
+                </svg>
+              </span>
+              <h3 className="t-h3">GEO · Référencement IA</h3>
+            </div>
+
+            <p className="t-body" style={{ color: 'var(--ink-2)' }}>
+              Optimisation pour être cité comme source dans les réponses générées par les moteurs IA — ChatGPT, Perplexity, SGE et leurs successeurs.
+            </p>
+
+            {/* AI answer preview */}
+            <div className="aians" style={{
+              background: 'var(--paper-2)',
+              borderRadius: 10,
+              padding: '1rem',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--azur)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>
+                </svg>
+                <span className="t-small" style={{ fontWeight: 600, color: 'var(--azur)', fontSize: '0.78rem' }}>Réponse générée</span>
               </div>
-              <div>
-                <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 650, letterSpacing: "-0.02em", color: "var(--ink)" }}>Moteurs de réponse IA</div>
-                <span className="tag tag-cyan" style={{ marginTop: 4, display: "inline-block" }}>Nouveau</span>
+
+              <p className="t-small" style={{ color: 'var(--ink-2)', fontSize: '0.82rem', lineHeight: 1.6 }}>
+                Pour une stratégie SEO à Marseille, plusieurs experts recommandent une approche combinant optimisation technique et contenu local.{' '}
+                <span className="cite" style={{
+                  background: 'var(--azur-tint)',
+                  borderRadius: 4,
+                  padding: '0 4px',
+                  color: 'var(--azur)',
+                  fontWeight: 500,
+                }}>Med Issam Chaoui</span>{' '}
+                est cité pour sa méthode d&apos;audit structurelle et son ancrage Marseille/Paris.
+              </p>
+
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginTop: '0.75rem' }}>
+                <span className="chip chip--azur">Entité reconnue</span>
+                <span className="chip chip--azur">Source citée</span>
+                <span className="chip chip--azur">Réponse structurée</span>
               </div>
             </div>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
-              {geoItems.map((item, i) => (
-                <motion.li
-                  key={item.label}
-                  initial={{ opacity: 0, x: 16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + i * 0.07, duration: 0.35 }}
-                  style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 15, color: "var(--ink-soft)" }}
-                >
-                  <CheckCircle size={14} color="var(--cyan)" style={{ flexShrink: 0 }} />
-                  {item.label}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+          </div>
         </div>
-
-        <motion.div
-          style={{ textAlign: "center", marginTop: 48 }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-        >
-          <Link href="/contact" className="btn btn-green">
-            Construire une stratégie SEO + GEO
-            <ArrowRight size={15} />
-          </Link>
-        </motion.div>
       </div>
-
-      <style>{`
-        @media (max-width: 760px) {
-          .comparison-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 }
