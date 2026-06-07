@@ -1,73 +1,70 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { AlertTriangle, Cable, Crosshair, MapPin } from "lucide-react";
+import { useReveal } from "@/hooks/useReveal";
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const targets = el.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }),
-      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
-    );
-    targets.forEach(t => io.observe(t));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
+const problems = [
+  {
+    icon: AlertTriangle,
+    title: "Priorités invisibles",
+    desc: "Les sujets, erreurs techniques et opportunités se mélangent. Le diagnostic transforme ce bruit en séquence d'actions lisible.",
+    tag: "Signal brut",
+  },
+  {
+    icon: Crosshair,
+    title: "Intentions dispersées",
+    desc: "Les pages répondent à des thèmes, mais pas toujours aux intentions qui déclenchent la recherche, le clic ou la citation IA.",
+    tag: "Intent mapping",
+  },
+  {
+    icon: Cable,
+    title: "Maillage sous-exploité",
+    desc: "Les pages clés ne reçoivent pas assez de liens internes, ce qui limite le crawl, l'autorité transmise et la compréhension du site.",
+    tag: "Architecture",
+  },
+  {
+    icon: MapPin,
+    title: "Signaux locaux faibles",
+    desc: "Marseille, Paris ou un marché national demandent des preuves géographiques cohérentes, pas seulement une mention dans un titre.",
+    tag: "Local layer",
+  },
+];
 
 export function ProblemSection() {
-  const sectionRef = useReveal();
+  const sectionRef = useReveal<HTMLElement>();
 
   return (
-    <section className="section section--sand" ref={sectionRef as React.RefObject<HTMLElement>}>
+    <section className="section section--soft problem-system" ref={sectionRef}>
       <div className="container">
         <div className="section-head center">
           <div className="reveal">
-            <span className="eyebrow kicker">Le constat</span>
+            <span className="eyebrow kicker">Problèmes · opportunités</span>
           </div>
-
-          <h1 className="t-display reveal reveal-d1" style={{ maxWidth: '780px', margin: '0 auto' }}>
-            La plupart des sites publient du contenu sans{' '}
-            <span className="t-italic">système</span>.
-          </h1>
-
-          <p className="t-lead reveal reveal-d2" style={{ maxWidth: '620px', margin: '0 auto' }}>
-            Le diagnostic identifie les points de friction : cannibalisation, maillage faible, intentions mal couvertes, signaux locaux absents.
+          <h2 className="t-h2 reveal reveal-d1">
+            Un site ne devient pas visible par hasard. Il devient lisible par système.
+          </h2>
+          <p className="t-lead reveal reveal-d2">
+            Le diagnostic identifie les frictions qui empêchent Google, les utilisateurs et les moteurs IA de comprendre pourquoi une page mérite d&apos;être visible.
           </p>
         </div>
 
-        <div className="reveal reveal-d3" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '1.25rem',
-          marginTop: '3rem',
-        }}>
-          {[
-            {
-              title: 'Cannibalisation',
-              desc: 'Plusieurs pages ciblent les mêmes requêtes, se neutralisent et perdent du potentiel de classement.',
-            },
-            {
-              title: 'Maillage absent',
-              desc: 'Les pages importantes ne reçoivent pas de liens internes suffisants pour concentrer l\'autorité.',
-            },
-            {
-              title: 'Intentions mal couvertes',
-              desc: 'Le contenu répond à des sujets mais ne correspond pas à ce que cherche réellement l\'utilisateur.',
-            },
-            {
-              title: 'Signaux locaux insuffisants',
-              desc: 'La cohérence NAP, les avis et la structure locale sont insuffisants pour le pack Google.',
-            },
-          ].map((item, i) => (
-            <div key={i} className="card card--hover" style={{ padding: '1.75rem' }}>
-              <h3 className="t-h3" style={{ marginBottom: '0.75rem' }}>{item.title}</h3>
-              <p className="t-body" style={{ color: 'var(--ink-2)' }}>{item.desc}</p>
-            </div>
-          ))}
+        <div className="problem-grid reveal reveal-d3">
+          {problems.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <article className="problem-card card--hover" key={item.title}>
+                <div className="problem-card__top">
+                  <span className="problem-card__icon">
+                    <Icon aria-hidden="true" />
+                  </span>
+                  <span className="chip chip--glass">{item.tag}</span>
+                </div>
+                <h3 className="t-h3">{item.title}</h3>
+                <p className="t-body">{item.desc}</p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,93 +1,68 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { CheckCircle2, ClipboardCheck, Eye, ShieldCheck } from "lucide-react";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { useReveal } from "@/hooks/useReveal";
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const targets = el.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }),
-      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
-    );
-    targets.forEach(t => io.observe(t));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
-
-const METRICS = [
+const proofItems = [
   {
-    label: 'Trafic organique mensuel',
-    before: '420 visites',
-    after: '1 840 visites',
+    icon: ClipboardCheck,
+    label: "Diagnostic documenté",
+    value: "Constats reliés aux pages, requêtes, erreurs et opportunités.",
   },
   {
-    label: 'Positions top 10',
-    before: '8 mots-clés',
-    after: '34 mots-clés',
+    icon: ShieldCheck,
+    label: "Priorités justifiées",
+    value: "Chaque action porte une raison, un effet attendu et une dépendance.",
   },
   {
-    label: 'Leads générés / mois',
-    before: '3',
-    after: '14',
+    icon: Eye,
+    label: "Suivi lisible",
+    value: "Les indicateurs utiles sont observés sans noyer la décision.",
   },
   {
-    label: 'Pack local Google',
-    before: 'Absent',
-    after: 'Top 3',
+    icon: CheckCircle2,
+    label: "Exécution claire",
+    value: "Les livrables peuvent être transmis à une équipe interne ou un prestataire.",
   },
 ];
 
 export function ProofSection() {
-  const sectionRef = useReveal();
+  const sectionRef = useReveal<HTMLElement>();
 
   return (
-    <section className="section section--paper2" ref={sectionRef as React.RefObject<HTMLElement>}>
+    <section className="section proof-system" id="preuve" ref={sectionRef}>
       <div className="container">
-        <div className="split" style={{ alignItems: 'center', gap: '4rem' }}>
-
-          {/* Left */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div className="proof-system__grid">
+          <div>
             <div className="reveal">
-              <span className="eyebrow kicker">Résultats</span>
+              <span className="eyebrow kicker">Preuves · approche</span>
             </div>
-            <h2 className="t-h2 reveal reveal-d1" style={{ maxWidth: '440px' }}>
-              Des résultats mesurables, pas des promesses.
+            <h2 className="t-h2 reveal reveal-d1">
+              La crédibilité vient de la méthode, des preuves et du suivi.
             </h2>
-            <p className="t-lead reveal reveal-d2" style={{ maxWidth: '400px' }}>
-              La méthode repose sur des indicateurs concrets, suivis mois après mois, avec un tableau de bord partagé en temps réel.
+            <p className="t-lead reveal reveal-d2">
+              L&apos;accompagnement évite les promesses magiques : les décisions reposent sur des constats, des priorités et une mesure continue.
             </p>
             <div className="reveal reveal-d3">
-              <a href="#contact" className="btn btn--primary btn--lg">
-                Demander un diagnostic
-              </a>
+              <MagneticButton href="#contact">Planifier un échange</MagneticButton>
             </div>
-            <p className="t-caption reveal reveal-d4" style={{ color: 'var(--ink-3)', maxWidth: '380px' }}>
-              * Données anonymisées. Résultats variables selon secteur et marché.
-            </p>
           </div>
 
-          {/* Right: metrics card */}
-          <div className="card reveal reveal-d2" style={{ padding: '2rem', flexShrink: 0, width: '100%', maxWidth: 420 }}>
-            <div className="metrics">
-              {METRICS.map((m, i) => (
-                <div key={i} className="mrow">
-                  <span className="mrow__l t-small" style={{ color: 'var(--ink-2)' }}>{m.label}</span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span className="mrow__before">{m.before}</span>
-                    <span className="mrow__arrow" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--positive)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-                      </svg>
-                    </span>
-                    <span className="mrow__after mrow__v" style={{ color: 'var(--positive)', fontWeight: 700 }}>{m.after}</span>
+          <div className="proof-matrix reveal reveal-d2">
+            {proofItems.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <article className="proof-matrix__item" key={item.label}>
+                  <Icon aria-hidden="true" />
+                  <div>
+                    <h3>{item.label}</h3>
+                    <p>{item.value}</p>
                   </div>
-                </div>
-              ))}
-            </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -95,5 +70,4 @@ export function ProofSection() {
   );
 }
 
-// Backwards-compatible alias
 export { ProofSection as ProofStrip };

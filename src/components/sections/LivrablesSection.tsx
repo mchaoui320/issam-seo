@@ -1,80 +1,70 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { FileText, GitBranch, LayoutList, LineChart } from "lucide-react";
+import { useReveal } from "@/hooks/useReveal";
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const targets = el.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }),
-      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
-    );
-    targets.forEach(t => io.observe(t));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
-
-const DELIVERABLES = [
+const deliverables = [
   {
-    title: 'Audit & roadmap priorisée',
-    desc: 'Analyse structurelle complète avec recommandations classées par impact et effort, prête à l\'implémentation.',
+    icon: LayoutList,
+    title: "Roadmap priorisée",
+    desc: "Actions classées par impact, effort, dépendance et niveau de risque, avec une logique d'exécution claire.",
   },
   {
-    title: 'Briefs de contenu EEAT',
-    desc: 'Guides de rédaction structurés selon les critères Expertise, Autorité, Fiabilité — pour chaque page prioritaire.',
+    icon: FileText,
+    title: "Briefs de contenu",
+    desc: "Intentions, angles éditoriaux, entités, structure de page et recommandations EEAT pour guider la production.",
   },
   {
-    title: 'Plan de maillage interne',
-    desc: 'Cartographie des liens internes à créer pour concentrer l\'autorité sur les pages à fort potentiel.',
+    icon: GitBranch,
+    title: "Plan de maillage",
+    desc: "Cartographie des liens internes, ancres recommandées et pages stratégiques à renforcer.",
   },
   {
-    title: 'Tableau de bord de suivi',
-    desc: 'Dashboard Looker Studio connecté à Search Console et GA4 pour suivre les évolutions en temps réel.',
+    icon: LineChart,
+    title: "Cadre de suivi",
+    desc: "Indicateurs à observer, sources de données et rythme d'analyse pour piloter sans bruit inutile.",
   },
 ];
 
 export function DeliverablesSection() {
-  const sectionRef = useReveal();
+  const sectionRef = useReveal<HTMLElement>();
 
   return (
-    <section className="section section--sand" ref={sectionRef as React.RefObject<HTMLElement>}>
+    <section className="section section--soft deliverable-system" ref={sectionRef}>
       <div className="container">
         <div className="section-head center">
           <div className="reveal">
-            <span className="eyebrow kicker">Les livrables</span>
+            <span className="eyebrow kicker">Livrables</span>
           </div>
-          <h2 className="t-h2 reveal reveal-d1" style={{ maxWidth: '640px', margin: '0 auto' }}>
-            Des documents de mission clairs, pas un rapport de 80 pages illisible.
+          <h2 className="t-h2 reveal reveal-d1">
+            Ce qui est remis doit pouvoir être compris, transmis et exécuté.
           </h2>
+          <p className="t-lead reveal reveal-d2">
+            L&apos;accompagnement produit des supports opérationnels, pas un rapport massif qui reste dans un dossier.
+          </p>
         </div>
 
-        <div className="deliv reveal reveal-d2">
-          {DELIVERABLES.map((item, i) => (
-            <div key={i} className="dfile">
-              <div className="dfile__doc">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/>
-                  <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
-                  <path d="M16 13H8"/>
-                  <path d="M16 17H8"/>
-                  <path d="M10 9H8"/>
-                </svg>
-              </div>
-              <div>
-                <h3 className="t-h3" style={{ marginBottom: '0.35rem' }}>{item.title}</h3>
-                <p className="t-body" style={{ color: 'var(--ink-2)' }}>{item.desc}</p>
-              </div>
-            </div>
-          ))}
+        <div className="deliv reveal reveal-d3">
+          {deliverables.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <article className="dfile" key={item.title}>
+                <div className="dfile__doc" aria-hidden="true">
+                  <Icon />
+                </div>
+                <div>
+                  <span className="dfile__index">{String(index + 1).padStart(2, "0")}</span>
+                  <h3 className="t-h3">{item.title}</h3>
+                  <p className="t-body">{item.desc}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
 
-// Backwards-compatible alias
 export { DeliverablesSection as LivrablesSection };

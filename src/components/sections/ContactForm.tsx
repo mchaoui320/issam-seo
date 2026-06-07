@@ -1,180 +1,145 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { Check, Send } from "lucide-react";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { useReveal } from "@/hooks/useReveal";
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const targets = el.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }),
-      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
-    );
-    targets.forEach(t => io.observe(t));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
-
-const BESOINS = ['Audit SEO', 'SEO local', 'Stratégie', 'GEO · IA', 'Refonte'];
-const MARCHES = ['Marseille', 'Paris', 'National', 'À distance'];
+const needs = ["Audit SEO", "SEO local", "Stratégie contenu", "GEO · IA", "Refonte"];
+const markets = ["Marseille", "Paris", "National", "À distance"];
 
 export function ContactForm() {
-  const sectionRef = useReveal();
-  const [besoin, setBesoin] = useState('');
+  const sectionRef = useReveal<HTMLElement>();
+  const [need, setNeed] = useState(needs[0]);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setSending(true);
-    await new Promise(r => setTimeout(r, 900));
+    await new Promise((resolve) => setTimeout(resolve, 700));
     setSending(false);
     setSubmitted(true);
   }
 
   return (
-    <section className="section" id="contact" ref={sectionRef as React.RefObject<HTMLElement>}>
+    <section className="section contact-system" id="contact" ref={sectionRef}>
       <div className="container">
-        <div className="split" style={{ alignItems: 'flex-start', gap: '4rem' }}>
-
-          {/* Left */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div className="contact-grid">
+          <div className="contact-system__copy">
             <div className="reveal">
               <span className="eyebrow kicker">Contact</span>
             </div>
-            <h2 className="t-h2 reveal reveal-d1">Lancer le diagnostic</h2>
-            <p className="t-lead reveal reveal-d2" style={{ maxWidth: '380px' }}>
-              L&apos;accompagnement commence par une analyse de la situation actuelle — avant toute proposition commerciale.
+            <h2 className="t-h2 reveal reveal-d1">Transmettre la demande.</h2>
+            <p className="t-lead reveal reveal-d2">
+              L&apos;échange commence par la situation actuelle : site, marché, objectifs, contraintes et priorités visibles.
             </p>
-
-            <ul className="reveal reveal-d3" style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
+            <ul className="contact-system__checks reveal reveal-d3">
               {[
-                'Audit préliminaire offert lors du premier échange',
-                'Réponse sous 24 h ouvrées, sans engagement',
-                'Proposition adaptée au budget et aux objectifs',
-              ].map((item, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
-                  <span style={{
-                    flexShrink: 0, width: 20, height: 20, borderRadius: '50%',
-                    background: 'var(--positive-tint)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    marginTop: 2,
-                  }}>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--positive)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 6 9 17l-5-5"/>
-                    </svg>
-                  </span>
-                  <span className="t-body" style={{ color: 'var(--ink-2)' }}>{item}</span>
+                "Analyse initiale avant proposition commerciale",
+                "Retour sous 24 h ouvrées",
+                "Recommandations adaptées au marché et aux moyens",
+              ].map((item) => (
+                <li key={item}>
+                  <Check aria-hidden="true" />
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Right: form */}
-          <div className="card reveal reveal-d2" style={{ padding: '2rem', width: '100%' }}>
+          <div className="contact-panel reveal reveal-d2">
             {submitted ? (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', padding: '2rem 0', textAlign: 'center' }}>
-                <span style={{
-                  width: 56, height: 56, borderRadius: '50%',
-                  background: 'var(--positive-tint)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--positive)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 6 9 17l-5-5"/>
-                  </svg>
+              <div className="contact-success">
+                <span>
+                  <Check aria-hidden="true" />
                 </span>
                 <h3 className="t-h3">Demande reçue</h3>
-                <p className="t-body" style={{ color: 'var(--ink-2)', maxWidth: 320 }}>
-                  Med Issam Chaoui reviendra vers vous sous 24 h ouvrées pour organiser un premier échange.
+                <p className="t-body">
+                  Med Issam Chaoui reviendra vers vous sous 24 h ouvrées pour cadrer le diagnostic.
                 </p>
               </div>
             ) : (
               <form className="form" onSubmit={handleSubmit}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <div className="field">
-                    <label className="t-small" htmlFor="nom" style={{ fontWeight: 600, display: 'block', marginBottom: '0.35rem' }}>Nom</label>
-                    <input id="nom" type="text" name="nom" required placeholder="Votre nom" />
-                  </div>
-                  <div className="field">
-                    <label className="t-small" htmlFor="email" style={{ fontWeight: 600, display: 'block', marginBottom: '0.35rem' }}>Email</label>
-                    <input id="email" type="email" name="email" required placeholder="votre@email.com" />
-                  </div>
+                <div className="field">
+                  <label htmlFor="nom">Nom</label>
+                  <input id="nom" name="nom" placeholder="Nom et prénom" required type="text" />
+                </div>
+
+                <div className="field">
+                  <label htmlFor="email">Email</label>
+                  <input id="email" name="email" placeholder="adresse@email.fr" required type="email" />
                 </div>
 
                 <div className="field field--full">
-                  <label className="t-small" htmlFor="site" style={{ fontWeight: 600, display: 'block', marginBottom: '0.35rem' }}>Site web</label>
-                  <input id="site" type="url" name="site" placeholder="https://votre-site.fr" />
+                  <label htmlFor="site">Site web</label>
+                  <input id="site" name="site" placeholder="https://votre-site.fr" type="url" />
                 </div>
 
-                <div className="field field--full">
-                  <label className="t-small" htmlFor="marche" style={{ fontWeight: 600, display: 'block', marginBottom: '0.35rem' }}>Marché</label>
+                <div className="field">
+                  <label htmlFor="marche">Marché</label>
                   <select id="marche" name="marche" required>
-                    <option value="">Sélectionner un marché</option>
-                    {MARCHES.map(m => (
-                      <option key={m} value={m}>{m}</option>
+                    <option value="">Sélectionner</option>
+                    {markets.map((market) => (
+                      <option key={market} value={market}>{market}</option>
                     ))}
                   </select>
                 </div>
 
+                <div className="field">
+                  <label htmlFor="budget">Cadre</label>
+                  <select id="budget" name="budget">
+                    <option value="">À préciser</option>
+                    <option>Mission ponctuelle</option>
+                    <option>Accompagnement mensuel</option>
+                    <option>Refonte ou migration</option>
+                  </select>
+                </div>
+
                 <div className="field field--full">
-                  <label className="t-small" style={{ fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>Besoin principal</label>
-                  <div className="seg">
-                    {BESOINS.map(b => (
+                  <label>Besoin principal</label>
+                  <div className="seg" role="group" aria-label="Besoin principal">
+                    {needs.map((item) => (
                       <button
-                        key={b}
+                        aria-pressed={need === item}
+                        key={item}
+                        onClick={() => setNeed(item)}
                         type="button"
-                        className={besoin === b ? 'active' : ''}
-                        onClick={() => setBesoin(b)}
-                        style={{
-                          background: besoin === b ? 'var(--clay)' : 'transparent',
-                          color: besoin === b ? '#fff' : 'var(--ink-2)',
-                          border: besoin === b ? '1px solid var(--clay)' : '1px solid var(--line)',
-                          borderRadius: 8,
-                          padding: '0.4rem 0.85rem',
-                          cursor: 'pointer',
-                          fontFamily: 'inherit',
-                          fontSize: '0.82rem',
-                          fontWeight: besoin === b ? 600 : 400,
-                          transition: 'all 0.15s',
-                        }}
                       >
-                        {b}
+                        {item}
                       </button>
                     ))}
                   </div>
-                  <input type="hidden" name="besoin" value={besoin} />
+                  <input name="besoin" type="hidden" value={need} />
                 </div>
 
                 <div className="field field--full">
-                  <label className="t-small" htmlFor="contexte" style={{ fontWeight: 600, display: 'block', marginBottom: '0.35rem' }}>Contexte</label>
+                  <label htmlFor="contexte">Contexte</label>
                   <textarea
                     id="contexte"
                     name="contexte"
-                    rows={4}
-                    placeholder="Décrivez brièvement votre situation actuelle, vos objectifs et les défis rencontrés..."
+                    placeholder="Marché ciblé, problèmes observés, objectifs, contraintes techniques ou calendrier."
+                    rows={5}
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn btn--primary btn--lg"
+                <MagneticButton
+                  className="form-submit"
                   disabled={sending}
-                  style={{ width: '100%', justifyContent: 'center', opacity: sending ? 0.7 : 1 }}
+                  type="submit"
                 >
-                  {sending ? 'Envoi en cours…' : 'Envoyer la demande'}
-                </button>
+                  {sending ? "Transmission en cours" : "Transmettre la demande"}
+                </MagneticButton>
 
-                <p className="t-caption" style={{ color: 'var(--ink-3)', textAlign: 'center', marginTop: '0.5rem' }}>
-                  Les données ne sont utilisées que pour répondre à la demande.
+                <p className="t-caption form-note">
+                  Les informations sont utilisées uniquement pour répondre à la demande.
                 </p>
               </form>
             )}
           </div>
         </div>
       </div>
+      <Send className="contact-system__watermark" aria-hidden="true" />
     </section>
   );
 }
