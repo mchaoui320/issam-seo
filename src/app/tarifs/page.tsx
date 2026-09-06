@@ -1,13 +1,8 @@
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-
+import { allEntries } from "@/lib/content";
+import { ContentPage } from "@/components/site/ContentPage";
+import { pageMetadata } from "@/lib/seo";
+const entry = allEntries.find((e) => e.slug === "tarifs")!;
+export const metadata = pageMetadata(entry.title, entry.intro, "/tarifs");
 export default function Page() {
-  return (
-    <Section>
-      <Container>
-        <h1 className="text-4xl font-bold">Page</h1>
-        <p className="mt-4">En construction</p>
-      </Container>
-    </Section>
-  );
+  return <ContentPage entry={entry} />;
 }

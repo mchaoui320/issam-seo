@@ -1,0 +1,74 @@
+import Link from "next/link";
+export function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <div className="wrap">
+        <div className="footer-grid">
+          <div>
+            <Link href="/" className="wordmark">
+              issam<span className="green">.</span>
+            </Link>
+            <p>
+              Connecter la recherche,
+              <br />
+              l’intelligence et la donnée.
+            </p>
+            <span className="mono muted">MARSEILLE · PARIS · À DISTANCE</span>
+          </div>
+          {[
+            {
+              title: "EXPERTISES",
+              links: [
+                ["SEO & référencement", "/seo"],
+                ["GEO & moteurs IA", "/geo"],
+                ["Data & analytics", "/data-web"],
+                ["Audit SEO", "/audit-seo"],
+                ["SEO local", "/seo-local"],
+              ],
+            },
+            {
+              title: "EXPLORER",
+              links: [
+                ["Outils gratuits", "/outils-seo"],
+                ["Guides & ressources", "/blog"],
+                ["Méthode", "/methode-seo"],
+                ["Livrables", "/livrables-seo"],
+                ["Cas pratiques", "/etudes-de-cas"],
+              ],
+            },
+            {
+              title: "ÉCHANGEONS",
+              links: [
+                ["À propos", "/a-propos"],
+                ["Tarifs & accompagnement", "/tarifs"],
+                ["Contact", "/contact"],
+                ["Consultant à Marseille", "/consultant-seo-marseille"],
+                ["Consultant pour Paris", "/consultant-seo-paris"],
+              ],
+            },
+          ].map((c) => (
+            <div key={c.title}>
+              <h2 className="mono">{c.title}</h2>
+              {c.links.map(([l, h]) => (
+                <Link key={h} href={h}>
+                  {l}
+                </Link>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Med Issam Chaoui</span>
+          <div>
+            <Link href="/mentions-legales">Mentions légales</Link>
+            <Link href="/politique-confidentialite">Confidentialité</Link>
+            <Link href="/cookies">Cookies</Link>
+          </div>
+          <span className="mono">
+            <i className="status-dot" /> Pensé pour le web ouvert
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+}
