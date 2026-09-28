@@ -5,8 +5,6 @@ import { SiteFooter } from "@/components/site/Footer";
 import { MotionDirector } from "@/components/site/MotionDirector";
 import { siteUrl } from "@/lib/seo";
 import "./globals.css";
-import "./final.css";
-import "./polish.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
