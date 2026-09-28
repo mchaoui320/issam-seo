@@ -30,7 +30,10 @@ export function SiteFooter() {
             {
               title: "EXPLORER",
               links: [
-                ["Outils gratuits", "/outils-seo"],
+                ["MIC Lab interactif", "/outils-seo"],
+                ["Audit visibilité IA", "/audit-visibilite-ia"],
+                ["Analyse concurrentielle", "/analyse-concurrentielle-seo-geo"],
+                ["SEO local multi-villes", "/strategie-seo-local-multi-villes"],
                 ["Guides & ressources", "/blog"],
                 ["Méthode", "/methode-seo"],
                 ["Livrables", "/livrables-seo"],

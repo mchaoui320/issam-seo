@@ -5,14 +5,14 @@ import { useEffect, useState } from "react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 const signals = [
-  { query: "consultant SEO Marseille", channel: "Google", intent: "CAPTURE" },
+  { query: "canapé modulable fabriqué en France", channel: "Google", intent: "CAPTURE" },
   {
-    query: "qui peut auditer mon SEO ?",
+    query: "quel logiciel RH pour une PME de 50 salariés ?",
     channel: "ChatGPT",
     intent: "ANSWER",
   },
-  { query: "expert GEO France", channel: "Perplexity", intent: "CITATION" },
-  { query: "être cité par Claude", channel: "Claude", intent: "TRUST" },
+  { query: "meilleur hôtel spa près du Vieux-Port", channel: "Perplexity", intent: "LOCAL" },
+  { query: "compare trois solutions de facturation pour artisans", channel: "Claude", intent: "TRUST" },
 ];
 
 export function SignalHero() {
@@ -43,7 +43,7 @@ export function SignalHero() {
           </h1>
           <p className="motion-hero__intro">
             Google classe. ChatGPT recommande. Claude synthétise. Maps décide du
-            local. Je construis le système qui rend votre marque trouvable,
+            local. MIC SIGNAL construit le système qui rend votre marque trouvable,
             compréhensible et choisissable partout où la décision commence.
           </p>
           <div className="motion-hero__actions">

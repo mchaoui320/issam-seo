@@ -633,4 +633,12 @@ export const sourceLinks = [
     label: "Google Analytics — événements",
     url: "https://developers.google.com/analytics/devguides/collection/ga4/events",
   },
+  {
+    label: "OpenAI — robots de recherche et d’entraînement",
+    url: "https://developers.openai.com/api/docs/bots",
+  },
+  {
+    label: "OpenAI — informations pour les éditeurs et mesure des références",
+    url: "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq",
+  },
 ];

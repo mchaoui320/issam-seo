@@ -194,10 +194,40 @@ export default function Home() {
 
       <TerritoryMap />
 
+      <section className="home-lab">
+        <div className="wrap home-lab__grid">
+          <div className="home-lab__copy">
+            <p className="atlas-label">04 / MIC LAB</p>
+            <h2>Ne devinez plus ce qu’il faut publier.</h2>
+            <p>
+              Construisez votre panel de prompts, comparez les preuves visibles
+              de trois marques et générez un brief local qui refuse les pages
+              dupliquées. Chaque résultat est lisible, modifiable et exportable.
+            </p>
+            <Link href="/outils-seo" className="signal-button signal-button--text">
+              Ouvrir le laboratoire <ArrowUpRight size={18} />
+            </Link>
+          </div>
+          <div className="home-lab__console" aria-label="Aperçu du MIC Lab">
+            <div><span>MIC LAB / 04</span><span>LOCAL · PRIVATE</span></div>
+            {[
+              ["Panel LLM", "12 prompts stables", "READY"],
+              ["Matrice rivale", "8 signaux comparés", "INPUT"],
+              ["Brief local", "preuve requise", "CHECK"],
+              ["Robots IA", "search ≠ training", "POLICY"],
+            ].map(([name, detail, state], index) => (
+              <section key={name}>
+                <i>0{index + 1}</i><strong>{name}</strong><small>{detail}</small><b>{state}</b>
+              </section>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="answer-engine">
         <div className="wrap answer-engine__grid">
           <div className="answer-engine__copy">
-            <p className="atlas-label">04 / MOTEURS DE RÉPONSE</p>
+            <p className="atlas-label">05 / MOTEURS DE RÉPONSE</p>
             <h2>
               Quand une IA répond, votre marque doit être facile à vérifier.
             </h2>

@@ -75,7 +75,10 @@ ${terms.map((t) => `- [${t.term}](${siteUrl}/glossaire#${t.slug}): ${t.short}`).
 
 - [À propos](${siteUrl}/a-propos): approche, positionnement et façon de travailler.
 - [Tarifs](${siteUrl}/tarifs): comment un périmètre est chiffré, sans grille figée.
-- [Outils gratuits](${siteUrl}/outils-seo): aperçu SERP, générateur UTM, checklist. Calculs exécutés dans le navigateur.
+- [MIC Lab](${siteUrl}/outils-seo): panel de prompts LLM, matrice concurrentielle, brief local, contrôle des robots IA, aperçu SERP, UTM et checklist. Calculs exécutés dans le navigateur, sans faux crawl.
+- [Audit visibilité IA](${siteUrl}/audit-visibilite-ia): protocole multi-moteurs, citations, sources et mesure des visites référentes.
+- [Analyse concurrentielle SEO & GEO](${siteUrl}/analyse-concurrentielle-seo-geo): territoires de requêtes, preuves, sources, pages et opportunités défendables.
+- [Stratégie SEO local multi-villes](${siteUrl}/strategie-seo-local-multi-villes): carte de potentiel, pages distinctes, profils locaux et mesure des contacts.
 - [Contact](${siteUrl}/contact): pour décrire un projet et obtenir une proposition.
 - [Version longue pour LLM](${siteUrl}/llms-full.txt): intégralité du contenu éditorial en texte brut.
 

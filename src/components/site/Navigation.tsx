@@ -7,8 +7,8 @@ const nav = [
   ["SEO", "/seo"],
   ["GEO / LLM", "/geo"],
   ["Local", "/seo-local"],
+  ["MIC Lab", "/outils-seo"],
   ["Méthode", "/methode-seo"],
-  ["Ressources", "/blog"],
 ];
 export function Navigation() {
   const [open, setOpen] = useState(false);

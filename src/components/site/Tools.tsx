@@ -11,9 +11,9 @@ const checks = [
 ];
 export function Tools() {
   const [tab, setTab] = useState(0);
-  const [title, setTitle] = useState("Consultant SEO & GEO — Issam Chaoui");
+  const [title, setTitle] = useState("Mobilier durable fabriqué en France — Maison Mistral");
   const [description, setDescription] = useState(
-    "SEO, visibilité IA et data web : une stratégie cohérente pour être trouvé, devenir une source et mesurer vos résultats.",
+    "Découvrez nos tables et rangements fabriqués à Lyon, configurables en ligne et livrés partout en France.",
   );
   const [url, setUrl] = useState("https://www.exemple.fr");
   const [visits, setVisits] = useState(3000);

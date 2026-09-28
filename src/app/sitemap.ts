@@ -25,6 +25,17 @@ const staticPages: Row[] = [
   { path: "blog", changeFrequency: "weekly", priority: 0.8 },
   { path: "glossaire", changeFrequency: "monthly", priority: 0.8 },
   { path: "outils-seo", changeFrequency: "monthly", priority: 0.7 },
+  { path: "audit-visibilite-ia", changeFrequency: "monthly", priority: 0.9 },
+  {
+    path: "analyse-concurrentielle-seo-geo",
+    changeFrequency: "monthly",
+    priority: 0.9,
+  },
+  {
+    path: "strategie-seo-local-multi-villes",
+    changeFrequency: "monthly",
+    priority: 0.9,
+  },
   { path: "contact", changeFrequency: "yearly", priority: 0.6 },
   { path: "mentions-legales", changeFrequency: "yearly", priority: 0.2 },
   {
