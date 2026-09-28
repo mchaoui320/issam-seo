@@ -16,9 +16,10 @@ function resolveSiteUrl(): string {
 
   if (!candidate) return PRODUCTION_URL;
 
-  const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])(:|\/|$)/i.test(
-    candidate,
-  );
+  const isLocal =
+    /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])(:|\/|$)/i.test(
+      candidate,
+    );
 
   if (isLocal && process.env.NODE_ENV === "production") return PRODUCTION_URL;
 
@@ -41,7 +42,7 @@ export function pageMetadata(
       url: `${siteUrl}${path}`,
       type: "website",
       locale: "fr_FR",
-      siteName: "Issam Chaoui",
+      siteName: "MIC SIGNAL",
       images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     },
     twitter: {

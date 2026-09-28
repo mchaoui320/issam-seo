@@ -1,12 +1,11 @@
-import { allEntries } from "@/lib/content";
-import { ContentPage } from "@/components/site/ContentPage";
+import { CityPage } from "@/components/site/CityPage";
+import { getLocalMarket } from "@/lib/cities";
 import { pageMetadata } from "@/lib/seo";
-const entry = allEntries.find((e) => e.slug === "consultant-seo-marseille")!;
 export const metadata = pageMetadata(
-  entry.title,
-  entry.intro,
+  "Consultant SEO Marseille — SEO local, GEO & ChatGPT",
+  "Consultant SEO à Marseille : audit, référencement local, stratégie GEO et visibilité dans ChatGPT pour entreprises de Marseille et sa métropole.",
   "/consultant-seo-marseille",
 );
 export default function Page() {
-  return <ContentPage entry={entry} />;
+  return <CityPage market={getLocalMarket("marseille")!} />;
 }

@@ -8,7 +8,7 @@ import { siteUrl } from "@/lib/seo";
  * requêtes HTTP. Généré depuis `content.ts`, donc toujours à jour.
  */
 export function GET() {
-  const header = `# Med Issam Chaoui — Consultant SEO, GEO & data web
+  const header = `# MIC SIGNAL — SEO, GEO, LLMO & data web
 # Source : ${siteUrl}
 # Langue : fr-FR
 # Contenu intégral du site, en texte brut.

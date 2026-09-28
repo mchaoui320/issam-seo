@@ -1,4 +1,5 @@
 import { siteUrl } from "@/lib/seo";
+import { localMarkets } from "@/lib/cities";
 
 /**
  * Bibliothèque JSON-LD.
@@ -14,7 +15,7 @@ export const SITE_ID = `${siteUrl}/#website`;
 export const BUSINESS_ID = `${siteUrl}/#business`;
 
 export const PERSON_NAME = "Med Issam Chaoui";
-export const BUSINESS_NAME = "Med Issam Chaoui — SEO, GEO & data web";
+export const BUSINESS_NAME = "MIC SIGNAL — SEO, GEO & data web";
 
 /** Profils externes confirmés. Le schema `sameAs` ne doit lister que des URL réelles. */
 export const SAME_AS: string[] = [];
@@ -51,7 +52,7 @@ export function website(): Json {
     "@type": "WebSite",
     "@id": SITE_ID,
     url: siteUrl,
-    name: "Issam Chaoui",
+    name: "MIC SIGNAL",
     inLanguage: "fr-FR",
     publisher: { "@id": PERSON_ID },
   };
@@ -73,8 +74,10 @@ export function professionalService(): Json {
     availableLanguage: ["fr-FR"],
     areaServed: [
       { "@type": "Country", name: "France" },
-      { "@type": "City", name: "Marseille" },
-      { "@type": "City", name: "Paris" },
+      ...localMarkets.map((market) => ({
+        "@type": "City",
+        name: market.city,
+      })),
     ],
     serviceType: [
       "Audit SEO",
@@ -82,15 +85,14 @@ export function professionalService(): Json {
       "SEO local",
       "Stratégie de contenu SEO",
       "Generative Engine Optimization",
+      "Visibilité ChatGPT, Claude, Gemini et Perplexity",
       "Plan de marquage GA4",
       "Tableau de bord analytics",
     ],
   };
 }
 
-export function breadcrumb(
-  trail: { name: string; path: string }[],
-): Json {
+export function breadcrumb(trail: { name: string; path: string }[]): Json {
   return {
     "@type": "BreadcrumbList",
     itemListElement: trail.map((item, i) => ({

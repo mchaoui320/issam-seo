@@ -1,18 +1,17 @@
 import Link from "next/link";
 import {
-  ArrowUpRight,
   ArrowRight,
-  Search,
-  Sparkles,
-  ChartNoAxesCombined,
-  Crosshair,
-  Layers3,
-  Fingerprint,
-  ChevronRight,
+  ArrowUpRight,
+  Check,
+  CircleDot,
+  MapPinned,
+  MessagesSquare,
+  Radar,
+  SearchCheck,
 } from "lucide-react";
-import { Orbit } from "@/components/site/Orbit";
-import { Tools } from "@/components/site/Tools";
-import { ResourceList } from "@/components/site/ResourceList";
+import { SignalHero } from "@/components/site/SignalHero";
+import { QueryAtlas } from "@/components/site/QueryAtlas";
+import { TerritoryMap } from "@/components/site/TerritoryMap";
 import { JsonLd } from "@/components/site/JsonLd";
 import { pageMetadata } from "@/lib/seo";
 import {
@@ -22,310 +21,336 @@ import {
   professionalService,
   website,
 } from "@/lib/schema";
+
 export const metadata = pageMetadata(
-  "Consultant SEO, GEO & Data web — une visibilité qui compte",
-  "Med Issam Chaoui relie référencement naturel, visibilité dans les moteurs IA et analytics. Explorez les expertises, guides et outils SEO gratuits.",
+  "MIC SIGNAL — Consultant SEO, GEO & LLMO",
+  "Med Issam Chaoui accompagne les marques sur Google, le SEO local et la visibilité dans ChatGPT, Claude, Perplexity et les moteurs de réponse IA.",
   "/",
 );
-const services = [
+
+const faq = [
+  [
+    "Quelle différence entre SEO, GEO et LLMO ?",
+    "Le SEO vise la visibilité dans les résultats des moteurs de recherche. Le GEO et le LLMO travaillent la compréhension, la citation et la recommandation d’une marque dans les réponses générées par ChatGPT, Claude, Gemini ou Perplexity. Le socle reste commun : pages accessibles, informations précises, preuves, sources et identité cohérente.",
+  ],
+  [
+    "Comment apparaître dans ChatGPT ou Claude ?",
+    "Il n’existe pas de bouton de soumission ni de garantie. Le travail consiste à rendre vos informations accessibles et vérifiables, à publier des réponses originales, à renforcer les sources qui parlent de votre marque et à observer un panel de questions stable sur plusieurs moteurs.",
+  ],
+  [
+    "Est-ce utile de créer une page pour chaque ville ?",
+    "Seulement si chaque page correspond à un marché réellement servi et apporte des informations propres : concurrence, zone, secteurs, contraintes et preuve locale. Remplacer le nom de la ville dans un texte dupliqué crée des pages faibles et peut diluer le site.",
+  ],
+  [
+    "Intervenez-vous uniquement à Marseille et Paris ?",
+    "Non. L’accompagnement est réalisé à distance dans toute la France. Les pages locales décrivent les marchés étudiés et les zones couvertes ; elles ne revendiquent pas d’adresse ou d’établissement fictif.",
+  ],
+  [
+    "Peut-on garantir une première position ou une citation IA ?",
+    "Non. Aucun consultant ne contrôle le classement de Google ni la réponse d’un LLM. L’engagement porte sur une méthode, des livrables, une mise en œuvre mesurable et une lecture transparente des résultats.",
+  ],
+] as const;
+
+const offers = [
   {
-    n: "01",
-    name: "SEO",
-    title: "Soyez trouvé.",
-    desc: "Transformez les intentions de recherche en visites qualifiées. De la technique au contenu, chaque page a un rôle.",
-    tags: ["Audit & technique", "Contenu", "SEO local"],
-    href: "/seo",
-    icon: Search,
+    number: "01",
+    icon: SearchCheck,
+    title: "Audit de territoire",
+    copy: "Voir où vous existez, où vous disparaissez et ce que les concurrents occupent déjà.",
+    details: [
+      "Crawl & indexation",
+      "Requêtes de décision",
+      "Concurrents SEO et IA",
+      "Feuille de route priorisée",
+    ],
+    href: "/audit-seo",
   },
   {
-    n: "02",
-    name: "GEO & IA",
-    title: "Devenez une source.",
-    desc: "Rendez votre expertise claire, accessible et vérifiable pour les nouvelles expériences de recherche.",
-    tags: ["Entités", "Réponses IA", "Citations"],
-    href: "/geo",
-    icon: Sparkles,
+    number: "02",
+    icon: MessagesSquare,
+    title: "Visibilité IA / GEO",
+    copy: "Faire de votre marque une entité claire et de vos contenus des sources vérifiables.",
+    details: [
+      "Panel de prompts",
+      "Audit ChatGPT & Claude",
+      "Architecture de réponses",
+      "Preuves et citations",
+    ],
+    href: "/geo-referencement-ia",
   },
   {
-    n: "03",
-    name: "DATA WEB",
-    title: "Décidez avec précision.",
-    desc: "Reliez votre acquisition à vos résultats. Des données fiables, des indicateurs compris et des décisions concrètes.",
-    tags: ["GA4 & GTM", "Dashboards", "Conversion"],
-    href: "/data-web",
-    icon: ChartNoAxesCombined,
+    number: "03",
+    icon: MapPinned,
+    title: "Système SEO local",
+    copy: "Relier vos zones, vos services et vos preuves pour gagner les recherches de proximité.",
+    details: [
+      "Google Business Profile",
+      "Pages locales utiles",
+      "Avis & cohérence NAP",
+      "Mesure des contacts",
+    ],
+    href: "/seo-local",
+  },
+  {
+    number: "04",
+    icon: Radar,
+    title: "Accompagnement continu",
+    copy: "Piloter le contenu, la technique et la donnée dans un même rythme de décision.",
+    details: [
+      "Backlog mensuel",
+      "Briefs éditoriaux",
+      "Recette technique",
+      "Reporting commenté",
+    ],
+    href: "/consultant-seo-freelance",
   },
 ];
-const faq: readonly (readonly [string, string])[] = [
-  [
-    "Qu’est-ce qu’un consultant SEO, GEO et data web ?",
-    "C’est un interlocuteur unique sur trois leviers reliés : rendre un site visible dans les moteurs de recherche (SEO), le rendre citable par les moteurs de réponse IA (GEO) et mesurer ce que cette visibilité produit réellement (data web). Traiter ces sujets ensemble évite les angles morts entre acquisition, contenu et mesure.",
-  ],
-  [
-    "Quelle différence entre SEO et GEO ?",
-    "Le SEO travaille la visibilité dans les moteurs de recherche. Le GEO s’intéresse à la compréhension et à la citation de vos contenus dans les réponses générées par IA. Les deux reposent sur des pages accessibles, utiles et fiables.",
-  ],
-  [
-    "Peut-on garantir une première position sur Google ?",
-    "Non. Le classement dépend de nombreux facteurs, dont la concurrence et les systèmes du moteur. L’accompagnement s’engage sur un périmètre, des actions et une mesure transparente, jamais sur une position garantie.",
-  ],
-  [
-    "Faut-il être à Marseille ou à Paris pour travailler ensemble ?",
-    "Non. Les audits, restitutions et suivis peuvent être réalisés à distance. Le périmètre géographique de votre stratégie dépend de vos clients et des marchés que vous desservez réellement.",
-  ],
-  [
-    "Les outils du Lab analysent-ils mon site automatiquement ?",
-    "Non. Ils proposent un aperçu de résultat Google, une simulation, un générateur UTM et une checklist déclarative. Les calculs restent dans votre navigateur et ne constituent pas un audit automatisé.",
-  ],
-];
+
 export default function Home() {
   return (
     <>
       <JsonLd
         data={graph(person(), website(), professionalService(), faqPage(faq))}
       />
-      <section className="home-hero wrap">
-        <div className="hero-copy">
-          <div className="hero-kicker">
-            <span className="status-dot" /> CONSULTANT INDÉPENDANT{" "}
-            <span className="kicker-separator">/</span> SEO · GEO · DATA
-          </div>
-          <h1>
-            La recherche
-            <br />
-            évolue.
-            <br />
-            <span className="outline-text">Votre visibilité</span>
-            <br />
-            <span className="green">aussi.</span>
-            <span className="hero-star" aria-hidden="true">
-              ✳
+      <SignalHero />
+
+      <section
+        className="pressure-strip"
+        aria-label="Évolution des parcours de recherche"
+      >
+        <div className="wrap pressure-strip__grid">
+          <p className="atlas-label">LE PROBLÈME / 2026</p>
+          <h2>
+            Vos clients ne cherchent plus au même endroit. Votre stratégie ne
+            peut plus vivre dans une seule colonne Google.
+          </h2>
+          <div className="pressure-strip__stats">
+            <span>
+              <strong>01</strong> Ils cherchent
             </span>
-          </h1>
-          <p>
-            Google. Les moteurs IA. Vos données.
-            <br />
-            Je connecte les trois pour transformer votre expertise en{" "}
-            <strong>visibilité qui compte.</strong>
-          </p>
-          <div className="hero-actions">
-            <Link href="/contact" className="button">
-              Construisons votre stratégie <ArrowUpRight size={18} />
-            </Link>
-            <Link href="#expertises" className="text-link">
-              Explorer les expertises <ArrowRight size={16} />
-            </Link>
-          </div>
-          <div className="hero-signature">
-            <span className="avatar-letter">IC</span>
-            <div>
-              <strong>Med Issam Chaoui</strong>
-              <span>Un interlocuteur. Une vision d’ensemble.</span>
-            </div>
-            <span className="signature-line" />
-          </div>
-        </div>
-        <Orbit />
-      </section>
-      <div className="ecosystem-strip">
-        <div className="wrap ecosystem-row">
-          <span className="mono">
-            UN WEB. PLUSIEURS
-            <br />
-            POINTS D’ENTRÉE.
-          </span>
-          {[
-            "Google",
-            "ChatGPT",
-            "Perplexity",
-            "Gemini",
-            "GA4",
-            "Looker Studio",
-          ].map((t) => (
-            <span key={t}>{t}</span>
-          ))}
-        </div>
-      </div>
-      <section className="wrap section-block" id="expertises">
-        <div className="section-heading">
-          <div>
-            <span className="eyebrow">
-              <span /> 01 / EXPERTISES CONNECTÉES
+            <span>
+              <strong>02</strong> Ils interrogent
             </span>
-            <h2>
-              Ne laissez aucun
-              <br />
-              levier dans l’ombre.
-            </h2>
+            <span>
+              <strong>03</strong> Ils comparent
+            </span>
+            <span>
+              <strong>04</strong> Ils choisissent
+            </span>
           </div>
-          <p>
-            Une stratégie cohérente, de la première
-            <br />
-            recherche à la décision de votre client.
-          </p>
-        </div>
-        <div className="expertise-grid">
-          {services.map((s) => (
-            <Link className="expertise-card" href={s.href} key={s.n}>
-              <div className="card-top">
-                <span className="mono">/{s.n}</span>
-                <s.icon size={26} />
-              </div>
-              <span className="mono green">{s.name}</span>
-              <h3>{s.title}</h3>
-              <p>{s.desc}</p>
-              <div className="tags">
-                {s.tags.map((t) => (
-                  <span key={t}>{t}</span>
-                ))}
-              </div>
-              <div className="card-bottom">
-                Explorer {s.name.toLowerCase()}
-                <ArrowUpRight size={20} />
-              </div>
-            </Link>
-          ))}
         </div>
       </section>
-      <section className="approach-section">
-        <div className="wrap approach-grid">
+
+      <section className="visibility-system">
+        <div className="wrap visibility-system__intro">
+          <p className="atlas-label">01 / SYSTÈME DE VISIBILITÉ</p>
           <div>
-            <span className="eyebrow">
-              <span /> 02 / L’APPROCHE
-            </span>
             <h2>
-              Moins d’intuition.
-              <br />
-              <span className="green">Plus de direction.</span>
+              Un site qui occupe les recherches, les réponses et le local.
             </h2>
             <p>
-              Pas une liste de recommandations qui finit dans un dossier. Un
-              plan clair, des actions priorisées et une mesure qui vous aide à
-              avancer.
+              Le sujet n’est plus de publier “du contenu SEO”. Il faut
+              construire un réseau de pages capables d’être trouvées, extraites,
+              citées et reliées à une action commerciale.
             </p>
-            <Link className="text-link" href="/methode-seo">
-              La méthode en détail <ArrowUpRight size={18} />
+          </div>
+        </div>
+        <div className="wrap">
+          <QueryAtlas />
+        </div>
+      </section>
+
+      <section className="offers-section">
+        <div className="wrap">
+          <div className="offers-heading">
+            <p className="atlas-label">02 / MISSIONS</p>
+            <h2>Quatre façons de remettre votre visibilité en mouvement.</h2>
+          </div>
+          <div className="offers-grid">
+            {offers.map((offer) => (
+              <article key={offer.number}>
+                <div className="offers-card__head">
+                  <span>{offer.number}</span>
+                  <offer.icon size={29} />
+                </div>
+                <h3>{offer.title}</h3>
+                <p>{offer.copy}</p>
+                <ul>
+                  {offer.details.map((detail) => (
+                    <li key={detail}>
+                      <Check size={16} />
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+                <Link href={offer.href}>
+                  Voir la mission <ArrowUpRight size={17} />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <TerritoryMap />
+
+      <section className="answer-engine">
+        <div className="wrap answer-engine__grid">
+          <div className="answer-engine__copy">
+            <p className="atlas-label">04 / MOTEURS DE RÉPONSE</p>
+            <h2>
+              Quand une IA répond, votre marque doit être facile à vérifier.
+            </h2>
+            <p>
+              ChatGPT, Claude, Perplexity et Gemini ne lisent pas une page comme
+              un prospect. Ils assemblent des fragments, comparent des sources
+              et évaluent la cohérence de l’entité. La stratégie GEO travaille
+              ces trois conditions sans inventer de balisage magique.
+            </p>
+            <Link href="/geo" className="signal-button signal-button--text">
+              Comprendre le GEO / LLMO <ArrowUpRight size={18} />
             </Link>
           </div>
-          <div className="method-list">
+          <div className="answer-engine__pipeline">
             {[
-              {
-                icon: Crosshair,
-                t: "Comprendre avant d’agir",
-                d: "Vos objectifs, votre marché et ce que disent vraiment vos données.",
-              },
-              {
-                icon: Layers3,
-                t: "Prioriser ce qui compte",
-                d: "L’impact attendu, l’effort et les ressources disponibles.",
-              },
-              {
-                icon: Fingerprint,
-                t: "Construire votre différence",
-                d: "Une expertise identifiable et des contenus qui apportent une réponse.",
-              },
-              {
-                icon: ChartNoAxesCombined,
-                t: "Mesurer pour progresser",
-                d: "Des indicateurs utiles, des limites explicites et la prochaine décision.",
-              },
-            ].map((m, i) => (
-              <div key={m.t}>
-                <span className="method-number mono">0{i + 1}</span>
-                <m.icon size={21} />
-                <div>
-                  <h3>{m.t}</h3>
-                  <p>{m.d}</p>
-                </div>
+              ["A", "ACCESSIBLE", "Le contenu peut être exploré et rendu."],
+              [
+                "C",
+                "COMPRÉHENSIBLE",
+                "La réponse, l’entité et le contexte sont explicites.",
+              ],
+              [
+                "V",
+                "VÉRIFIABLE",
+                "Les faits sont datés, sourcés et attribués.",
+              ],
+              ["C", "CITABLE", "Le passage apporte une information autonome."],
+            ].map(([letter, title, text], index) => (
+              <div key={`${letter}-${title}`}>
+                <span>{letter}</span>
+                <i aria-hidden="true">0{index + 1}</i>
+                <section>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </section>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section className="wrap section-block" id="lab">
-        <div className="section-heading">
-          <div>
-            <span className="eyebrow">
-              <span /> 03 / LE LAB
-            </span>
-            <h2>
-              Explorez. Testez.
-              <br />
-              Prenez une longueur d’avance.
-            </h2>
-          </div>
-          <div>
-            <span className="pill">OUTILS GRATUITS · SANS INSCRIPTION</span>
-            <p>
-              Des outils simples pour passer
-              <br />
-              de la réflexion à l’action.
-            </p>
-          </div>
+
+      <section className="method-field">
+        <div className="wrap method-field__header">
+          <p className="atlas-label">05 / MÉTHODE DE TERRAIN</p>
+          <h2>Observer. Cartographier. Occuper. Mesurer.</h2>
         </div>
-        <Tools />
-      </section>
-      <section className="wrap section-block resource-section">
-        <div className="section-heading">
-          <div>
-            <span className="eyebrow">
-              <span /> 04 / NOTES DE TERRAIN
-            </span>
-            <h2>
-              Comprendre le web
-              <br />
-              qui vient.
-            </h2>
-          </div>
-          <Link className="text-link" href="/blog">
-            Toutes les ressources <ArrowUpRight size={17} />
-          </Link>
-        </div>
-        <ResourceList />
-      </section>
-      <section className="wrap section-block faq-section">
-        <div>
-          <span className="eyebrow">LES BONNES QUESTIONS</span>
-          <h2>
-            On en parle
-            <br />
-            simplement.
-          </h2>
-          <Link href="/contact" className="text-link">
-            Une autre question ? <ArrowUpRight size={17} />
-          </Link>
-        </div>
-        <div>
-          {faq.map(([q, a]) => (
-            <details key={q}>
-              <summary>
-                {q}
-                <ChevronRight size={18} />
-              </summary>
-              <p>{a}</p>
-            </details>
+        <div className="wrap method-field__grid">
+          {[
+            [
+              "01",
+              "Observer",
+              "Crawl, données Search Console, visibilité IA, concurrence et parcours de conversion.",
+            ],
+            [
+              "02",
+              "Cartographier",
+              "Intentions, entités, zones, pages existantes et espaces éditoriaux à créer.",
+            ],
+            [
+              "03",
+              "Occuper",
+              "Corrections techniques, pages de vente, contenus sources, maillage et signaux locaux.",
+            ],
+            [
+              "04",
+              "Mesurer",
+              "Positions, citations observées, contacts, chiffre d’affaires attribuable et prochain arbitrage.",
+            ],
+          ].map(([number, title, text]) => (
+            <article key={number}>
+              <span>{number}</span>
+              <CircleDot size={20} />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
           ))}
         </div>
-      </section>
-      <section className="wrap closing-cta">
-        <div>
-          <span className="eyebrow">LA SUITE COMMENCE ICI</span>
-          <h2>
-            Et si votre prochain client
-            <br />
-            vous trouvait <span>vraiment ?</span>
-          </h2>
-          <p>
-            Parlons de votre site, de vos ambitions et du chemin pour les
-            relier.
-          </p>
-          <Link className="button dark" href="/contact">
-            Parlons de votre projet <ArrowUpRight size={19} />
+        <div className="wrap method-field__link">
+          <Link href="/methode-seo">
+            Voir la méthode et les livrables <ArrowRight size={18} />
           </Link>
         </div>
-        <span className="cta-symbol" aria-hidden="true">
-          ↗
-        </span>
+      </section>
+
+      <section className="consultant-section">
+        <div className="wrap consultant-section__grid">
+          <div className="consultant-section__stamp" aria-hidden="true">
+            <strong>MIC</strong>
+            <span>
+              SEO / GEO
+              <br />
+              LOCAL / DATA
+            </span>
+          </div>
+          <div>
+            <p className="atlas-label">06 / VOTRE INTERLOCUTEUR</p>
+            <h2>Med Issam Chaoui, consultant SEO & GEO indépendant.</h2>
+            <p>
+              J’interviens à l’endroit où la technique, l’éditorial et la donnée
+              doivent enfin se parler. Vous gardez un interlocuteur du
+              diagnostic jusqu’à la recette, avec des recommandations reliées à
+              des URL, des responsables et une méthode de vérification.
+            </p>
+            <div className="consultant-section__proofs">
+              <span>SEO technique & migrations</span>
+              <span>Stratégie éditoriale</span>
+              <span>GEO / LLMO</span>
+              <span>SEO local multi-zones</span>
+              <span>GA4, GTM & reporting</span>
+            </div>
+            <Link href="/a-propos">
+              Découvrir mon approche <ArrowUpRight size={17} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="faq-atlas">
+        <div className="wrap faq-atlas__grid">
+          <div>
+            <p className="atlas-label">07 / QUESTIONS FRÉQUENTES</p>
+            <h2>Les réponses avant le premier échange.</h2>
+          </div>
+          <div>
+            {faq.map(([question, answer], index) => (
+              <details key={question}>
+                <summary>
+                  <span>0{index + 1}</span>
+                  {question}
+                  <i>+</i>
+                </summary>
+                <p>{answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="war-room-cta">
+        <div className="wrap">
+          <p className="atlas-label">VOTRE TERRITOIRE EST DÉJÀ OCCUPÉ</p>
+          <h2>Voyons par où le reprendre.</h2>
+          <p>
+            Envoyez votre URL, votre marché et vos priorités. Je reviens avec
+            les premières pistes à vérifier avant toute proposition.
+          </p>
+          <Link
+            href="/contact"
+            className="signal-button signal-button--primary"
+          >
+            Demander un diagnostic <ArrowUpRight size={18} />
+          </Link>
+        </div>
       </section>
     </>
   );

@@ -2,12 +2,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, Menu, X, ScanLine } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 const nav = [
-  ["Expertises", "/seo"],
-  ["GEO & IA", "/geo"],
-  ["Data web", "/data-web"],
-  ["Le Lab", "/outils-seo"],
+  ["SEO", "/seo"],
+  ["GEO / LLM", "/geo"],
+  ["Local", "/seo-local"],
+  ["Méthode", "/methode-seo"],
   ["Ressources", "/blog"],
 ];
 export function Navigation() {
@@ -16,14 +16,15 @@ export function Navigation() {
   return (
     <header className="site-header">
       <div className="wrap nav-row">
-        <Link href="/" className="brand" aria-label="Issam Chaoui, accueil">
-          <span className="brand-mark">
-            <ScanLine size={23} />
-          </span>
-          <span>
-            issam<span className="green">.</span>
-            <small>SEO · GEO · DATA</small>
-          </span>
+        <Link href="/" className="brand" aria-label="MIC SIGNAL, accueil">
+          <span className="brand-index">MIC</span>
+          <span className="brand-divider">/</span>
+          <span className="brand-name">SIGNAL</span>
+          <small>
+            ORGANIC SEARCH
+            <br />
+            INTELLIGENCE
+          </small>
         </Link>
         <nav className="desktop-nav" aria-label="Navigation principale">
           {nav.map(([label, href]) => (
@@ -37,7 +38,7 @@ export function Navigation() {
           ))}
         </nav>
         <Link href="/contact" className="button small nav-contact">
-          Parlons de votre projet <ArrowUpRight size={15} />
+          Diagnostic <ArrowUpRight size={15} />
         </Link>
         <button
           className="menu-button"

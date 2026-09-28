@@ -6,14 +6,14 @@ export function SiteFooter() {
         <div className="footer-grid">
           <div>
             <Link href="/" className="wordmark">
-              issam<span className="green">.</span>
+              <strong>MIC</strong> SIGNAL
             </Link>
             <p>
-              Connecter la recherche,
+              Devenir la réponse,
               <br />
-              l’intelligence et la donnée.
+              partout où l’on vous cherche.
             </p>
-            <span className="mono muted">MARSEILLE · PARIS · À DISTANCE</span>
+            <span className="mono muted">SEO · GEO/LLM · LOCAL · DATA</span>
           </div>
           {[
             {
@@ -24,6 +24,7 @@ export function SiteFooter() {
                 ["Data & analytics", "/data-web"],
                 ["Audit SEO", "/audit-seo"],
                 ["SEO local", "/seo-local"],
+                ["Glossaire SEO & IA", "/glossaire"],
               ],
             },
             {
@@ -44,6 +45,7 @@ export function SiteFooter() {
                 ["Contact", "/contact"],
                 ["Consultant à Marseille", "/consultant-seo-marseille"],
                 ["Consultant pour Paris", "/consultant-seo-paris"],
+                ["Consultant à Lyon", "/consultant-seo/lyon"],
               ],
             },
           ].map((c) => (

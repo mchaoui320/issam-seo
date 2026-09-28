@@ -1,21 +1,17 @@
-import {
-  Space_Grotesk,
-  Plus_Jakarta_Sans,
-  IBM_Plex_Mono,
-} from "next/font/google";
+import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 
-export const spaceGrotesk = Space_Grotesk({
+export const syne = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
 });
 
-export const plusJakarta = Plus_Jakarta_Sans({
+export const manrope = Inter({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const ibmPlexMono = IBM_Plex_Mono({

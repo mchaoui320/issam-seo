@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { spaceGrotesk, plusJakarta, ibmPlexMono } from "@/lib/fonts";
+import { syne, manrope, ibmPlexMono } from "@/lib/fonts";
 import { Navigation } from "@/components/site/Navigation";
 import { SiteFooter } from "@/components/site/Footer";
 import { siteUrl } from "@/lib/seo";
 import "./globals.css";
+import "./final.css";
+import "./polish.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Issam Chaoui — Consultant SEO, GEO & Data web",
-    template: "%s | Issam Chaoui",
+    default: "MIC SIGNAL — SEO, GEO, LLMO & Data web",
+    template: "%s | MIC SIGNAL",
   },
   description:
     "Consultant SEO, GEO et data web. Audit, référencement naturel, visibilité IA et analytics à Marseille, Paris et à distance.",
@@ -23,9 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" data-scroll-behavior="smooth">
       <body
-        className={`${spaceGrotesk.variable} ${plusJakarta.variable} ${ibmPlexMono.variable}`}
+        className={`${syne.variable} ${manrope.variable} ${ibmPlexMono.variable}`}
       >
         <a className="skip-link" href="#main">
           Aller au contenu

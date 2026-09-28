@@ -1,5 +1,7 @@
 export const dynamic = "force-static";
 import { entries, guides } from "@/lib/content";
+import { terms } from "@/lib/glossary";
+import { localMarkets, marketPath } from "@/lib/cities";
 import { siteUrl } from "@/lib/seo";
 
 /**
@@ -16,7 +18,7 @@ const byCategory = (category: string) =>
     .join("\n");
 
 export function GET() {
-  const body = `# Med Issam Chaoui — Consultant SEO, GEO & data web
+  const body = `# MIC SIGNAL — SEO, GEO, LLMO & data web
 
 > Consultant indépendant basé en France. J'accompagne les entreprises sur trois
 > leviers reliés : le référencement naturel (SEO), la visibilité dans les
@@ -42,19 +44,32 @@ ${byCategory("DATA")}
 
 ## Accompagnement et méthode
 
-${[...entries.filter((e) => ["ACCOMPAGNEMENT", "MÉTHODE", "GUIDE"].includes(e.category))]
+${[
+  ...entries.filter((e) =>
+    ["ACCOMPAGNEMENT", "MÉTHODE", "GUIDE"].includes(e.category),
+  ),
+]
   .map((e) => `- [${e.title}](${siteUrl}/${e.slug}): ${e.intro}`)
   .join("\n")}
 
 ## Marchés locaux
 
-${[...entries.filter((e) => ["MARSEILLE", "PARIS"].includes(e.category))]
-  .map((e) => `- [${e.title}](${siteUrl}/${e.slug}): ${e.intro}`)
+${localMarkets
+  .map(
+    (market) =>
+      `- [Consultant SEO à ${market.city}](${siteUrl}${marketPath(market)}): ${market.marketNote}`,
+  )
   .join("\n")}
 
 ## Guides
 
 ${guides.map((g) => `- [${g.title}](${siteUrl}/${g.slug}): ${g.intro}`).join("\n")}
+
+## Glossaire
+
+${terms.length} définitions de référence, chacune accessible par une ancre stable.
+
+${terms.map((t) => `- [${t.term}](${siteUrl}/glossaire#${t.slug}): ${t.short}`).join("\n")}
 
 ## Optional
 

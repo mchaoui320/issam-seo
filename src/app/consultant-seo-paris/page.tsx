@@ -1,12 +1,11 @@
-import { allEntries } from "@/lib/content";
-import { ContentPage } from "@/components/site/ContentPage";
+import { CityPage } from "@/components/site/CityPage";
+import { getLocalMarket } from "@/lib/cities";
 import { pageMetadata } from "@/lib/seo";
-const entry = allEntries.find((e) => e.slug === "consultant-seo-paris")!;
 export const metadata = pageMetadata(
-  entry.title,
-  entry.intro,
+  "Consultant SEO Paris — SEO B2B, GEO & visibilité ChatGPT",
+  "Consultant SEO pour les entreprises à Paris : audit, stratégie B2B, SEO local et optimisation de votre visibilité dans ChatGPT, Claude et Perplexity.",
   "/consultant-seo-paris",
 );
 export default function Page() {
-  return <ContentPage entry={entry} />;
+  return <CityPage market={getLocalMarket("paris")!} />;
 }
