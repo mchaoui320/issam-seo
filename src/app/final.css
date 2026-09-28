@@ -16,7 +16,6 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
 }
 h1,
 h2,
@@ -24,7 +23,6 @@ h3,
 h4,
 .brand,
 .wordmark {
-  font-family: Arial, Helvetica, sans-serif;
 }
 p {
   color: var(--muted);
@@ -54,7 +52,6 @@ p {
   background: none;
   box-shadow: none;
   color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.9rem;
   letter-spacing: -0.04em;
 }

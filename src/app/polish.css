@@ -14,7 +14,6 @@
 
 body {
   background: #fbfbf8;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 h1,
 h2,
@@ -22,7 +21,6 @@ h3,
 h4,
 .brand,
 .wordmark {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .site-header {
   background: rgba(251, 251, 248, 0.94);
@@ -57,7 +55,7 @@ h4,
 .motion-hero h1 em {
   color: #11120f;
   text-decoration: underline;
-  text-decoration-color: #c9ff36;
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 0.14em;
   text-underline-offset: 0.08em;
 }
@@ -86,7 +84,7 @@ h4,
 }
 .motion-hero__proof i,
 .motion-hero__rail i {
-  background: #c9ff36;
+  background: var(--accent);
 }
 
 .motion-stage {
@@ -111,7 +109,7 @@ h4,
   font-weight: 500;
 }
 .motion-stage__rows > div.is-active {
-  background: #c9ff36;
+  background: var(--accent);
   color: #11120f;
 }
 .motion-stage__scan {
@@ -127,7 +125,7 @@ h4,
   background: #11120f;
 }
 .motion-stage__timeline span {
-  background: #c9ff36;
+  background: var(--accent);
 }
 .motion-hero__rail {
   border-color: #d7d8d2;
@@ -252,7 +250,7 @@ h4,
 }
 .territory-plot button.is-active {
   border-color: #11120f;
-  background: #c9ff36;
+  background: var(--accent);
   box-shadow: none;
   color: #11120f;
 }
@@ -328,7 +326,7 @@ h4,
   border-color: #11120f;
   border-radius: 0;
   background: #11120f;
-  box-shadow: 12px 12px 0 #c9ff36;
+  box-shadow: 12px 12px 0 var(--accent);
 }
 .consultant-section .atlas-label {
   color: #555650;
@@ -341,13 +339,13 @@ h4,
   color: #72736d;
 }
 .war-room-cta {
-  background: #c9ff36;
+  background: var(--accent);
 }
 .war-room-cta .signal-button {
   border-radius: 0;
 }
 .site-footer .wordmark strong {
-  color: #c9ff36;
+  color: var(--accent);
 }
 
 .city-hero__card,
@@ -363,7 +361,7 @@ h4,
   color: #11120f;
 }
 .city-cta {
-  background: #c9ff36;
+  background: var(--accent);
 }
 
 @media (max-width: 980px) {
@@ -527,7 +525,7 @@ h4,
 .lab-field textarea:focus {
   outline: 0;
   border-color: #11120f;
-  box-shadow: 0 3px 0 #c9ff36;
+  box-shadow: 0 3px 0 var(--accent);
 }
 .lab-field textarea {
   min-height: 90px;
@@ -690,7 +688,7 @@ h4,
   color: #555650;
 }
 .rival-matrix td button[data-value="2"] {
-  background: #c9ff36;
+  background: var(--accent);
   color: #11120f;
 }
 .rival-matrix td button span {
@@ -796,7 +794,7 @@ h4,
 }
 .crawler-row span[data-state="Autorisé"] {
   border-color: #759700;
-  background: #c9ff36;
+  background: var(--accent);
 }
 .crawler-row span[data-state="Bloqué"] {
   background: #11120f;
@@ -863,8 +861,8 @@ h4,
   border-radius: 0;
 }
 .classic-tools .tool-tabs button.active {
-  border-color: #c9ff36;
-  background: #c9ff36;
+  border-color: var(--accent);
+  background: var(--accent);
   color: #11120f;
 }
 .classic-tools input:not([type="checkbox"]),
@@ -957,7 +955,7 @@ h4,
   border-bottom: 0;
 }
 .home-lab__console section:hover {
-  background: #c9ff36;
+  background: var(--accent);
 }
 .home-lab__console i,
 .home-lab__console b {
@@ -1025,7 +1023,7 @@ h4,
 }
 .insight-hero aside > div {
   padding: 18px;
-  background: #c9ff36;
+  background: var(--accent);
 }
 .insight-hero aside small {
   font: 0.6rem ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -1058,7 +1056,7 @@ h4,
   border-right: 0;
 }
 .insight-tensions article span {
-  color: #c9ff36;
+  color: var(--accent);
   font: 0.65rem ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 .insight-tensions h2 {
@@ -1213,7 +1211,7 @@ h4,
 }
 .insight-cta {
   padding: 92px 0;
-  background: #c9ff36;
+  background: var(--accent);
 }
 .insight-cta__grid {
   display: grid;
@@ -1401,7 +1399,7 @@ h4,
   color: #11120f;
   font-style: normal;
   text-decoration: underline;
-  text-decoration-color: #c9ff36;
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 0.13em;
   text-underline-offset: 0.08em;
 }
@@ -1490,7 +1488,7 @@ h4,
   width: 12px;
   height: 12px;
   transform: translate(-50%, -50%);
-  background: #c9ff36;
+  background: var(--accent);
   box-shadow: 0 0 0 7px rgba(201, 255, 54, 0.26);
 }
 .motion-stage--reel .motion-stage__title {
@@ -1516,7 +1514,7 @@ h4,
   padding: 17px 18px;
   border: 1px solid #11120f;
   background: rgba(251, 251, 248, 0.91);
-  box-shadow: 7px 7px 0 #c9ff36;
+  box-shadow: 7px 7px 0 var(--accent);
   animation: scene-enter 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .motion-stage__scene > small {
@@ -1571,15 +1569,15 @@ h4,
   transform: translateX(8px);
 }
 .motion-stage--reel .motion-stage__rows > div.is-active small {
-  color: #c9ff36;
+  color: var(--accent);
 }
 .motion-stage--reel .motion-stage__scan {
   top: 0;
-  background: #c9ff36;
+  background: var(--accent);
   box-shadow: 8px 0 20px rgba(201, 255, 54, 0.5);
 }
 .motion-stage--reel .motion-stage__switcher button[aria-pressed="true"] {
-  background: #c9ff36;
+  background: var(--accent);
   color: #11120f;
 }
 .motion-stage--reel .motion-stage__timeline span {
@@ -1783,4 +1781,213 @@ h4,
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* ==============================================================
+   SYSTÈME VISUEL — clair, lumineux, contemporain.
+
+   Remplace la direction « papier brutaliste » (crème + vert acide,
+   angles vifs) par une direction lumineuse : blancs froids, accent
+   iridescent, surfaces en verre, arrondis généreux.
+
+   Tout passe par les tokens existants, donc aucune modification des
+   composants n'est nécessaire — `--green` est simplement remappé sur
+   l'accent primaire, puisque c'est le nom utilisé partout dans le code.
+
+   DETTE CONNUE : la palette est définie dans globals.css (×2), final.css
+   et polish.css. Ce bloc gagne parce qu'il charge en dernier, mais les
+   trois fichiers doivent être fusionnés — voir la note de fin de session.
+   ============================================================== */
+:root {
+  /* --- fonds --- */
+  --bg: #f6f7fd;
+  --bg-deep: #edf0fb;
+  --panel: #ffffff;
+  --panel2: #0a0c18;
+
+  /* --- texte --- */
+  --text: #0a0c18;
+  --muted: #565d7a;
+  --line: rgba(10, 12, 24, 0.09);
+
+  /* --- accent iridescent --- */
+  --accent: #3d2bff;
+  --accent-soft: #6f5cff;
+  --accent-violet: #8b3dff;
+  --accent-cyan: #00c8dc;
+
+  /* Conservés pour compatibilité : le code appelle ces noms partout. */
+  --green: #3d2bff;
+  --signal-blue: #3d2bff;
+  --signal-orange: #8b3dff;
+  --signal-ink: #0a0c18;
+  --signal-paper: #f6f7fd;
+
+  --grad-iris: linear-gradient(115deg, #3d2bff 0%, #8b3dff 48%, #00c8dc 100%);
+  --glow: 0 18px 48px -18px rgba(61, 43, 255, 0.42);
+  --glow-soft: 0 10px 34px -14px rgba(10, 12, 24, 0.14);
+
+  --radius: 16px;
+  color-scheme: light;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  position: relative;
+}
+
+/* --- Aurore de fond : deux nappes floutées, fixes, très diffuses.
+       `filter: blur()` sur un dégradé coûte cher à repeindre, donc la
+       couche est fixe et non animée : elle est peinte une seule fois. --- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20vmax;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      38vmax 30vmax at 12% 8%,
+      rgba(61, 43, 255, 0.17),
+      transparent 62%
+    ),
+    radial-gradient(
+      34vmax 28vmax at 88% 4%,
+      rgba(0, 200, 220, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      42vmax 32vmax at 70% 92%,
+      rgba(139, 61, 255, 0.13),
+      transparent 64%
+    );
+}
+
+/* --- Surfaces : verre plutôt que carton --- */
+.content-card,
+.expertise-card,
+.offer-card,
+.city-hero__card,
+.sources,
+.answer-block,
+.glossary-search,
+.workbench,
+.tool-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: var(--glow-soft);
+  border-radius: var(--radius);
+}
+
+/* --- Boutons : plein dégradé + halo, au lieu du bloc plat --- */
+.button,
+.future-button--primary {
+  background: var(--grad-iris);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  box-shadow: var(--glow);
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.25s;
+}
+.button:hover,
+.future-button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 56px -16px rgba(61, 43, 255, 0.55);
+}
+.button.dark,
+.future-button--ghost {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--text);
+  border: 1px solid var(--line);
+  box-shadow: var(--glow-soft);
+}
+
+/* --- Titres : dégradé appliqué au texte accentué uniquement, pour
+       garder le contraste du texte courant intact. --- */
+.green,
+.hero-gradient {
+  background: var(--grad-iris);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --- Filtres et pastilles --- */
+.glossary-filters button.active,
+.pill {
+  background: var(--grad-iris);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* --- Le pied de page reste sombre : il ancre la page et crée le
+       contraste final. Il est le seul bloc sombre du site. --- */
+footer {
+  background: var(--panel2);
+  color: #eef0fb;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .future-button--primary {
+    transition: none;
+  }
+}
+
+/* --- Laisser respirer l'aurore : les sections qui portaient un fond
+       plein le remplacent par un voile translucide, sinon la nappe
+       posée sur `body` est entièrement recouverte. --- */
+.motion-hero,
+.semantic-core,
+.answer-engine,
+.visibility-system,
+.territory-section,
+.method-field,
+.faq-atlas {
+  background: transparent;
+}
+.offers-section,
+.home-lab,
+.consultant-section {
+  background: rgba(237, 240, 251, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.site-header {
+  background: rgba(246, 247, 253, 0.72);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--line);
+}
+
+/* --- Aurore plus présente. Les nappes restent fixes et non animées :
+       flouter un dégradé plein écran à chaque frame coûterait trop cher
+       sur mobile. --- */
+body::before {
+  background:
+    radial-gradient(
+      44vmax 34vmax at 8% 2%,
+      rgba(61, 43, 255, 0.28),
+      transparent 60%
+    ),
+    radial-gradient(
+      38vmax 30vmax at 92% 0%,
+      rgba(0, 200, 220, 0.26),
+      transparent 58%
+    ),
+    radial-gradient(
+      48vmax 36vmax at 78% 88%,
+      rgba(139, 61, 255, 0.24),
+      transparent 62%
+    ),
+    radial-gradient(
+      36vmax 28vmax at 4% 76%,
+      rgba(0, 200, 220, 0.18),
+      transparent 60%
+    );
 }

@@ -1955,10 +1955,8 @@ details > p {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-h1, h2, h3, h4, .brand, .wordmark { font-family: Arial, Helvetica, sans-serif; }
 p { color: var(--muted); }
 .wrap { width: min(1280px, calc(100% - 64px)); }
 
@@ -1978,7 +1976,6 @@ p { color: var(--muted); }
   background: none;
   box-shadow: none;
   color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
   font-size: .9rem;
   letter-spacing: -.04em;
 }
@@ -2154,7 +2151,7 @@ p { color: var(--muted); }
 
 .atlas-label { color: var(--signal-blue); }
 .pressure-strip, .visibility-system, .offers-section, .territory-section, .answer-engine, .method-field, .consultant-section, .faq-atlas, .war-room-cta { border-color: var(--signal-ink); }
-.pressure-strip { background: #ff4b22; color: #151515; }
+.pressure-strip { background: var(--grad-iris); color: #fff; }
 .pressure-strip h2, .visibility-system__intro h2, .territory-heading h2, .method-field h2, .faq-atlas h2 { color: #151515; }
 .pressure-strip .atlas-label { color: #151515; }
 .pressure-strip__stats { border-color: #151515; border-radius: 3px; background: transparent; }

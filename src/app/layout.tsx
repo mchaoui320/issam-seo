@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { syne, manrope, ibmPlexMono } from "@/lib/fonts";
+import { display, body, mono } from "@/lib/fonts";
 import { Navigation } from "@/components/site/Navigation";
 import { SiteFooter } from "@/components/site/Footer";
 import { MotionDirector } from "@/components/site/MotionDirector";
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="fr" data-scroll-behavior="smooth">
       <body
-        className={`${syne.variable} ${manrope.variable} ${ibmPlexMono.variable}`}
+        className={`${display.variable} ${body.variable} ${mono.variable}`}
       >
         <a className="skip-link" href="#main">
           Aller au contenu
