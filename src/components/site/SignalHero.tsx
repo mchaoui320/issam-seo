@@ -66,7 +66,7 @@ export function SignalHero() {
             <small>La recherche devient un canal de vente.</small>
           </h1>
           <p className="motion-hero__intro">
-            J’aide les entreprises à gagner les requêtes utiles sur Google, à
+            On aide les entreprises à gagner les requêtes utiles sur Google, à
             devenir des sources dans ChatGPT, Claude, Gemini et Perplexity, puis
             à mesurer les contacts dans GA4. SEO technique, visibilité IA, SEO
             local et analytics avancent dans un même système.

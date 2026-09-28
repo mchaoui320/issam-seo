@@ -13,6 +13,43 @@ export type LocalMarket = {
   searchExamples: string[];
 };
 
+/**
+ * Requête principale d'une page locale.
+ *
+ * « agence SEO {ville} » plutôt que « consultant SEO {ville} » : le
+ * positionnement est celui d'une agence, et la formulation « agence » capte
+ * aussi les recherches comparatives, plus commerciales.
+ */
+export function primaryKeyword(market: LocalMarket) {
+  return `agence SEO ${market.city}`;
+}
+
+/**
+ * Variantes réellement tapées autour de la requête principale. Servent aux
+ * intertitres et au bloc de couverture affiché sur la page — jamais à répéter
+ * mécaniquement le mot-clé dans le corps du texte.
+ */
+export function keywordVariants(market: LocalMarket) {
+  return [
+    `agence SEO ${market.city}`,
+    `consultant SEO ${market.city}`,
+    `référencement naturel ${market.city}`,
+    `agence référencement ${market.city}`,
+    `audit SEO ${market.city}`,
+    `SEO local ${market.city}`,
+    ...market.searchExamples,
+  ].filter((v, i, a) => a.indexOf(v) === i);
+}
+
+/** Title tag. Compact : le gabarit ajoute « | MIC SIGNAL ». */
+export function marketTitle(market: LocalMarket) {
+  return `Agence SEO ${market.city} — Référencement naturel & IA`;
+}
+
+export function marketDescription(market: LocalMarket) {
+  return `Agence SEO et référencement naturel à ${market.city} : audit technique, SEO local, visibilité dans ChatGPT et Perplexity, data web et data viz. Marché ${market.region}.`;
+}
+
 export const localMarkets: LocalMarket[] = [
   {
     slug: "marseille",
@@ -31,7 +68,7 @@ export const localMarkets: LocalMarket[] = [
     marketNote:
       "À Marseille, la visibilité locale se joue à plusieurs échelles : quartier, ville, métropole et bassin d’Aix. Une stratégie efficace choisit l’échelle qui correspond réellement au déplacement du client et à la zone d’intervention de l’entreprise.",
     approach:
-      "Je relie la fiche Google Business Profile, les pages de services, les signaux de confiance locaux et le suivi des appels ou formulaires pour savoir quelles zones produisent de vrais contacts.",
+      "On relie la fiche Google Business Profile, les pages de services, les signaux de confiance locaux et le suivi des appels ou formulaires pour savoir quelles zones produisent de vrais contacts.",
     searchExamples: [
       "consultant SEO Marseille",
       "audit SEO Marseille",
@@ -56,7 +93,7 @@ export const localMarkets: LocalMarket[] = [
     marketNote:
       "À Paris, viser un mot-clé large ne suffit pas. La différence vient de la spécialisation : secteur, taille d’entreprise, problème traité et niveau d’accompagnement. Cette précision sert autant Google que les recommandations de ChatGPT ou Claude.",
     approach:
-      "Je cartographie les requêtes de décision, les concurrents visibles et les sources citées par les moteurs de réponse, puis j’organise une architecture qui évite la concurrence entre vos propres pages.",
+      "On cartographie les requêtes de décision, les concurrents visibles et les sources citées par les moteurs de réponse, puis j’organise une architecture qui évite la concurrence entre vos propres pages.",
     searchExamples: [
       "consultant SEO Paris",
       "expert GEO Paris",
@@ -81,7 +118,7 @@ export const localMarkets: LocalMarket[] = [
     marketNote:
       "Le tissu lyonnais combine industrie, services B2B et pôles d’innovation. Les recherches sont souvent techniques et comparatives : elles demandent des contenus qui expliquent, prouvent et orientent vers une prochaine étape claire.",
     approach:
-      "Je transforme l’expertise métier en groupes de réponses : problèmes, solutions, comparaisons, contraintes et preuves. Ce modèle capte les requêtes Google et les questions formulées dans les assistants IA.",
+      "On transforme l’expertise métier en groupes de réponses : problèmes, solutions, comparaisons, contraintes et preuves. Ce modèle capte les requêtes Google et les questions formulées dans les assistants IA.",
     searchExamples: [
       "consultant SEO Lyon",
       "SEO industriel Lyon",
@@ -106,7 +143,7 @@ export const localMarkets: LocalMarket[] = [
     marketNote:
       "À Bordeaux, les parcours mêlent découverte, comparaison et achat, souvent avec une forte saisonnalité. La stratégie doit distinguer les contenus qui inspirent de ceux qui font choisir une offre.",
     approach:
-      "Je segmente la demande par saison, origine géographique et maturité, puis je mesure séparément découverte, réservation, demande de devis et vente.",
+      "On segmente la demande par saison, origine géographique et maturité, puis on mesure séparément découverte, réservation, demande de devis et vente.",
     searchExamples: [
       "consultant SEO Bordeaux",
       "SEO e-commerce Bordeaux",
@@ -131,7 +168,7 @@ export const localMarkets: LocalMarket[] = [
     marketNote:
       "Le marché lillois relie commerce, logistique et industrie. Les entreprises multi-sites ont besoin d’une gouvernance SEO locale, pas seulement d’une page par ville : données, modèles, avis, contenus et mesure doivent rester cohérents.",
     approach:
-      "Je construis un système réplicable avec des règles d’unicité, un modèle de page locale, un suivi par établissement et des contrôles contre la duplication.",
+      "On construit un système réplicable avec des règles d’unicité, un modèle de page locale, un suivi par établissement et des contrôles contre la duplication.",
     searchExamples: [
       "consultant SEO Lille",
       "SEO multi-sites Lille",
@@ -156,7 +193,7 @@ export const localMarkets: LocalMarket[] = [
     marketNote:
       "À Toulouse, beaucoup de requêtes B2B ont peu de volume mais une valeur élevée. La stratégie privilégie la couverture des cas d’usage, des contraintes et des comparaisons plutôt qu’une course aux gros volumes génériques.",
     approach:
-      "Je cartographie les problèmes traités par vos équipes, leurs formulations métier et les questions posées en comité d’achat afin de créer un corpus utile aux humains comme aux LLM.",
+      "On cartographie les problèmes traités par vos équipes, leurs formulations métier et les questions posées en comité d’achat afin de créer un corpus utile aux humains comme aux LLM.",
     searchExamples: [
       "consultant SEO Toulouse",
       "SEO B2B Toulouse",
@@ -181,7 +218,7 @@ export const localMarkets: LocalMarket[] = [
     marketNote:
       "La Côte d’Azur combine demande locale, internationale et saisonnière. Une architecture claire doit indiquer la langue, la zone, le service et l’intention sans mélanger des publics qui ne cherchent pas la même chose.",
     approach:
-      "Je structure les versions linguistiques, les signaux locaux et les contenus de décision, puis j’isole la performance par marché pour éviter les moyennes trompeuses.",
+      "On structure les versions linguistiques, les signaux locaux et les contenus de décision, puis on isole la performance par marché pour éviter les moyennes trompeuses.",
     searchExamples: [
       "consultant SEO Nice",
       "SEO international Nice",
@@ -206,7 +243,7 @@ export const localMarkets: LocalMarket[] = [
     marketNote:
       "Montpellier concentre des entreprises du numérique, de la santé et de la formation. Leur visibilité dépend d’un équilibre entre présence locale, expertise nationale et identité de marque cohérente sur les sources externes.",
     approach:
-      "Je bâtis le socle local, puis des pages d’expertise et des ressources originales capables d’être trouvées sur Google et utilisées comme sources dans les réponses IA.",
+      "On bâtit le socle local, puis des pages d’expertise et des ressources originales capables d’être trouvées sur Google et utilisées comme sources dans les réponses IA.",
     searchExamples: [
       "consultant SEO Montpellier",
       "SEO startup Montpellier",

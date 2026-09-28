@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Check, MapPin } from "lucide-react";
 import type { LocalMarket } from "@/lib/cities";
-import { marketPath } from "@/lib/cities";
+import { marketPath, keywordVariants, primaryKeyword } from "@/lib/cities";
 import { JsonLd } from "@/components/site/JsonLd";
 import {
   breadcrumb,
@@ -16,9 +16,10 @@ export function CityPage({ market }: { market: LocalMarket }) {
   const path = marketPath(market);
   const localService = {
     "@type": "Service",
-    name: `Consultant SEO à ${market.city}`,
+    name: `Agence SEO et référencement naturel à ${market.city}`,
     serviceType: [
-      "Consultant SEO",
+      "Agence SEO",
+      "Référencement naturel",
       "Audit SEO",
       "SEO local",
       "Generative Engine Optimization",
@@ -59,14 +60,17 @@ export function CityPage({ market }: { market: LocalMarket }) {
               <span>/</span>
               <span>{market.city}</span>
             </nav>
-            <p className="atlas-label">CONSULTANT SEO · GEO · LOCAL</p>
+            <p className="atlas-label">
+              SEO · RÉFÉRENCEMENT NATUREL · LLM · DATA
+            </p>
             <h1>
-              Gagner du terrain à <span>{market.city}.</span>
+              Agence SEO &amp; référencement naturel à{" "}
+              <span>{market.city}.</span>
             </h1>
             <p className="city-hero__lead">
-              Une stratégie de référencement construite autour de votre zone de
-              chalandise, de vos concurrents et des questions que vos futurs
-              clients posent à Google, ChatGPT et Claude.
+              On construit votre visibilité sur Google et dans les moteurs de
+              réponse IA à {market.city} : audit technique, SEO local, contenus
+              de décision, puis mesure des contacts réellement générés.
             </p>
             <div className="signal-hero__actions">
               <Link
@@ -90,6 +94,31 @@ export function CityPage({ market }: { market: LocalMarket }) {
             </div>
           </aside>
         </div>
+      </section>
+
+      <section className="wrap city-coverage">
+        <div className="city-coverage__head">
+          <p className="atlas-label">COUVERTURE / REQUÊTES VISÉES</p>
+          <h2>Ce que cette page cherche à capter</h2>
+          <p>
+            La requête principale est «&nbsp;{primaryKeyword(market)}&nbsp;».
+            Les variantes ci-dessous sont les formulations réellement tapées
+            autour d’elle. Elles guident la structure de la page — elles ne sont
+            pas répétées mécaniquement dans le texte, ce que les moteurs
+            détectent et dévaluent.
+          </p>
+        </div>
+        <ul className="city-coverage__list">
+          {keywordVariants(market).map((kw, i) => (
+            <li key={kw} className={i === 0 ? "is-primary" : undefined}>
+              <span className="city-coverage__rank">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span>{kw}</span>
+              {i === 0 && <em>principale</em>}
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="wrap city-situation">
@@ -191,7 +220,7 @@ export function CityPage({ market }: { market: LocalMarket }) {
           <p className="atlas-label">PROCHAIN MOUVEMENT</p>
           <h2>Cartographions votre marché avant de produire des pages.</h2>
           <p>
-            Je vous réponds avec les premières zones de demande à vérifier et le
+            On vous répond avec les premières zones de demande à vérifier et le
             périmètre d’un diagnostic utile.
           </p>
           <Link

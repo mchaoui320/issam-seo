@@ -29,7 +29,7 @@ const rawEntries: Entry[] = [
     title: "Consultant SEO : une visibilité qui crée de la valeur",
     category: "SEO",
     intro:
-      "Le référencement naturel relie une demande exprimée sur Google à une réponse utile sur votre site. Mon accompagnement associe technique, contenu et mesure pour attirer les bonnes visites et les transformer en opportunités.",
+      "Le référencement naturel relie une demande exprimée sur Google à une réponse utile sur votre site. Notre accompagnement associe technique, contenu et mesure pour attirer les bonnes visites et les transformer en opportunités.",
     sections: [
       {
         title: "Partir de vos objectifs, puis des requêtes",
@@ -488,7 +488,7 @@ const rawEntries: Entry[] = [
     title: "Med Issam Chaoui — SEO, GEO & data web",
     category: "À PROPOS",
     intro:
-      "Mon approche relie la visibilité organique à ce qui compte pour votre activité : des contenus utiles, un site accessible et une mesure compréhensible.",
+      "Notre approche relie la visibilité organique à ce qui compte pour votre activité : des contenus utiles, un site accessible et une mesure compréhensible.",
     sections: [
       {
         title: "Une approche transversale",

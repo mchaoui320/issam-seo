@@ -134,7 +134,7 @@ svg {
   height: 6px;
   border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 0 12px #c1f56855;
+  box-shadow: 0 0 12px rgba(69, 54, 224, 0.33);
   margin-right: 8px;
 }
 .button {
@@ -371,7 +371,7 @@ svg {
   width: 185px;
   height: 185px;
   background: #bfdc7510;
-  box-shadow: 0 0 65px #d2ff7620;
+  box-shadow: 0 0 65px rgba(69, 54, 224, 0.13);
 }
 .ring-two {
   width: 295px;
@@ -407,8 +407,8 @@ svg {
   border-radius: 50%;
   background: radial-gradient(ellipse at top, #3b4b29, #1b2517);
   box-shadow:
-    0 0 50px #c1f56815,
-    inset 0 0 20px #c1f5680b;
+    0 0 50px rgba(69, 54, 224, 0.33)15,
+    inset 0 0 20px rgba(69, 54, 224, 0.33)0b;
 }
 .orbit-core .mono {
   font-size: 7px;
@@ -450,7 +450,7 @@ svg {
   border-color: var(--green);
   color: var(--green);
   background: #2c3820;
-  box-shadow: 0 0 25px #c1f56810;
+  box-shadow: 0 0 25px rgba(69, 54, 224, 0.33)10;
 }
 .node-0 {
   left: 17%;
@@ -4914,7 +4914,6 @@ p {
 :root {
   --bg: #fbfbf8;
   --text: #11120f;
-  --green: #c9ff36;
 }
 
 h1,
@@ -5056,7 +5055,7 @@ h1,
 }
 .query-atlas__queries small,
 .query-atlas__content footer span {
-  color: #85aa00;
+  color: var(--accent);
 }
 
 .offers-section {
@@ -5097,7 +5096,7 @@ h1,
   color: #11120f;
 }
 .offers-grid li svg {
-  color: #729300;
+  color: var(--accent);
 }
 
 .territory-heading h2 span {
@@ -5196,7 +5195,7 @@ h1,
   background: #fbfbf8;
 }
 .method-field__grid svg {
-  color: #729300;
+  color: var(--accent);
 }
 .consultant-section {
   background: #f1f2ee;
@@ -5619,7 +5618,7 @@ h1,
   font: 0.62rem ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 .brief-line svg {
-  color: #6f8f00;
+  color: var(--accent);
 }
 .brief-preview aside {
   margin-top: 34px;
@@ -5628,7 +5627,7 @@ h1,
   background: #e1e2dc;
 }
 .brief-preview aside.has-proof {
-  border-color: #84aa00;
+  border-color: var(--accent);
   background: #edffd0;
 }
 .brief-preview aside small,
@@ -5672,7 +5671,7 @@ h1,
   text-transform: uppercase;
 }
 .crawler-row span[data-state="Autorisé"] {
-  border-color: #759700;
+  border-color: var(--accent);
   background: var(--accent);
 }
 .crawler-row span[data-state="Bloqué"] {
@@ -6058,7 +6057,7 @@ h1,
   font-size: 0.85rem;
 }
 .deliverable-ledger li svg {
-  color: #739400;
+  color: var(--accent);
 }
 .insight-faq {
   padding: 105px 0;
@@ -7037,4 +7036,102 @@ body::before {
   .citability__gauge strong {
     font-size: 2.3rem;
   }
+}
+
+/* ===============================================================
+   Confort visuel des grandes surfaces colorées.
+
+   Une couleur vive pure est supportable sur un bouton de 40 px, pas
+   sur un bloc de 400 px : la saturation maximale sur une grande
+   surface provoque une fatigue immédiate. Les aplats étendus passent
+   donc sur un dégradé profond et désaturé, l'accent vif restant
+   réservé aux petits éléments.
+   =============================================================== */
+:root {
+  /* Accent vif, légèrement adouci : reste lisible en blanc dessus. */
+  --accent: #4536e0;
+  --green: #4536e0;
+  --signal-blue: #4536e0;
+
+  /* Fonds étendus : profond, calme, avec une nuance plutôt qu'un aplat. */
+  --grad-deep: linear-gradient(150deg, #191a45 0%, #262263 52%, #1d2a55 100%);
+
+  --grad-iris: linear-gradient(115deg, #4536e0 0%, #7d3fe0 50%, #2aa6c4 100%);
+}
+
+.war-room-cta {
+  background: var(--grad-deep);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.war-room-cta .signal-button--primary,
+.war-room-cta .button {
+  background: #fff;
+  color: #1a1b45;
+  box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.5);
+}
+.war-room-cta .signal-button--primary:hover,
+.war-room-cta .button:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+/* Le bandeau de score de l'analyseur est lui aussi une surface large. */
+.citability__score {
+  background: var(--grad-deep);
+  box-shadow: 0 16px 40px -20px rgba(25, 26, 69, 0.55);
+}
+
+/* ---------------------------------------------------------------
+   Bloc de couverture des requêtes (pages locales)
+   --------------------------------------------------------------- */
+.city-coverage {
+  padding-block: clamp(48px, 6vw, 84px);
+  border-top: 1px solid var(--line);
+}
+.city-coverage__head h2 {
+  margin: 10px 0 12px;
+}
+.city-coverage__head p {
+  max-width: 62ch;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.city-coverage__list {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  gap: 10px;
+}
+.city-coverage__list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.62);
+  font-size: 0.85rem;
+}
+.city-coverage__list li.is-primary {
+  border-color: var(--accent);
+  background: rgba(69, 54, 224, 0.07);
+  font-weight: 600;
+}
+.city-coverage__rank {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--muted);
+  flex: none;
+}
+.city-coverage__list em {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
 }

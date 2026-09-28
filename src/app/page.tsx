@@ -391,7 +391,7 @@ export default function Home() {
             <p className="atlas-label">06 / VOTRE INTERLOCUTEUR</p>
             <h2>Med Issam Chaoui, consultant SEO & GEO indépendant.</h2>
             <p>
-              J’interviens à l’endroit où la technique, l’éditorial et la donnée
+              On intervient à l’endroit où la technique, l’éditorial et la donnée
               doivent enfin se parler. Vous gardez un interlocuteur du
               diagnostic jusqu’à la recette, avec des recommandations reliées à
               des URL, des responsables et une méthode de vérification.
@@ -436,7 +436,7 @@ export default function Home() {
           <p className="atlas-label">VOTRE TERRITOIRE EST DÉJÀ OCCUPÉ</p>
           <h2>Voyons par où le reprendre.</h2>
           <p>
-            Envoyez votre URL, votre marché et vos priorités. Je reviens avec
+            Envoyez votre URL, votre marché et vos priorités. On revient avec
             les premières pistes à vérifier avant toute proposition.
           </p>
           <Link

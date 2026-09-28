@@ -20,7 +20,7 @@ const byCategory = (category: string) =>
 export function GET() {
   const body = `# MIC SIGNAL — SEO, GEO, LLMO & data web
 
-> Consultant indépendant basé en France. J'accompagne les entreprises sur trois
+> Agence indépendante basée en France. Nous accompagnons les entreprises sur trois
 > leviers reliés : le référencement naturel (SEO), la visibilité dans les
 > moteurs de réponse IA (GEO) et la mesure web (GA4, GTM, Looker Studio).
 > Les accompagnements se déroulent à distance, avec un périmètre et des

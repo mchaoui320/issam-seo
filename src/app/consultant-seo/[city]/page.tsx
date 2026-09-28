@@ -1,7 +1,13 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CityPage } from "@/components/site/CityPage";
-import { getLocalMarket, localMarkets, marketPath } from "@/lib/cities";
+import {
+  getLocalMarket,
+  localMarkets,
+  marketPath,
+  marketTitle,
+  marketDescription,
+} from "@/lib/cities";
 import { pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -21,8 +27,8 @@ export async function generateMetadata({
   const market = getLocalMarket(city);
   if (!market) return {};
   return pageMetadata(
-    `Consultant SEO ${market.city} — SEO local, GEO & ChatGPT`,
-    `Consultant SEO pour les entreprises de ${market.city} : audit, SEO local, visibilité ChatGPT et stratégie GEO adaptée au marché ${market.region}.`,
+    marketTitle(market),
+    marketDescription(market),
     marketPath(market),
   );
 }
