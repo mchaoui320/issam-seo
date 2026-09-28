@@ -251,6 +251,67 @@ export const localMarkets: LocalMarket[] = [
       "consultant GEO Montpellier",
     ],
   },
+  {
+    slug: "nantes",
+    city: "Nantes",
+    region: "Pays de la Loire",
+    x: 27,
+    y: 39,
+    angle: "Tech, scale-ups, agroalimentaire et économie créative",
+    sectors: ["Tech & SaaS", "Agroalimentaire", "Naval", "Culture", "Santé"],
+    nearby: ["Saint-Herblain", "Rezé", "Saint-Nazaire", "Carquefou"],
+    challenges: [
+      "Viser un marché national depuis un ancrage régional, sans se limiter aux requêtes locales",
+      "Répondre à des acheteurs tech qui comparent longuement avant de contacter",
+      "Faire exister une marque face à des concurrents parisiens mieux dotés",
+    ],
+    marketNote:
+      "Nantes a une particularité : beaucoup d’entreprises y sont implantées mais vendent partout en France. La requête « agence SEO Nantes » n’est alors qu’une porte d’entrée — l’essentiel du chiffre vient de requêtes sectorielles nationales. Confondre les deux conduit à investir sur un volume local qui ne correspond pas au marché réel.",
+    approach:
+      "On sépare nettement les requêtes d’ancrage local, utiles à la crédibilité et au recrutement, des requêtes sectorielles nationales qui portent le chiffre. Chaque famille reçoit ses pages, ses preuves et ses indicateurs propres.",
+    searchExamples: [
+      "agence SEO Nantes",
+      "consultant SEO Nantes",
+      "référencement SaaS Nantes",
+      "audit GEO Nantes",
+    ],
+  },
+  {
+    slug: "strasbourg",
+    city: "Strasbourg",
+    region: "Grand Est",
+    x: 78,
+    y: 26,
+    angle: "Institutions européennes, marché transfrontalier et pharmacie",
+    sectors: [
+      "Pharma & biotech",
+      "Institutions",
+      "Logistique rhénane",
+      "Tourisme",
+      "Enseignement",
+    ],
+    nearby: [
+      "Schiltigheim",
+      "Illkirch-Graffenstaden",
+      "Haguenau",
+      "Kehl (Allemagne)",
+    ],
+    challenges: [
+      "Traiter une demande qui s’exprime en deux langues, souvent pour un même besoin",
+      "Distinguer les recherches françaises des recherches allemandes côté Bade-Wurtemberg",
+      "Structurer des versions linguistiques sans créer de duplication entre elles",
+    ],
+    marketNote:
+      "Strasbourg est le seul de ces marchés où une part réelle de la demande s’exprime en allemand, depuis l’autre rive du Rhin. Les deux publics ne formulent pas les mêmes requêtes et n’obtiennent pas les mêmes résultats : une page française traduite mot à mot capte rarement la recherche allemande, parce que les termes métier et les attentes de preuve diffèrent.",
+    approach:
+      "On traite les deux langues comme deux marchés distincts : recherche de mots-clés menée séparément, déclarations hreflang contrôlées, contenus rédigés plutôt que traduits, et mesure des conversions isolée par langue pour savoir laquelle finance réellement l’activité.",
+    searchExamples: [
+      "agence SEO Strasbourg",
+      "référencement naturel Strasbourg",
+      "SEO transfrontalier Alsace",
+      "Suchmaschinenoptimierung Strassburg",
+    ],
+  },
 ];
 
 export function marketPath(market: LocalMarket) {

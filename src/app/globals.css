@@ -7135,3 +7135,52 @@ body::before {
   letter-spacing: 0.1em;
   color: var(--accent);
 }
+
+/* ===============================================================
+   Bloc de conclusion — version claire.
+
+   C'était le seul aplat sombre de la page hors pied de page, ce qui
+   cassait la direction lumineuse. Il passe sur un voile iridescent
+   très dilué avec texte sombre : l'accent reste présent par la teinte
+   et par le bouton, sans grande surface saturée.
+   =============================================================== */
+.war-room-cta {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      60% 100% at 18% 0%,
+      rgba(69, 54, 224, 0.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      55% 95% at 85% 100%,
+      rgba(42, 166, 196, 0.17),
+      transparent 68%
+    ),
+    linear-gradient(160deg, #eef1ff 0%, #f6f7fd 55%, #eaf6fa 100%);
+  color: var(--text);
+  border-top: 1px solid rgba(69, 54, 224, 0.14);
+  border-bottom: 1px solid rgba(69, 54, 224, 0.14);
+}
+.war-room-cta .atlas-label {
+  color: var(--accent);
+}
+.war-room-cta h2 {
+  color: var(--text);
+}
+.war-room-cta p:not(.atlas-label) {
+  color: var(--muted);
+}
+/* Le bouton redevient l'élément coloré : petite surface, accent plein. */
+.war-room-cta .signal-button--primary,
+.war-room-cta .button {
+  background: var(--grad-iris);
+  color: #fff;
+  box-shadow: var(--glow);
+}
+.war-room-cta .signal-button--primary:hover,
+.war-room-cta .button:hover {
+  background: var(--grad-iris);
+  transform: translateY(-2px);
+}
