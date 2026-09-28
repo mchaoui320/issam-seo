@@ -2,11 +2,11 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
+  BarChart3,
   Check,
   CircleDot,
   MapPinned,
   MessagesSquare,
-  Radar,
   SearchCheck,
 } from "lucide-react";
 import { SignalHero } from "@/components/site/SignalHero";
@@ -23,8 +23,8 @@ import {
 } from "@/lib/schema";
 
 export const metadata = pageMetadata(
-  "MIC SIGNAL — Consultant SEO, GEO & LLMO",
-  "Med Issam Chaoui accompagne les marques sur Google, le SEO local et la visibilité dans ChatGPT, Claude, Perplexity et les moteurs de réponse IA.",
+  "Consultant SEO, GEO & Data Web — MIC SIGNAL",
+  "Consultant SEO, GEO et data web : audit technique, stratégie de contenu, SEO local, visibilité dans ChatGPT et mesure GA4 pour les entreprises en France.",
   "/",
 );
 
@@ -49,14 +49,18 @@ const faq = [
     "Peut-on garantir une première position ou une citation IA ?",
     "Non. Aucun consultant ne contrôle le classement de Google ni la réponse d’un LLM. L’engagement porte sur une méthode, des livrables, une mise en œuvre mesurable et une lecture transparente des résultats.",
   ],
+  [
+    "Pourquoi réunir SEO, GEO et data web ?",
+    "Le SEO crée la visibilité, le GEO observe la présence dans les réponses générées et la data web relie les visites aux demandes, appels ou ventes. Les traiter ensemble évite de produire du trafic sans savoir ce qu’il rapporte et de suivre des citations IA sans mesurer leur effet commercial.",
+  ],
 ] as const;
 
 const offers = [
   {
     number: "01",
     icon: SearchCheck,
-    title: "Audit de territoire",
-    copy: "Voir où vous existez, où vous disparaissez et ce que les concurrents occupent déjà.",
+    title: "Audit SEO & concurrence",
+    copy: "Identifier les blocages techniques, les requêtes rentables et les espaces déjà occupés par vos concurrents.",
     details: [
       "Crawl & indexation",
       "Requêtes de décision",
@@ -68,7 +72,7 @@ const offers = [
   {
     number: "02",
     icon: MessagesSquare,
-    title: "Visibilité IA / GEO",
+    title: "GEO & visibilité IA",
     copy: "Faire de votre marque une entité claire et de vos contenus des sources vérifiables.",
     details: [
       "Panel de prompts",
@@ -81,7 +85,7 @@ const offers = [
   {
     number: "03",
     icon: MapPinned,
-    title: "Système SEO local",
+    title: "SEO local & Google Maps",
     copy: "Relier vos zones, vos services et vos preuves pour gagner les recherches de proximité.",
     details: [
       "Google Business Profile",
@@ -93,16 +97,16 @@ const offers = [
   },
   {
     number: "04",
-    icon: Radar,
-    title: "Accompagnement continu",
-    copy: "Piloter le contenu, la technique et la donnée dans un même rythme de décision.",
+    icon: BarChart3,
+    title: "Data web & analytics",
+    copy: "Relier Search Console, GA4, GTM et vos conversions pour décider sur des données exploitables.",
     details: [
-      "Backlog mensuel",
-      "Briefs éditoriaux",
-      "Recette technique",
-      "Reporting commenté",
+      "Plan de marquage GA4",
+      "Google Tag Manager",
+      "Conversions & attribution",
+      "Tableaux de bord utiles",
     ],
-    href: "/consultant-seo-freelance",
+    href: "/data-web",
   },
 ];
 
@@ -141,9 +145,70 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="semantic-core" id="expertises">
+        <div className="wrap semantic-core__head">
+          <p className="atlas-label">01 / CONSULTANT SEO · GEO · DATA</p>
+          <div>
+            <h2>Trois métiers reliés par une seule question : qu’est-ce qui crée une demande ?</h2>
+            <p>
+              Une stratégie de visibilité ne s’arrête pas à une position Google.
+              Elle doit capter une intention, rendre l’offre vérifiable dans les
+              moteurs de réponse et attribuer les contacts obtenus. C’est le rôle
+              de MIC SIGNAL : relier référencement naturel, GEO et data web.
+            </p>
+          </div>
+        </div>
+        <div className="wrap semantic-core__grid">
+          <article>
+            <span>SEO / 01</span>
+            <h3>Consultant SEO technique et éditorial</h3>
+            <p>
+              L’audit SEO contrôle le crawl, l’indexation, les canonicals, les
+              performances, le maillage interne et les migrations. L’analyse
+              sémantique relie ensuite chaque intention à une page de service,
+              un guide, une comparaison ou une preuve capable de convertir.
+            </p>
+            <Link href="/seo">Expertise SEO <ArrowUpRight size={16} /></Link>
+          </article>
+          <article>
+            <span>GEO / 02</span>
+            <h3>Consultant GEO et référencement LLM</h3>
+            <p>
+              Un panel de prompts observe la présence de votre marque dans
+              ChatGPT, Claude, Gemini et Perplexity. Le travail porte sur les
+              sources citées, les contenus propriétaires, les entités et les
+              preuves qui rendent une réponse fiable, sans promesse magique.
+            </p>
+            <Link href="/audit-visibilite-ia">Audit visibilité IA <ArrowUpRight size={16} /></Link>
+          </article>
+          <article>
+            <span>DATA / 03</span>
+            <h3>Consultant data web, GA4 et GTM</h3>
+            <p>
+              Le plan de marquage distingue un clic d’une conversion réelle.
+              Google Analytics 4, Google Tag Manager et Search Console sont
+              configurés pour suivre formulaires, appels, ventes et trafic issu
+              des moteurs IA, avec des définitions comprises par l’équipe.
+            </p>
+            <Link href="/data-web">Expertise data web <ArrowUpRight size={16} /></Link>
+          </article>
+          <article>
+            <span>LOCAL / 04</span>
+            <h3>SEO local, Google Maps et multi-villes</h3>
+            <p>
+              La stratégie locale relie Google Business Profile, pages de ville,
+              avis, cohérence des informations et mesure des appels. Chaque zone
+              doit être réellement servie et apporter une preuve distincte, sans
+              fabriquer des dizaines de pages presque identiques.
+            </p>
+            <Link href="/seo-local">Expertise SEO local <ArrowUpRight size={16} /></Link>
+          </article>
+        </div>
+      </section>
+
       <section className="visibility-system">
         <div className="wrap visibility-system__intro">
-          <p className="atlas-label">01 / SYSTÈME DE VISIBILITÉ</p>
+          <p className="atlas-label">02 / SYSTÈME DE VISIBILITÉ</p>
           <div>
             <h2>
               Un site qui occupe les recherches, les réponses et le local.
@@ -163,7 +228,7 @@ export default function Home() {
       <section className="offers-section">
         <div className="wrap">
           <div className="offers-heading">
-            <p className="atlas-label">02 / MISSIONS</p>
+            <p className="atlas-label">03 / MISSIONS</p>
             <h2>Quatre façons de remettre votre visibilité en mouvement.</h2>
           </div>
           <div className="offers-grid">

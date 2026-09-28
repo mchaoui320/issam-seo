@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { syne, manrope, ibmPlexMono } from "@/lib/fonts";
 import { Navigation } from "@/components/site/Navigation";
 import { SiteFooter } from "@/components/site/Footer";
+import { MotionDirector } from "@/components/site/MotionDirector";
 import { siteUrl } from "@/lib/seo";
 import "./globals.css";
 import "./final.css";
@@ -35,6 +36,7 @@ export default function RootLayout({
         <Navigation />
         <main id="main">{children}</main>
         <SiteFooter />
+        <MotionDirector />
       </body>
     </html>
   );
