@@ -1,5 +1,6 @@
 import { Tools } from "@/components/site/Tools";
 import { VisibilityWorkbench } from "@/components/site/VisibilityWorkbench";
+import { CitabilityAnalyzer } from "@/components/site/CitabilityAnalyzer";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata(
   "MIC Lab — outils SEO, GEO, LLM et SEO local",
@@ -16,12 +17,12 @@ export default function Page() {
             Mesurer les signaux.<br />Décider du prochain mouvement.
           </h1>
           <p className="lead">
-            Quatre outils originaux pour structurer une recherche LLM, lire un
+            Cinq outils originaux pour structurer une recherche LLM, lire un
             écart concurrentiel, préparer une page locale utile et contrôler
             l’accès des robots IA. Rien n’est envoyé à un serveur.
           </p>
           <div className="lab-hero__facts">
-            <span><strong>04</strong> protocoles</span>
+            <span><strong>05</strong> protocoles</span>
             <span><strong>00</strong> donnée inventée</span>
             <span><strong>100%</strong> navigateur</span>
           </div>
@@ -30,6 +31,27 @@ export default function Page() {
       <div className="wrap workbench-wrap">
         <VisibilityWorkbench />
       </div>
+      <section className="wrap section-block" id="citabilite">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">
+              <span /> ANALYSEUR / CITABILITÉ IA
+            </span>
+            <h2>
+              Votre texte est-il
+              <br />
+              reprenable par une IA&nbsp;?
+            </h2>
+          </div>
+          <p>
+            Collez le contenu d’une page. L’outil mesure les formes que les
+            moteurs de réponse reprennent&nbsp;: réponse autonome en tête,
+            titres interrogatifs, chiffres, sources, longueur de phrase.
+            Le calcul se fait dans votre navigateur.
+          </p>
+        </div>
+        <CitabilityAnalyzer />
+      </section>
       <section className="classic-tools">
         <div className="wrap">
           <div className="classic-tools__intro">

@@ -6854,3 +6854,187 @@ body::before {
       transparent 60%
     );
 }
+
+/* ===============================================================
+   Analyseur de citabilité IA (MIC Lab)
+   =============================================================== */
+.citability {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+.citability__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.citability__head label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.citability__actions {
+  display: flex;
+  gap: 8px;
+  flex: none;
+}
+.citability__actions button {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  transition: 0.15s;
+}
+.citability__actions button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.citability textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 18px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+}
+.citability textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(61, 43, 255, 0.12);
+}
+.citability__empty {
+  padding: 34px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 0.86rem;
+  text-align: center;
+}
+.citability__score {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 22px;
+  border-radius: var(--radius);
+  background: var(--grad-iris);
+  color: #fff;
+  box-shadow: var(--glow);
+}
+.citability__gauge {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  flex: none;
+}
+.citability__gauge strong {
+  font-family: var(--font-display);
+  font-size: 2.9rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.citability__gauge span {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+.citability__band {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.citability__stats {
+  margin: 4px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  opacity: 0.82;
+}
+.citability__list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.citability__list li {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.66);
+}
+.citability__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.citability__label {
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+.citability__value {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.citability__bar {
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(10, 12, 24, 0.09);
+  margin: 9px 0 10px;
+  overflow: hidden;
+}
+.citability__bar i {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: var(--grad-iris);
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.citability__list li.is-low .citability__bar i,
+.citability__list li.is-none .citability__bar i {
+  background: linear-gradient(90deg, #ff6b4a, #ff9f45);
+}
+.citability__finding {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.citability__advice {
+  margin: 8px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+.citability__caveat {
+  margin: 16px 0 0;
+  font-size: 0.74rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+@media (prefers-reduced-motion: reduce) {
+  .citability__bar i {
+    transition: none;
+  }
+}
+@media (max-width: 900px) {
+  .citability {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .citability__gauge strong {
+    font-size: 2.3rem;
+  }
+}
