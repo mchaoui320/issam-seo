@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ArrowUpRight, Check, MapPin } from "lucide-react";
 import type { LocalMarket } from "@/lib/cities";
-import { marketPath, keywordVariants, primaryKeyword } from "@/lib/cities";
+import { marketPath } from "@/lib/cities";
+import { getCitySales, SERVICES } from "@/lib/cities-sales";
 import { JsonLd } from "@/components/site/JsonLd";
 import {
   breadcrumb,
+  faqPage,
   graph,
   person,
   professionalService,
@@ -14,6 +16,20 @@ import { siteUrl } from "@/lib/seo";
 
 export function CityPage({ market }: { market: LocalMarket }) {
   const path = marketPath(market);
+  const sales = getCitySales(market.slug);
+  const byId = new Map(SERVICES.map((sv) => [sv.id, sv]));
+  // Les prestations prioritaires d'abord, le reste du catalogue ensuite :
+  // l'ordre porte l'information, chaque marché n'appelle pas le même premier geste.
+  const prioritised = [
+    ...(sales?.priorities ?? [])
+      .map((p) => ({ service: byId.get(p.id), why: p.why }))
+      .filter((x): x is { service: (typeof SERVICES)[number]; why: string } =>
+        Boolean(x.service),
+      ),
+    ...SERVICES.filter(
+      (sv) => !(sales?.priorities ?? []).some((p) => p.id === sv.id),
+    ).map((service) => ({ service, why: "" })),
+  ];
   const localService = {
     "@type": "Service",
     name: `Agence SEO et référencement naturel à ${market.city}`,
@@ -45,8 +61,10 @@ export function CityPage({ market }: { market: LocalMarket }) {
           breadcrumb([
             { name: "Accueil", path: "/" },
             { name: "SEO local", path: "/seo-local" },
-            { name: `Consultant SEO ${market.city}`, path },
+            { name: `Agence SEO ${market.city}`, path },
           ]),
+          // La FAQ n'est balisée que parce qu'elle est rendue plus bas.
+          ...(sales?.faq?.length ? [faqPage(sales.faq)] : []),
         )}
       />
 
@@ -96,29 +114,47 @@ export function CityPage({ market }: { market: LocalMarket }) {
         </div>
       </section>
 
-      <section className="wrap city-coverage">
-        <div className="city-coverage__head">
-          <p className="atlas-label">COUVERTURE / REQUÊTES VISÉES</p>
-          <h2>Ce que cette page cherche à capter</h2>
+      {/* Prestations. C'est ce qui fait d'une page locale une page de vente :
+          le visiteur doit voir ce qu'on vend. Les intitulés portent les entités
+          attendues sur une requête d'agence — audit, technique, local,
+          netlinking, contenu, mesure — et chacun renvoie vers sa page de
+          service, ce qui construit le maillage interne. */}
+      <section className="wrap city-services" id="prestations">
+        <div className="city-services__head">
+          <p className="atlas-label">PRESTATIONS</p>
+          <h2>Nos services SEO à {market.city}</h2>
           <p>
-            La requête principale est «&nbsp;{primaryKeyword(market)}&nbsp;».
-            Les variantes ci-dessous sont les formulations réellement tapées
-            autour d’elle. Elles guident la structure de la page — elles ne sont
-            pas répétées mécaniquement dans le texte, ce que les moteurs
-            détectent et dévaluent.
+            Le même socle partout, mais pas dans le même ordre : {market.city}{" "}
+            n’appelle pas le premier geste qu’appellerait un autre marché. Les
+            trois premières lignes sont celles par lesquelles on commencerait
+            ici.
           </p>
         </div>
-        <ul className="city-coverage__list">
-          {keywordVariants(market).map((kw, i) => (
-            <li key={kw} className={i === 0 ? "is-primary" : undefined}>
-              <span className="city-coverage__rank">
+        <div className="city-services__grid">
+          {prioritised.map(({ service, why }, i) => (
+            <article
+              key={service.id}
+              className={why ? "is-priority" : undefined}
+            >
+              <span className="city-services__rank">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span>{kw}</span>
-              {i === 0 && <em>principale</em>}
-            </li>
+              <h3>
+                <Link href={service.href}>{service.name}</Link>
+              </h3>
+              <p className="city-services__text">{service.text}</p>
+              {why && (
+                <p className="city-services__why">
+                  <strong>Sur ce marché :</strong> {why}
+                </p>
+              )}
+              <p className="city-services__deliverable">
+                <Check size={14} aria-hidden="true" />
+                {service.deliverable}
+              </p>
+            </article>
           ))}
-        </ul>
+        </div>
       </section>
 
       <section className="wrap city-situation">
@@ -162,7 +198,7 @@ export function CityPage({ market }: { market: LocalMarket }) {
       <section className="wrap city-work">
         <div>
           <p className="atlas-label">PLAN D’OCCUPATION</p>
-          <h2>Le système local que je construis.</h2>
+          <h2>Le système local qu’on met en place.</h2>
         </div>
         <div className="city-work__grid">
           {[
@@ -214,6 +250,81 @@ export function CityPage({ market }: { market: LocalMarket }) {
           d’établissement n’est revendiquée sur cette page.
         </p>
       </section>
+
+      {sales && (
+        <>
+          <section className="wrap city-serp">
+            <div>
+              <p className="atlas-label">LA CONCURRENCE LOCALE</p>
+              <h2>À quoi ressemble la recherche à {market.city}</h2>
+            </div>
+            <p>{sales.serpNote}</p>
+          </section>
+
+          <section className="wrap city-cases">
+            <p className="atlas-label">SITUATIONS RENCONTRÉES</p>
+            <h2>Deux cas fréquents sur ce marché</h2>
+            <div className="city-cases__grid">
+              {sales.cases.map((c) => (
+                <article key={c.title}>
+                  <h3>{c.title}</h3>
+                  <p>{c.text}</p>
+                </article>
+              ))}
+            </div>
+            <p className="city-cases__note">
+              Ces situations sont pédagogiques et composites. Elles décrivent
+              une démarche de diagnostic, pas des résultats clients revendiqués.
+            </p>
+          </section>
+
+          <section className="wrap city-zones">
+            <div>
+              <p className="atlas-label">ZONE COUVERTE</p>
+              <h2>
+                Référencement local à {market.city} et dans son agglomération
+              </h2>
+              <p>
+                L’accompagnement se fait à distance. La zone à travailler
+                dépend de l’endroit où se trouvent vos clients, pas de notre
+                implantation.
+              </p>
+            </div>
+            <ul>
+              {sales.zones.map((z) => (
+                <li key={z}>{z}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="wrap city-faq" id="questions">
+            <p className="atlas-label">QUESTIONS FRÉQUENTES</p>
+            <h2>Agence SEO à {market.city} : vos questions</h2>
+            {sales.faq.map(([q, a]) => (
+              <details key={q}>
+                <summary>
+                  <h3>{q}</h3>
+                </summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </section>
+
+          <section className="wrap city-links">
+            <p className="atlas-label">POUR ALLER PLUS LOIN</p>
+            <div className="city-links__grid">
+              <Link href="/audit-seo">Audit SEO : ce que contient le diagnostic</Link>
+              <Link href="/seo-local">Méthode SEO local</Link>
+              <Link href="/tarifs">Tarifs et périmètres</Link>
+              <Link href="/methode-seo">Notre méthode en quatre temps</Link>
+              <Link href="/glossaire">Glossaire SEO, GEO et data</Link>
+              <Link href="/strategie-seo-local-multi-villes">
+                Stratégie multi-villes
+              </Link>
+            </div>
+          </section>
+        </>
+      )}
 
       <section className="city-cta">
         <div className="wrap">
