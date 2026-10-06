@@ -7356,3 +7356,261 @@ body::before {
     gap: 20px;
   }
 }
+
+/* ===============================================================
+   Pages de service — blocs commerciaux.
+   =============================================================== */
+.svc-problemes,
+.svc-livrables,
+.svc-etapes,
+.svc-outils,
+.svc-tarif,
+.svc-objections {
+  padding-block: clamp(48px, 6vw, 84px);
+  border-top: 1px solid var(--line);
+}
+.svc-problemes h2,
+.svc-livrables h2,
+.svc-etapes h2,
+.svc-outils h2,
+.svc-objections h2 {
+  margin: 10px 0 24px;
+}
+.svc-num {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--accent);
+  flex: none;
+}
+
+/* --- constat --- */
+.svc-problemes__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px;
+}
+.svc-problemes__grid article {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.66);
+}
+.svc-problemes__grid h3 {
+  margin: 0 0 10px;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+.svc-problemes__grid p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* --- livrables --- */
+.svc-livrables__head p {
+  max-width: 62ch;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.svc-livrables__liste {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.svc-livrables__liste li {
+  display: flex;
+  gap: 16px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+.svc-livrables__liste h3 {
+  margin: 0 0 7px;
+  font-size: 0.98rem;
+}
+.svc-livrables__liste p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* --- étapes --- */
+.svc-etapes__liste {
+  display: grid;
+  gap: 12px;
+}
+.svc-etapes__liste article {
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+.svc-etapes__liste header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 9px;
+}
+.svc-etapes__liste h3 {
+  margin: 0;
+  font-size: 0.98rem;
+  flex: 1;
+}
+.svc-duree {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.svc-etapes__liste > article > p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.svc-produit {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px !important;
+  padding-top: 11px;
+  border-top: 1px solid var(--line);
+  font-size: 0.76rem;
+  color: var(--text) !important;
+}
+.svc-produit svg {
+  color: var(--accent);
+  flex: none;
+}
+
+/* --- outils --- */
+.svc-outils {
+  display: grid;
+  grid-template-columns: 0.85fr 1.35fr;
+  gap: 44px;
+  align-items: start;
+}
+.svc-outils > div p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.svc-outils__liste {
+  margin: 0;
+  display: grid;
+  gap: 11px;
+}
+.svc-outils__liste > div {
+  padding: 15px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.62);
+}
+.svc-outils__liste dt {
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 5px;
+}
+.svc-outils__liste dd {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* --- tarif --- */
+.svc-tarif {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 44px;
+  align-items: start;
+}
+.svc-tarif__montant {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 14px 0 14px;
+}
+.svc-tarif__note {
+  font-size: 0.86rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.svc-tarif__variables {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+.svc-tarif__variables ul {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+.svc-tarif__variables li {
+  padding-left: 16px;
+  position: relative;
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+.svc-tarif__variables li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.svc-tarif__source {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* --- objections --- */
+.svc-objections__liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 14px;
+}
+.svc-objections__liste article {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+.svc-objections__liste h3 {
+  margin: 0 0 9px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.svc-objections__liste p {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .svc-outils,
+  .svc-tarif {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .svc-livrables__liste li {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
