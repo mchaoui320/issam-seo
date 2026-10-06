@@ -138,7 +138,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Outils à citer : Screaming Frog, Oncrawl, Semrush, Search Console
 - FAQ : délai, garantie de position, coût, SEO vs SEA, SEO vs GEO
 
-### 1.2 `[ ]` — `/audit-seo`
+### 1.2 `[~]` 🤖 **X** — `/audit-seo`
 - Requête : « audit SEO », « audit référencement »
 - Détailler **ce que contient livrablement** l'audit : inventaire URL, statuts
   HTTP, robots, canonicals, profondeur de clic, duplications, logs
@@ -146,7 +146,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Ajouter : grille de prix par taille de site, durée, accès nécessaires
 - FAQ : prix, durée, accès, que se passe-t-il après
 
-### 1.3 `[ ]` — `/seo-technique`
+### 1.3 `[~]` 🤖 **X** — `/seo-technique`
 - Requête : « SEO technique », « Core Web Vitals », « indexation »
 - Détailler : crawl, rendu JS, budget de crawl, logs serveur, migrations
 - Outils : Botify, Oncrawl, Lighthouse, PageSpeed, analyse de logs
@@ -164,7 +164,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Outils : YourTextGuru, 1.fr, Search Console, Google Trends
 - **Différenciant à exploiter** : scoring sémantique développé en Python
 
-### 1.6 `[ ]` — `/netlinking` ⚠️ **explicitement demandé**
+### 1.6 `[~]` 🤖 **X** — `/netlinking` ⚠️ **explicitement demandé**
 - Requête : « netlinking », « acquisition de liens », « backlinks »
 - Actuellement très mince. Doit devenir une vraie page de vente.
 - Détailler : audit du profil existant, domaines référents, répartition des
@@ -176,7 +176,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Synergie SEO / SEA sur les requêtes concurrentielles (présent au CV)
 - FAQ : faut-il acheter des liens, combien de liens, délai, risque de pénalité
 
-### 1.7 `[ ]` — `/refonte-seo`
+### 1.7 `[~]` 🤖 **X** — `/refonte-seo`
 - Requête : « refonte SEO », « migration site », « redirections 301 »
 - Détailler : export préalable, mapping, plan de redirections, recette,
   surveillance post-lancement
@@ -338,7 +338,7 @@ détaillée. Pas de résultat client inventé.
 
 > Le site a **zéro image**. Brief complet dans `docs/PROMPT-CODEX.md`.
 
-### 4.1 `[ ]` — Visuels de pilier (6)
+### 4.1 `[~]` 🤖 **X** — Visuels de pilier (6)
 `/seo` · `/geo` · `/data-web` · `/netlinking` · `/seo-local` · `/audit-seo`
 
 ### 4.2 `[ ]` — Schémas explicatifs (8)
