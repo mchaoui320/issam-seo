@@ -185,6 +185,137 @@ export const servicesSales: Record<string, ServiceSales> = {
       },
     ],
   },
+
+  "geo-referencement-ia": {
+    problemes: [
+      {
+        titre: "Chaque moteur se comporte différemment",
+        texte:
+          "Perplexity pondère la fraîcheur beaucoup plus fortement que la recherche classique. ChatGPT en mode recherche s'appuie sur un index tiers et privilégie les formats structurés. Les AI Overviews de Google reprennent les signaux du référencement classique. Appliquer la même recette aux trois produit des résultats très inégaux.",
+      },
+      {
+        titre: "Vous ne savez pas si vous progressez",
+        texte:
+          "Sans protocole fixé, chaque relevé est incomparable au précédent : la question a changé d'un mot, la session n'est pas la même, la date n'a pas été notée. On se retrouve avec une impression, pas une mesure — et l'impression suit généralement l'humeur de celui qui regarde.",
+      },
+      {
+        titre: "Votre contenu est bon mais illisible pour une machine",
+        texte:
+          "Un texte qui ouvre sur une accroche, développe en paragraphes longs et place la réponse au milieu est parfaitement lisible pour un humain, et très mal repris par un modèle. Ce n'est pas une question de qualité : c'est une question de place de l'information.",
+      },
+    ],
+    livrables: [
+      {
+        nom: "Fiche par moteur",
+        detail:
+          "Pour ChatGPT, Gemini, Perplexity, Claude et Mistral : son mode de récupération, ce qu'il privilégie, ses robots et comment il cite. Ce qui s'optimise pour l'un ne vaut pas forcément pour l'autre.",
+      },
+      {
+        nom: "Protocole de relevé écrit",
+        detail:
+          "Les questions, la langue, le moteur, la fréquence et la façon de consigner. Rédigé pour être exécuté par quelqu'un d'autre que son auteur — c'est le test d'un protocole réel.",
+      },
+      {
+        nom: "Grille de restructuration par gabarit",
+        detail:
+          "Où placer la réponse autonome, comment formuler les intertitres en questions, quelles données chiffrées ajouter, quelles sources citer, où faire apparaître les dates.",
+      },
+      {
+        nom: "Configuration des robots IA",
+        detail:
+          "Arbitrage explicite entre robots d'entraînement et robots de récupération, avec les conséquences de chaque choix. Bloquer GPTBot tout en restant éligible aux citations de ChatGPT Search est une configuration valide, encore faut-il la poser sciemment.",
+      },
+      {
+        nom: "Tableau de suivi des trois mesures",
+        detail:
+          "Mentions de marque, citations avec lien, et trafic référent. Les trois évoluent rarement ensemble, et les confondre conduit à surestimer les résultats.",
+      },
+    ],
+    etapes: [
+      {
+        titre: "Choisir les moteurs qui comptent",
+        duree: "1 à 2 jours",
+        texte:
+          "Tous ne méritent pas le même effort. Le choix dépend de l'usage réel de vos prospects, pas de la notoriété du moteur. Sur un marché B2B technique, Perplexity pèse souvent plus que son audience générale ne le laisserait croire.",
+        produit: "Périmètre arbitré et justifié",
+      },
+      {
+        titre: "Écrire le protocole",
+        duree: "2 à 3 jours",
+        texte:
+          "Les questions sont rédigées, la fréquence fixée, le mode de consignation défini. Une fois écrit, le protocole ne change plus : toute modification casse la comparabilité avec les relevés antérieurs.",
+        produit: "Protocole exécutable par un tiers",
+      },
+      {
+        titre: "Restructurer les gabarits",
+        duree: "selon le volume",
+        texte:
+          "Le travail porte sur les modèles de page plutôt que sur les pages une à une : corriger le gabarit d'article corrige tous les articles. La réponse autonome passe en tête, les intertitres deviennent des questions, les dates apparaissent.",
+        produit: "Gabarits modifiés et contrôlés",
+      },
+      {
+        titre: "Relever et ajuster",
+        duree: "mensuel",
+        texte:
+          "Le protocole est rejoué à conditions constantes. On compare les trois mesures séparément et on ajuste les pages qui n'ont pas bougé, plutôt que de tout reprendre.",
+        produit: "Rapport mensuel commenté",
+      },
+    ],
+    outils: [
+      {
+        nom: "API OpenAI, Anthropic, Google et Mistral",
+        usage:
+          "Interrogation en série à conditions identiques, ce qui supprime la variabilité introduite par une saisie manuelle",
+      },
+      {
+        nom: "Scripts Python de normalisation",
+        usage:
+          "Extraction des sources citées, détection des mentions de marque et mise en forme comparable d'une vague à l'autre",
+      },
+      {
+        nom: "Google Search Console",
+        usage:
+          "Détection des requêtes où les impressions tiennent alors que les clics reculent — signature d'une réponse consommée sans visite",
+      },
+      {
+        nom: "GA4 et journaux serveur",
+        usage:
+          "Isolation du trafic référent venu des moteurs de réponse et observation du passage des robots quand les journaux sont accessibles",
+      },
+      {
+        nom: "Screaming Frog et validateur Schema.org",
+        usage:
+          "Contrôle que le contenu est bien rendu pour les robots de récupération et que le balisage est effectivement interprété",
+      },
+    ],
+    tarif: {
+      fourchette:
+        "Mise en place 2 500 à 6 000 € · suivi mensuel 600 à 2 000 €",
+      variables: [
+        "Nombre de moteurs retenus",
+        "Taille du panel et fréquence des relevés",
+        "Nombre de gabarits à restructurer",
+        "Langues et marchés couverts",
+      ],
+    },
+    objections: [
+      {
+        question: "Combien de temps avant d'être cité ?",
+        reponse:
+          "Il n'y a pas de délai fiable à annoncer. Cela dépend de l'indexation, de la notoriété du domaine et surtout de l'existence d'une meilleure réponse ailleurs. Les observations se font sur plusieurs semaines à conditions constantes avant d'en tirer une tendance. Tout prestataire qui annonce un délai précis sur ce sujet invente.",
+      },
+      {
+        question: "Faut-il bloquer les robots d'entraînement ?",
+        reponse:
+          "C'est un arbitrage, pas une évidence. Les bloquer protège le contenu d'un usage d'entraînement mais réduit la probabilité d'être connu du modèle. Pour une activité qui vit de sa visibilité, l'ouverture est généralement le bon choix. Pour un média dont le contenu est le produit, la réponse est souvent inverse.",
+      },
+      {
+        question: "Vos relevés sont-ils opposables ?",
+        reponse:
+          "Non, et c'est à dire clairement. Une réponse générée n'est pas reproductible à l'identique : elle dépend du modèle, de sa version, de la date et parfois de l'utilisateur. Un relevé documente ce qui a été observé à un moment donné, dans des conditions consignées. C'est une base de comparaison, pas une preuve.",
+      },
+    ],
+  },
 };
 
 export function getServiceSales(slug: string): ServiceSales | undefined {

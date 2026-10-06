@@ -7614,3 +7614,70 @@ body::before {
     gap: 8px;
   }
 }
+
+/* --- Bloc tarif des pages InsightServicePage --- */
+.insight-pricing {
+  padding-block: clamp(48px, 6vw, 84px);
+  border-top: 1px solid var(--line);
+}
+.insight-pricing__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 44px;
+  align-items: start;
+}
+.insight-pricing h2 {
+  margin: 10px 0 0;
+}
+.insight-pricing__montant {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 14px 0;
+}
+.insight-pricing__note {
+  font-size: 0.86rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.insight-pricing__variables {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+.insight-pricing__variables ul {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+.insight-pricing__variables li {
+  padding-left: 16px;
+  position: relative;
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+.insight-pricing__variables li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.insight-pricing__source {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+@media (max-width: 900px) {
+  .insight-pricing__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
