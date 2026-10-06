@@ -15,8 +15,45 @@ React 19, TypeScript, CSS vanilla.
 
 AVANT TOUTE CHOSE, lis dans cet ordre :
 1. docs/BRIEF-PROJET.md — règles non négociables, positionnement, profil réel
-2. docs/TODO.md — tâches, qui fait quoi, statuts
-3. docs/JOURNAL.md — ce qui a déjà été fait
+2. docs/REPARTITION.md — ton lot, le protocole de branches et de PR
+3. docs/REVUE.md — comment tu relis le travail de Claude, et comment il relit le tien
+4. docs/TODO.md — tâches, qui fait quoi, statuts
+5. docs/JOURNAL.md — ce qui a déjà été fait
+
+ON TRAVAILLE EN REVUE CROISÉE. Tu produis un lot, Claude Code relit ta pull
+request et écrit son verdict. En parallèle tu relis la sienne. Personne ne
+valide son propre travail. Au cycle suivant, les rôles s'inversent.
+
+Tu ne pousses JAMAIS directement sur feat/inside-the-stack. Tu crées une
+branche codex/lot-X, tu ouvres une PR vers feat/inside-the-stack, et tu colles
+la sortie de l'audit dans le corps de la PR.
+
+TON LOT ACTUEL — cycle 1, branche codex/lot-b :
+  /netlinking        619 mots -> 1 500
+  /audit-seo         762 mots -> 1 600
+  /seo-technique     796 mots -> 1 600
+  /refonte-seo       643 mots -> 1 400
+  + les 6 visuels de pilier (section A de la liste d'images plus bas)
+
+Ne touche pas aux pages du lot de Claude : /geo, /geo-referencement-ia,
+/audit-visibilite-ia, /analyse-concurrentielle-seo-geo, /contact. Il corrige
+aussi les title trop longs sur TOUTES les pages, donc ne touche pas aux
+métadonnées.
+
+MESURE TON TRAVAIL AVANT D'OUVRIR LA PR :
+
+  npm run dev                                  # autre terminal
+  node scripts/audit-page.mjs /netlinking /audit-seo /seo-technique /refonte-seo
+
+Seuils : 1 200 mots minimum, densité du terme dominant entre 0,8 et 2,5 %,
+3 CTA, 4 questions de FAQ balisées en FAQPage, 10 liens internes, 5 H2,
+title sous 60 caractères, au moins une image. Tant qu'une ligne affiche ✗,
+la PR n'est pas prête.
+
+ATTENTION sur le comptage des liens : le script compte aussi la navigation et
+le pied de page, soit environ 25 liens sur chaque page. Un total de 28 ne
+représente donc que 3 liens dans le contenu. Il en faut au moins 6 dans le
+corps du texte.
 
 Un autre agent (Claude Code) travaille sur le même dépôt. Avant de modifier un
 fichier, vérifie dans docs/TODO.md qu'il n'est pas marqué [~] "en cours".

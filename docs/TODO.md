@@ -20,6 +20,35 @@ committer ce fichier seul. **Après :** passer à `[x]`, noter le résultat mesu
 
 ---
 
+# ⚠️ D0 — DÉCISION URGENTE : le worktree Codex est périmé
+
+Le worktree `/Users/issam/projects/issam-seo-refonte` contient **93 fichiers
+modifiés non commités**, sur la base `a0997f9` — **12 commits de retard**.
+
+Ce travail a été fait avant : la réparation des polices, la fusion des trois
+feuilles CSS, le passage en voix d'agence, la refonte des pages villes et
+l'éradication de l'e-mail en dur.
+
+**Si Codex commite ça tel quel, le conflit sera massif et une partie du travail
+récent sera écrasée.**
+
+Trois options, à trancher par Issam :
+
+| Option | Conséquence |
+|---|---|
+| **A — Abandonner** | On perd ce travail, mais il est bâti sur un socle qui n'existe plus. `git -C ../issam-seo-refonte checkout .` |
+| **B — Sauvegarder puis trier** | Commiter sur `codex/refonte-seo-geo-data`, ouvrir une PR, et récupérer au cas par cas ce qui vaut le coup |
+| **C — Rebaser** | Tenter un rebase sur `feat/inside-the-stack`. Avec 93 fichiers et 12 commits d'écart, probablement très coûteux |
+
+**Recommandation : B.** On ne perd rien, et on juge sur pièces plutôt que de
+décider à l'aveugle.
+
+En attendant, **Codex ne doit pas travailler dans ce worktree.** Il repart
+d'une branche fraîche depuis `feat/inside-the-stack`, comme décrit dans
+`docs/REPARTITION.md`.
+
+---
+
 # PHASE 0 — Nettoyage bloquant
 
 > Rien d'autre ne part en production tant que ce n'est pas fait.
@@ -49,7 +78,29 @@ presse-papiers tant qu'aucune adresse n'est configurée.
 Son adresse personnelle ne doit pas être exposée au moissonnage sans son accord
 explicite.
 
-## 0.2 `[ ]` 🤖 C — Composant image réutilisable
+## 0.2 `[x]` 🤖 C — Outil d'audit mesuré
+
+`scripts/audit-page.mjs` : volume, terme dominant et densité, CTA, FAQ balisées,
+liens internes, images, longueur du `title`, types de schema.
+
+```bash
+npm run audit /geo /netlinking
+npm run audit:all
+```
+
+Sert de base commune aux revues croisées — tant que la critique porte sur des
+nombres, elle ne dégénère pas en débat d'opinion.
+
+**Première passe, 2026-10-06 : 0/31 pages conformes.** Détail dans
+`docs/REPARTITION.md` section 2.
+
+## 0.3 `[ ]` 🤖 C — Corriger les `title` trop longs (TRANSVERSE)
+
+Les 31 pages dépassent 60 caractères, parce que le gabarit `%s | MIC SIGNAL`
+en consomme 13. **Une seule personne fait cette correction**, sinon conflit
+garanti sur toutes les métadonnées. Attribuée à Claude, cycle 1.
+
+## 0.4 `[ ]` 🤖 C — Composant image réutilisable
 
 Créer `src/components/site/Figure.tsx` : `next/image` + légende + `alt`
 obligatoire en prop typée non optionnelle, pour qu'une image sans `alt` ne

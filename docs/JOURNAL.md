@@ -49,9 +49,32 @@ question de FAQ — légitime, à ne pas corriger.
 **Contrôles après travaux :** voix 0 · e-mail interdit 0 · `<img>` 0 ·
 fichiers CSS 1 · build vert.
 
-**Prochaine action :** phase 0.2 (composant `Figure`) puis phase 1 — les pages
-de vente service, en commençant par `/netlinking` et `/geo` qui sont les plus
-minces.
+**Dispositif de revue croisée mis en place.** `docs/REPARTITION.md` (lots,
+branches, PR, inversion des rôles à chaque cycle) et `docs/REVUE.md` (grille de
+lecture et format du verdict). `scripts/audit-page.mjs` mesure ce qui est
+mesurable pour que la critique porte sur des nombres.
+
+**Premier audit complet : 0/31 pages conformes.**
+
+| Problème | Portée |
+|---|---|
+| Pages service entre 500 et 800 mots (seuil 1 200) | 21 |
+| Aucune image | 31 |
+| `title` > 60 caractères | 31 |
+| FAQ < 4 questions | 11 |
+| Pages villes ≥ 1 337 mots | ✅ les 10 |
+| Densité entre 0,75 % et 2,15 % | ✅ aucun bourrage |
+
+Le dépassement des `title` est systémique : le gabarit `%s | MIC SIGNAL`
+consomme 13 caractères. Correction transverse, attribuée à une seule personne.
+
+**Alerte.** Le worktree `/Users/issam/projects/issam-seo-refonte` contient
+93 fichiers modifiés non commités sur une base 12 commits en retard. Non
+touché — voir la décision D0 en tête de `docs/TODO.md`.
+
+**Prochaine action :** cycle 1, lot A — `/geo`, `/geo-referencement-ia`,
+`/audit-visibilite-ia`, `/analyse-concurrentielle-seo-geo`, `/contact`, plus
+la correction transverse des `title`.
 
 ---
 

@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit": "node scripts/audit-page.mjs",
+    "audit:all": "node scripts/audit-page.mjs --all",
+    "check": "npx tsc --noEmit && npm run build"
   },
   "dependencies": {
     "next": "16.2.6",
