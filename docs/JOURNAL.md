@@ -9,6 +9,36 @@
 
 ---
 
+## 2026-10-06 · 🤖 ChatGPT Codex — cycle 1, lot B
+
+**Quatre pages de vente reconstruites et six visuels de pilier livrés.**
+
+- Nouveau gabarit `SalesServicePage` : réponse directe, sommaire, schéma,
+  sections longues, liens contextuels, outils, livrables, méthode, périmètres,
+  FAQ visible et balisée, trois CTA dans le corps de page.
+- Contenu séparé par page dans `src/lib/sales-pages/` pour éviter un fichier
+  éditorial monolithique.
+- Six diagrammes techniques clairs générés puis convertis en AVIF 1 600 × 900 :
+  `/seo`, `/geo`, `/data-web`, `/netlinking`, `/seo-local`, `/audit-seo`.
+- Aucun montant inventé : les blocs de chiffrage expliquent les variables et
+  restent « sur devis » tant que la décision D4 n'est pas tranchée.
+
+| Page | Mots | Densité dominante | CTA | FAQ | Liens | Images |
+|---|---:|---:|---:|---:|---:|---:|
+| `/netlinking` | 2 605 | 0,88 % | 5 | 5 | 28 | 1 |
+| `/audit-seo` | 2 622 | 0,69 % | 5 | 5 | 30 | 1 |
+| `/seo-technique` | 2 466 | 0,57 % | 5 | 5 | 28 | 1 |
+| `/refonte-seo` | 2 399 | 0,75 % | 5 | 5 | 29 | 1 |
+
+**Contrôles :** 4/4 pages conformes dans `npm run audit` · TypeScript vert ·
+ESLint vert · build Next.js vert · une seule feuille CSS · aucune adresse
+e-mail interdite · aucun `<img>` manuel · voix d'agence respectée. Le rendu
+mobile a été vérifié à 341 px sans débordement horizontal visible.
+
+Fichiers principaux : `src/components/site/SalesServicePage.tsx`,
+`src/lib/sales-pages/`, `src/app/globals.css`, les quatre routes du lot et
+`public/images/piliers/`.
+
 ## 2026-10-06 · 🤖 Claude Code
 
 **Mise en place du pilotage partagé.**
