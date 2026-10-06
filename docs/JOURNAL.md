@@ -9,6 +9,29 @@
 
 ---
 
+## 2026-10-06 · 🤖 ChatGPT Codex — couverture visuelle du site
+
+**Toutes les pages disposent maintenant d'un visuel contextuel avec un texte
+alternatif descriptif.**
+
+- 10 illustrations locales distinctes en AVIF 1 600 × 900, fondées sur le tissu
+  économique de chaque ville plutôt que sur une carte postale.
+- 2 schémas dédiés ajoutés pour le mapping de redirections et les Core Web
+  Vitals ; les 8 sujets explicatifs prévus sont désormais couverts.
+- 1 portrait éditorial abstrait pour `/a-propos` et 1 visuel de système pour les
+  pages transverses.
+- `Figure.tsx` centralise `next/image`, les dimensions, `sizes`, la légende et
+  rend `alt` obligatoire dans le type TypeScript.
+- Mesure avant/après sur l'audit complet : **4/31 → 31/31 pages avec image**.
+  Les 9 routes autonomes ou hors audit ont aussi été contrôlées : 1 image et un
+  `alt` non vide sur chacune.
+- Validation : TypeScript vert · ESLint vert · build 52 routes vert · audit du
+  lot B 4/4 conforme · 0 balise `<img>` écrite directement.
+
+Fichiers principaux : `src/components/site/Figure.tsx`,
+`src/lib/editorial-images.ts`, `public/images/villes/`,
+`public/images/schemas/`, `public/images/editorial/`.
+
 ## 2026-10-06 · 🤖 ChatGPT Codex — cycle 1, lot B
 
 **Quatre pages de vente reconstruites et six visuels de pilier livrés.**

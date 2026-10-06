@@ -356,20 +356,35 @@ détaillée. Pas de résultat client inventé.
 **Fait le 2026-10-06.** 6 AVIF en 1 600 × 900, de 31 à 87 Ko, dans
 `public/images/piliers/`.
 
-### 4.2 `[~]` 🤖 **X** — Schémas explicatifs (8)
+### 4.2 `[x]` 🤖 **X** — Schémas explicatifs (8)
 Fonctionnement d'un crawl · RAG et citation LLM · pipeline GA4 → BigQuery →
 Looker · cocon sémantique · plan de redirections · profil de liens ·
 pack local · Core Web Vitals
 
-### 4.3 `[~]` 🤖 **X** — Visuels des 10 villes
+**Fait le 2026-10-06.** Les 6 visuels de pilier couvrent crawl, RAG, data,
+cocon, liens et local ; 2 schémas dédiés ont été ajoutés pour le mapping de
+redirections et les Core Web Vitals.
+
+### 4.3 `[x]` 🤖 **X** — Visuels des 10 villes
 Abstraits et distincts, pas de carte postale.
 
-### 4.4 `[~]` 🤖 **X** — Portrait `/a-propos`
+**Fait le 2026-10-06.** 10 AVIF distincts en 1 600 × 900, chacun construit
+autour du tissu économique réel de la ville plutôt que d'un monument.
+
+### 4.4 `[x]` 🤖 **X** — Portrait `/a-propos`
+
+**Fait le 2026-10-06.** Portrait éditorial abstrait autour de la recherche, du
+code et de la data. Il évite d'inventer un visage en attendant une vraie photo.
 ### 4.5 `[ ]` — Open Graph par page type
-### 4.6 `[~]` 🤖 **X** — Intégration `next/image` + `alt` rédigés
+### 4.6 `[x]` 🤖 **X** — Intégration `next/image` + `alt` rédigés
 
 Réattribué à Codex par Issam le 2026-10-06 : couverture visuelle de l’ensemble
 du site, avec un visuel pertinent par contexte et un texte alternatif descriptif.
+
+**Fait le 2026-10-06.** `Figure.tsx` impose un `alt` typé non optionnel.
+31/31 pages de l'audit ont une image ; accueil, blog, Lab, glossaire, pages
+légales et pages hors audit ont aussi été contrôlés. 0 balise `<img>` écrite à
+la main ; tous les fichiers utilisent AVIF et `next/image`.
 
 ---
 
