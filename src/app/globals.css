@@ -8080,3 +8080,213 @@ body::before {
     grid-area: piste;
   }
 }
+
+/* ===============================================================
+   DIRECTION VISUELLE — registre éditorial.
+
+   Constat tiré des agences qui tiennent la route : titres en serif,
+   grands et de graisse légère, sur un fond essentiellement noir et
+   blanc, avec un seul bleu doux employé avec parcimonie. Aucun
+   dégradé.
+
+   Le dégradé iridescent appliqué partout — boutons, titres, chiffres,
+   barres — produisait exactement l'allure reconnaissable des pages
+   générées. Il est retiré ; l'accent passe par la couleur pleine et
+   par le contraste, pas par le fondu.
+   =============================================================== */
+:root {
+  --bg: #ffffff;
+  --bg-deep: #f6f8fc;
+  --panel: #ffffff;
+  --panel2: #0c0c0c;
+
+  --text: #0c0c0c;
+  --muted: #5b6070;
+  --line: rgba(12, 12, 12, 0.11);
+
+  /* Bleu doux plutôt qu'indigo saturé : lisible sur blanc, supportable
+     sur de grandes surfaces, et sans effet « néon ». */
+  --accent: #3f6bff;
+  --accent-soft: #eef3ff;
+  --accent-violet: #3f6bff;
+  --accent-cyan: #3f6bff;
+  --green: #3f6bff;
+  --signal-blue: #3f6bff;
+  --signal-orange: #3f6bff;
+  --signal-ink: #0c0c0c;
+  --signal-paper: #ffffff;
+
+  /* Conservés pour compatibilité, mais réduits à une couleur pleine. */
+  --grad-iris: #3f6bff;
+  --grad-deep: #0c0c0c;
+
+  --glow: 0 10px 26px -12px rgba(63, 107, 255, 0.4);
+  --glow-soft: 0 6px 20px -12px rgba(12, 12, 12, 0.14);
+  --radius: 10px;
+}
+
+/* L'aurore de fond disparaît : elle participait du même registre. */
+body::before {
+  display: none;
+}
+
+/* --- Titres : serif, grands, graisse normale --- */
+h1,
+h2,
+h3,
+.brand,
+.wordmark {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+h1 {
+  font-size: clamp(2.6rem, 5.6vw, 4.2rem);
+  line-height: 1.04;
+}
+h2 {
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  line-height: 1.1;
+}
+h3 {
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.3;
+}
+/* La marque reste en mono : c'est une signature, pas un titre. */
+.brand,
+.brand-index {
+  font-family: var(--font-mono), monospace;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* --- Suppression des textes en dégradé --- */
+.green,
+.hero-gradient,
+.data-stats__grid strong {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: var(--accent);
+}
+
+/* --- Boutons : aplat, pas de halo --- */
+.button,
+.future-button--primary,
+.signal-button--primary {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  box-shadow: none;
+}
+.button:hover,
+.future-button--primary:hover,
+.signal-button--primary:hover {
+  background: #2f55e0;
+  transform: none;
+  box-shadow: none;
+}
+.button.dark,
+.future-button--ghost {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+/* --- Surfaces : blanc franc, filet fin, pas de verre --- */
+.content-card,
+.expertise-card,
+.offer-card,
+.city-hero__card,
+.sources,
+.answer-block,
+.glossary-search,
+.workbench,
+.tool-card,
+.data-stats__grid > div,
+.data-table__scroll,
+.data-process__flux li,
+.data-prestations__grid article,
+.data-prix__grid article,
+.svc-problemes__grid article,
+.svc-livrables__liste li,
+.svc-etapes__liste article,
+.svc-outils__liste > div,
+.svc-tarif__variables,
+.svc-objections__liste article,
+.city-cases__grid article,
+.netlinking-liens__grid a {
+  background: #fff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+/* Les sections alternées prennent un gris très pâle plutôt qu'un voile. */
+.offers-section,
+.home-lab,
+.consultant-section {
+  background: var(--bg-deep);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.site-header {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Le bloc de conclusion : blanc cassé, titre serif, bouton bleu plein. */
+.war-room-cta {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Graphiques et barres : couleur pleine. */
+.data-chart__remplissage,
+.citability__bar i,
+.data-stats__grid,
+.glossary-filters button.active,
+.pill {
+  background: var(--accent);
+}
+.data-stats__grid {
+  background: var(--line);
+}
+.citability__score {
+  background: var(--panel2);
+  box-shadow: none;
+}
+
+/* Les H1 de hero étaient en capitales et en graisse 800, héritage de la
+   direction brutaliste précédente. Un serif en capitales grasses perd
+   justement ce qui fait sa valeur : le dessin des bas-de-casse et le
+   contraste des pleins et déliés. Retour en casse normale, graisse 400. */
+.signal-hero h1,
+.city-hero h1,
+.page-hero h1,
+.motion-hero h1 {
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+.signal-hero h2,
+.city-hero h2,
+.page-hero h2,
+.motion-hero h2,
+.war-room-cta h2,
+.section-heading h2,
+.insight-hero h2 {
+  text-transform: none;
+  font-weight: 400;
+}
+/* Les sur-titres restent en mono capitales : c'est leur rôle. */
+.eyebrow,
+.atlas-label,
+.mono {
+  font-family: var(--font-mono), monospace;
+}

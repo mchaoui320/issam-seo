@@ -1,21 +1,28 @@
 import {
-  Bricolage_Grotesque,
+  Instrument_Serif,
   Instrument_Sans,
   Geist_Mono,
 } from "next/font/google";
 
 /**
- * Polices variables : un seul fichier par famille couvre toutes les graisses,
- * donc pas de `weight` à déclarer.
+ * Appariement serif / sans.
  *
- * Choix assumé contre Inter et Space Grotesk, qui sont devenues la signature
- * visuelle par défaut de tous les sites générés — au point d'être reconnaissables
- * au premier coup d'œil. Bricolage Grotesque a un dessin nettement identifiable
- * (contrastes irréguliers, optical sizing), Instrument Sans reste neutre sans
- * être anonyme.
+ * Constat fait en mesurant les agences qui tiennent la route : leurs titres
+ * sont en serif, grands et de graisse légère, sur un fond essentiellement noir
+ * et blanc. C'est ce qui donne le registre éditorial.
+ *
+ * Un sans gras accompagné d'un dégradé produit l'inverse — l'allure reconnue
+ * au premier coup d'œil des pages générées. D'où l'abandon de Bricolage
+ * Grotesque en titre, et surtout d'Inter et Space Grotesk, devenues la
+ * signature par défaut de ces pages.
+ *
+ * Instrument Serif et Instrument Sans viennent de la même fonderie et sont
+ * dessinées pour aller ensemble.
  */
-export const display = Bricolage_Grotesque({
+export const display = Instrument_Serif({
   subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
