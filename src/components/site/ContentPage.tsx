@@ -3,6 +3,8 @@ import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
 import { allEntries, sourceLinks, type Entry } from "@/lib/content";
 import { siteUrl } from "@/lib/seo";
 import { JsonLd } from "@/components/site/JsonLd";
+import { ServiceSales } from "@/components/site/ServiceSales";
+import { getServiceSales } from "@/lib/services-sales";
 import {
   article,
   breadcrumb,
@@ -28,6 +30,7 @@ export function ContentPage({ entry }: { entry: Entry }) {
   const related = allEntries.filter((e) => entry.related?.includes(e.slug));
   const path = `/${entry.slug}`;
   const isGuide = entry.slug.startsWith("blog/");
+  const vente = getServiceSales(entry.slug);
 
   const nodes = [
     person(),
@@ -171,20 +174,6 @@ export function ContentPage({ entry }: { entry: Entry }) {
             </section>
           ))}
 
-          {entry.faq?.length ? (
-            <section className="article-faq" id="questions">
-              <h2>Questions fréquentes</h2>
-              {entry.faq.map(([q, a]) => (
-                <details key={q}>
-                  <summary>
-                    <h3>{q}</h3>
-                  </summary>
-                  <p>{a}</p>
-                </details>
-              ))}
-            </section>
-          ) : null}
-
           {["SEO", "GEO", "DATA"].includes(entry.category) && (
             <div className="sources">
               <h2>Pour approfondir</h2>
@@ -212,6 +201,24 @@ export function ContentPage({ entry }: { entry: Entry }) {
           </p>
         </article>
       </div>
+
+      {/* Les blocs commerciaux sortent de la colonne d'article : un visiteur
+          doit voir l'offre et le prix avant d'arriver aux questions. */}
+      {vente && <ServiceSales data={vente} sujet={entry.category} />}
+
+      {entry.faq?.length ? (
+        <section className="article-faq wrap" id="questions">
+          <h2>Questions fréquentes</h2>
+          {entry.faq.map(([q, a]) => (
+            <details key={q}>
+              <summary>
+                <h3>{q}</h3>
+              </summary>
+              <p>{a}</p>
+            </details>
+          ))}
+        </section>
+      ) : null}
 
       {related.length > 0 && (
         <section className="wrap section-block">

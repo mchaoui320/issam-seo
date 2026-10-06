@@ -407,6 +407,14 @@ export const enrichment: Record<string, Enrichment> = {
         "La question est mal posée : dix liens depuis des sites pertinents et réellement consultés pèsent davantage que trois cents liens d'annuaires. Ce qui compte est la cohérence thématique, le trafic de la page liante et le caractère naturel de l'ancre.",
       ],
       [
+        "Combien coûte une campagne de netlinking ?",
+        "Un audit de profil seul se situe entre 1 200 et 2 500 €. Une campagne suivie va de 1 500 à 4 000 € par mois selon le rythme d\u2019acquisition, auxquels s\u2019ajoute le budget d\u2019achat d\u2019emplacements, très variable selon le secteur. La part la plus importante du budget n\u2019est d\u2019ailleurs pas l\u2019achat mais l\u2019analyse et la production éditoriale.",
+      ],
+      [
+        "Les liens achetés sont-ils risqués ?",
+        "L\u2019achat de liens contrevient aux consignes de Google et expose à une dévaluation ou à une action manuelle. Les partenariats sponsorisés restent possibles s\u2019ils sont signalés correctement. Le risque se juge au regard de votre dépendance au trafic organique : plus elle est forte, moins l\u2019exposition est acceptable.",
+      ],
+      [
         "Comment analyser un profil de liens existant ?",
         "En regardant les domaines référents, la répartition des ancres et les pages ciblées. Une concentration anormale d'ancres exactes ou une majorité de domaines sans trafic sont des signaux d'alerte. Le désaveu ne s'utilise qu'en cas de problème avéré, pas par précaution.",
       ],

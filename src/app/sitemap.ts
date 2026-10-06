@@ -24,6 +24,7 @@ const staticPages: Row[] = [
   { path: "", changeFrequency: "weekly", priority: 1 },
   { path: "blog", changeFrequency: "weekly", priority: 0.8 },
   { path: "glossaire", changeFrequency: "monthly", priority: 0.8 },
+  { path: "analyse-de-logs", changeFrequency: "monthly", priority: 0.8 },
   { path: "outils-seo", changeFrequency: "monthly", priority: 0.7 },
   { path: "audit-visibilite-ia", changeFrequency: "monthly", priority: 0.9 },
   {

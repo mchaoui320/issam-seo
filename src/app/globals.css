@@ -7356,3 +7356,1127 @@ body::before {
     gap: 20px;
   }
 }
+
+/* ===============================================================
+   Pages de service — blocs commerciaux.
+   =============================================================== */
+.svc-problemes,
+.svc-livrables,
+.svc-etapes,
+.svc-outils,
+.svc-tarif,
+.svc-objections {
+  padding-block: clamp(48px, 6vw, 84px);
+  border-top: 1px solid var(--line);
+}
+.svc-problemes h2,
+.svc-livrables h2,
+.svc-etapes h2,
+.svc-outils h2,
+.svc-objections h2 {
+  margin: 10px 0 24px;
+}
+.svc-num {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--accent);
+  flex: none;
+}
+
+/* --- constat --- */
+.svc-problemes__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px;
+}
+.svc-problemes__grid article {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.66);
+}
+.svc-problemes__grid h3 {
+  margin: 0 0 10px;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+.svc-problemes__grid p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* --- livrables --- */
+.svc-livrables__head p {
+  max-width: 62ch;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.svc-livrables__liste {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.svc-livrables__liste li {
+  display: flex;
+  gap: 16px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+.svc-livrables__liste h3 {
+  margin: 0 0 7px;
+  font-size: 0.98rem;
+}
+.svc-livrables__liste p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* --- étapes --- */
+.svc-etapes__liste {
+  display: grid;
+  gap: 12px;
+}
+.svc-etapes__liste article {
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+.svc-etapes__liste header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 9px;
+}
+.svc-etapes__liste h3 {
+  margin: 0;
+  font-size: 0.98rem;
+  flex: 1;
+}
+.svc-duree {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.svc-etapes__liste > article > p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.svc-produit {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px !important;
+  padding-top: 11px;
+  border-top: 1px solid var(--line);
+  font-size: 0.76rem;
+  color: var(--text) !important;
+}
+.svc-produit svg {
+  color: var(--accent);
+  flex: none;
+}
+
+/* --- outils --- */
+.svc-outils {
+  display: grid;
+  grid-template-columns: 0.85fr 1.35fr;
+  gap: 44px;
+  align-items: start;
+}
+.svc-outils > div p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.svc-outils__liste {
+  margin: 0;
+  display: grid;
+  gap: 11px;
+}
+.svc-outils__liste > div {
+  padding: 15px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.62);
+}
+.svc-outils__liste dt {
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 5px;
+}
+.svc-outils__liste dd {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* --- tarif --- */
+.svc-tarif {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 44px;
+  align-items: start;
+}
+.svc-tarif__montant {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 14px 0 14px;
+}
+.svc-tarif__note {
+  font-size: 0.86rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.svc-tarif__variables {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+.svc-tarif__variables ul {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+.svc-tarif__variables li {
+  padding-left: 16px;
+  position: relative;
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+.svc-tarif__variables li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.svc-tarif__source {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* --- objections --- */
+.svc-objections__liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 14px;
+}
+.svc-objections__liste article {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+.svc-objections__liste h3 {
+  margin: 0 0 9px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.svc-objections__liste p {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .svc-outils,
+  .svc-tarif {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .svc-livrables__liste li {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* --- Bloc tarif des pages InsightServicePage --- */
+.insight-pricing {
+  padding-block: clamp(48px, 6vw, 84px);
+  border-top: 1px solid var(--line);
+}
+.insight-pricing__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 44px;
+  align-items: start;
+}
+.insight-pricing h2 {
+  margin: 10px 0 0;
+}
+.insight-pricing__montant {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 14px 0;
+}
+.insight-pricing__note {
+  font-size: 0.86rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.insight-pricing__variables {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.7);
+}
+.insight-pricing__variables ul {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+.insight-pricing__variables li {
+  padding-left: 16px;
+  position: relative;
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+.insight-pricing__variables li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.insight-pricing__source {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+@media (max-width: 900px) {
+  .insight-pricing__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
+/* ===============================================================
+   Blocs de données des pages de vente — chiffres, tableaux,
+   graphiques, processus, prestations, grille de prix.
+   =============================================================== */
+.data-stats,
+.data-table,
+.data-chart,
+.data-process,
+.data-prestations,
+.data-prix {
+  padding-block: clamp(48px, 6vw, 84px);
+  border-top: 1px solid var(--line);
+}
+.data-stats h2,
+.data-table h2,
+.data-chart h2,
+.data-process h2,
+.data-prestations h2,
+.data-prix h2 {
+  margin: 0 0 14px;
+}
+
+/* --- chiffres clés --- */
+.data-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 22px;
+}
+.data-stats__grid > div {
+  background: rgba(255, 255, 255, 0.82);
+  padding: 26px 24px;
+}
+.data-stats__grid strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.1rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: var(--grad-iris);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.data-stats__grid span {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.data-stats__grid small {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* --- tableau --- */
+.data-table__intro,
+.data-chart__intro,
+.data-process__intro,
+.data-prestations__intro,
+.data-prix__intro {
+  max-width: 64ch;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+.data-table__scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.82);
+}
+.data-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 560px;
+}
+.data-table th,
+.data-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.data-table thead th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(69, 54, 224, 0.045);
+  white-space: nowrap;
+}
+.data-table tbody th {
+  font-weight: 600;
+  width: 1%;
+  white-space: nowrap;
+}
+.data-table tbody tr:last-child th,
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.data-table .is-oui {
+  color: #1f8a4c;
+}
+.data-table .is-non {
+  color: #c2410c;
+}
+.data-table .is-na {
+  color: var(--muted);
+}
+.data-table__note {
+  margin: 14px 0 0;
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* --- graphique en barres --- */
+.data-chart__barres {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 11px;
+}
+.data-chart__barres li {
+  display: grid;
+  grid-template-columns: minmax(130px, 210px) 1fr auto;
+  align-items: center;
+  gap: 14px;
+}
+.data-chart__libelle {
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+.data-chart__piste {
+  height: 10px;
+  border-radius: 99px;
+  background: rgba(10, 12, 24, 0.07);
+  overflow: hidden;
+}
+.data-chart__remplissage {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #8b3dff, #2aa6c4);
+}
+.data-chart__barres li.is-accent .data-chart__remplissage {
+  background: var(--grad-iris);
+}
+.data-chart__valeur {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.data-chart__barres li.is-accent .data-chart__valeur {
+  color: var(--accent);
+  font-weight: 600;
+}
+.data-chart__source {
+  margin: 16px 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* --- processus --- */
+.data-process__flux {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+.data-process__flux li {
+  position: relative;
+  padding: 22px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+}
+.data-process__index {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--accent);
+}
+.data-process__flux h3 {
+  margin: 8px 0 8px;
+  font-size: 0.96rem;
+  line-height: 1.35;
+}
+.data-process__flux p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.data-process__fleche {
+  position: absolute;
+  right: -11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-size: 1rem;
+  z-index: 1;
+}
+@media (max-width: 760px) {
+  .data-process__fleche {
+    display: none;
+  }
+}
+
+/* --- prestations --- */
+.data-prestations__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+}
+.data-prestations__grid article {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+}
+.data-prestations__num {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--accent);
+}
+.data-prestations__grid h3 {
+  margin: 8px 0 10px;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+.data-prestations__grid > article > p {
+  margin: 0 0 14px;
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.data-prestations__grid ul,
+.data-prix__grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+}
+.data-prestations__grid li,
+.data-prix__grid li {
+  display: flex;
+  align-items: start;
+  gap: 8px;
+  font-size: 0.79rem;
+  line-height: 1.6;
+}
+.data-prestations__grid li svg,
+.data-prix__grid li svg {
+  color: var(--accent);
+  flex: none;
+  margin-top: 3px;
+}
+.data-prestations__grid article > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+
+/* --- grille de prix --- */
+.data-prix__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  gap: 14px;
+}
+.data-prix__grid article {
+  display: flex;
+  flex-direction: column;
+  padding: 26px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+}
+.data-prix__grid article.is-avant {
+  border-color: rgba(69, 54, 224, 0.32);
+  box-shadow: var(--glow-soft);
+  background: rgba(255, 255, 255, 0.92);
+}
+.data-prix__grid h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+.data-prix__montant {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 12px 0 6px;
+}
+.data-prix__pour {
+  margin: 0 0 16px;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.data-prix__grid .button {
+  margin-top: auto;
+  align-self: start;
+}
+.data-prix__grid ul {
+  margin-bottom: 20px;
+}
+.data-prix__note {
+  margin: 16px 0 0;
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* --- Maillage de fin de page netlinking --- */
+.netlinking-liens {
+  padding-block: clamp(48px, 6vw, 84px);
+  border-top: 1px solid var(--line);
+}
+.netlinking-liens > p {
+  max-width: 62ch;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 10px 0 24px;
+}
+.netlinking-liens__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  gap: 12px;
+}
+.netlinking-liens__grid a {
+  position: relative;
+  display: block;
+  padding: 20px 44px 20px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+  transition: 0.15s;
+}
+.netlinking-liens__grid a:hover {
+  border-color: var(--accent);
+}
+.netlinking-liens__grid strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 7px;
+}
+.netlinking-liens__grid span {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.netlinking-liens__grid svg {
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  color: var(--accent);
+}
+
+/* Graphique en barres sur petit écran : le libellé passe au-dessus, sinon il
+   mange la place de la barre et le graphique ne se lit plus. */
+@media (max-width: 620px) {
+  .data-chart__barres li {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "libelle valeur"
+      "piste   piste";
+    gap: 6px 12px;
+  }
+  .data-chart__libelle {
+    grid-area: libelle;
+  }
+  .data-chart__valeur {
+    grid-area: valeur;
+  }
+  .data-chart__piste {
+    grid-area: piste;
+  }
+}
+
+/* ===============================================================
+   DIRECTION VISUELLE — registre éditorial.
+
+   Constat tiré des agences qui tiennent la route : titres en serif,
+   grands et de graisse légère, sur un fond essentiellement noir et
+   blanc, avec un seul bleu doux employé avec parcimonie. Aucun
+   dégradé.
+
+   Le dégradé iridescent appliqué partout — boutons, titres, chiffres,
+   barres — produisait exactement l'allure reconnaissable des pages
+   générées. Il est retiré ; l'accent passe par la couleur pleine et
+   par le contraste, pas par le fondu.
+   =============================================================== */
+:root {
+  --bg: #ffffff;
+  --bg-deep: #f6f8fc;
+  --panel: #ffffff;
+  --panel2: #0c0c0c;
+
+  --text: #0c0c0c;
+  --muted: #5b6070;
+  --line: rgba(12, 12, 12, 0.11);
+
+  /* Bleu doux plutôt qu'indigo saturé : lisible sur blanc, supportable
+     sur de grandes surfaces, et sans effet « néon ». */
+  --accent: #3f6bff;
+  --accent-soft: #eef3ff;
+  --accent-violet: #3f6bff;
+  --accent-cyan: #3f6bff;
+  --green: #3f6bff;
+  --signal-blue: #3f6bff;
+  --signal-orange: #3f6bff;
+  --signal-ink: #0c0c0c;
+  --signal-paper: #ffffff;
+
+  /* Conservés pour compatibilité, mais réduits à une couleur pleine. */
+  --grad-iris: #3f6bff;
+  --grad-deep: #0c0c0c;
+
+  --glow: 0 10px 26px -12px rgba(63, 107, 255, 0.4);
+  --glow-soft: 0 6px 20px -12px rgba(12, 12, 12, 0.14);
+  --radius: 10px;
+}
+
+/* L'aurore de fond disparaît : elle participait du même registre. */
+body::before {
+  display: none;
+}
+
+/* --- Titres : serif, grands, graisse normale --- */
+h1,
+h2,
+h3,
+.brand,
+.wordmark {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+h1 {
+  font-size: clamp(2.6rem, 5.6vw, 4.2rem);
+  line-height: 1.04;
+}
+h2 {
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  line-height: 1.1;
+}
+h3 {
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.3;
+}
+/* La marque reste en mono : c'est une signature, pas un titre. */
+.brand,
+.brand-index {
+  font-family: var(--font-mono), monospace;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* --- Suppression des textes en dégradé --- */
+.green,
+.hero-gradient,
+.data-stats__grid strong {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: var(--accent);
+}
+
+/* --- Boutons : aplat, pas de halo --- */
+.button,
+.future-button--primary,
+.signal-button--primary {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  box-shadow: none;
+}
+.button:hover,
+.future-button--primary:hover,
+.signal-button--primary:hover {
+  background: #2f55e0;
+  transform: none;
+  box-shadow: none;
+}
+.button.dark,
+.future-button--ghost {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+/* --- Surfaces : blanc franc, filet fin, pas de verre --- */
+.content-card,
+.expertise-card,
+.offer-card,
+.city-hero__card,
+.sources,
+.answer-block,
+.glossary-search,
+.workbench,
+.tool-card,
+.data-stats__grid > div,
+.data-table__scroll,
+.data-process__flux li,
+.data-prestations__grid article,
+.data-prix__grid article,
+.svc-problemes__grid article,
+.svc-livrables__liste li,
+.svc-etapes__liste article,
+.svc-outils__liste > div,
+.svc-tarif__variables,
+.svc-objections__liste article,
+.city-cases__grid article,
+.netlinking-liens__grid a {
+  background: #fff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+/* Les sections alternées prennent un gris très pâle plutôt qu'un voile. */
+.offers-section,
+.home-lab,
+.consultant-section {
+  background: var(--bg-deep);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.site-header {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Le bloc de conclusion : blanc cassé, titre serif, bouton bleu plein. */
+.war-room-cta {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Graphiques et barres : couleur pleine. */
+.data-chart__remplissage,
+.citability__bar i,
+.data-stats__grid,
+.glossary-filters button.active,
+.pill {
+  background: var(--accent);
+}
+.data-stats__grid {
+  background: var(--line);
+}
+.citability__score {
+  background: var(--panel2);
+  box-shadow: none;
+}
+
+/* Les H1 de hero étaient en capitales et en graisse 800, héritage de la
+   direction brutaliste précédente. Un serif en capitales grasses perd
+   justement ce qui fait sa valeur : le dessin des bas-de-casse et le
+   contraste des pleins et déliés. Retour en casse normale, graisse 400. */
+.signal-hero h1,
+.city-hero h1,
+.page-hero h1,
+.motion-hero h1 {
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+.signal-hero h2,
+.city-hero h2,
+.page-hero h2,
+.motion-hero h2,
+.war-room-cta h2,
+.section-heading h2,
+.insight-hero h2 {
+  text-transform: none;
+  font-weight: 400;
+}
+/* Les sur-titres restent en mono capitales : c'est leur rôle. */
+.eyebrow,
+.atlas-label,
+.mono {
+  font-family: var(--font-mono), monospace;
+}
+
+/* ===============================================================
+   Dispositifs éditoriaux — comparatif, méthode, expertises, pont.
+   =============================================================== */
+.cmp,
+.methode,
+.expertises,
+.pont {
+  padding-block: clamp(48px, 6vw, 84px);
+  border-top: 1px solid var(--line);
+}
+.cmp__intro,
+.methode__intro,
+.expertises__intro {
+  max-width: 64ch;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 12px 0 28px;
+}
+
+/* --- comparatif --- */
+.cmp__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+}
+.cmp__col {
+  padding: 26px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+.cmp__col--pour {
+  border-color: rgba(63, 107, 255, 0.3);
+  background: var(--accent-soft);
+}
+.cmp__col h3 {
+  margin: 0 0 18px;
+  font-size: 1.1rem;
+}
+.cmp__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 13px;
+}
+.cmp__col li {
+  display: flex;
+  gap: 11px;
+  align-items: start;
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+.cmp__col--contre svg {
+  color: #a1a5b3;
+  flex: none;
+  margin-top: 3px;
+}
+.cmp__col--pour svg {
+  color: var(--accent);
+  flex: none;
+  margin-top: 3px;
+}
+
+/* --- méthode --- */
+.methode__liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.methode__liste > li {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+.methode__etape {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.methode__liste h3 {
+  margin: 9px 0 8px;
+  font-size: 1.25rem;
+}
+.methode__phrase {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.methode__liste ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 7px 20px;
+}
+.methode__liste ul li {
+  position: relative;
+  padding-left: 15px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.methode__liste ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.methode__objectif {
+  margin: 16px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.methode__objectif strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+.methode__objectif strong::after {
+  content: " :";
+}
+
+/* --- expertises --- */
+.expertises__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+.expertises__carte {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  transition: border-color 0.15s;
+}
+.expertises__carte:hover {
+  border-color: var(--accent);
+}
+.expertises__tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.expertises__carte h3 {
+  margin: 10px 0 9px;
+  font-size: 1.2rem;
+}
+.expertises__carte p {
+  margin: 0 0 18px;
+  font-size: 0.84rem;
+  line-height: 1.7;
+  color: var(--muted);
+  flex: 1;
+}
+.expertises__lire {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+/* --- pont --- */
+.pont > div {
+  max-width: 72ch;
+}
+.pont p {
+  font-size: 0.98rem;
+  line-height: 1.85;
+  color: var(--muted);
+  margin: 12px 0 24px;
+}
