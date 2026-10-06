@@ -9,7 +9,7 @@ import { breadcrumb, graph, person, website } from "@/lib/schema";
 const PATH = "/glossaire";
 
 export const metadata = pageMetadata(
-  "Glossaire SEO, GEO et data web — définitions claires",
+  "Glossaire SEO, GEO et data web",
   `${terms.length} définitions de référence sur le référencement naturel, les moteurs de réponse IA et la mesure web. Chaque terme est expliqué avec sa nuance et ses contresens fréquents.`,
   PATH,
 );

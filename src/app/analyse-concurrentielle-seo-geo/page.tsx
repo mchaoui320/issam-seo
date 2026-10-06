@@ -2,7 +2,7 @@ import { InsightServicePage } from "@/components/site/InsightServicePage";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata(
-  "Analyse concurrentielle SEO & GEO : trouver les vrais écarts",
+  "Analyse concurrentielle SEO et GEO",
   "Comparez territoires de requêtes, contenus, preuves, citations IA, SEO local et mesure pour construire une stratégie concurrentielle exécutable.",
   "/analyse-concurrentielle-seo-geo",
 );

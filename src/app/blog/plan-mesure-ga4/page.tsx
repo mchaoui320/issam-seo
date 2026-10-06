@@ -1,12 +1,8 @@
 import { allEntries } from "@/lib/content";
 import { ContentPage } from "@/components/site/ContentPage";
-import { pageMetadata } from "@/lib/seo";
+import { entryMetadata } from "@/lib/seo";
 const entry = allEntries.find((e) => e.slug === "blog/plan-mesure-ga4")!;
-export const metadata = pageMetadata(
-  entry.title,
-  entry.intro,
-  "/blog/plan-mesure-ga4",
-);
+export const metadata = entryMetadata(entry, "/blog/plan-mesure-ga4");
 export default function Page() {
   return <ContentPage entry={entry} />;
 }

@@ -2,7 +2,7 @@ import { InsightServicePage } from "@/components/site/InsightServicePage";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata(
-  "Audit visibilité IA : ChatGPT, Claude, Gemini et Perplexity",
+  "Audit de visibilité IA et part de voix",
   "Analysez les prompts de décision, les citations, les sources et les concurrents qui structurent la visibilité de votre marque dans les moteurs de réponse IA.",
   "/audit-visibilite-ia",
 );

@@ -12,11 +12,18 @@ import type { Entry } from "@/lib/content";
  */
 export type Enrichment = Pick<
   Entry,
-  "answer" | "takeaways" | "faq" | "keywords" | "published" | "updated"
+  | "answer"
+  | "takeaways"
+  | "faq"
+  | "keywords"
+  | "published"
+  | "updated"
+  | "metaTitle"
 >;
 
 export const enrichment: Record<string, Enrichment> = {
   seo: {
+    metaTitle: "Agence SEO : stratégie de référencement",
     answer:
       "Le référencement naturel consiste à rendre un site accessible aux moteurs, pertinent pour une intention de recherche et suffisamment utile pour être préféré aux alternatives. Il repose sur trois piliers indissociables : la technique, le contenu et la mesure.",
     takeaways: [
@@ -54,6 +61,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "audit-seo": {
+    metaTitle: "Audit SEO complet : méthode et livrables",
     answer:
       "Un audit SEO inventorie ce qui empêche un site d'être exploré, indexé et choisi par les moteurs, puis classe les corrections par impact et par effort. Le livrable attendu n'est pas une liste de constats mais une feuille de route dont chaque ligne est vérifiable.",
     takeaways: [
@@ -91,6 +99,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "seo-technique": {
+    metaTitle: "SEO technique : crawl, indexation, CWV",
     answer:
       "Le SEO technique garantit que les moteurs peuvent découvrir, charger, rendre et indexer les bonnes pages. Il traite l'exploration, l'indexation, le rendu JavaScript et les Core Web Vitals — soit tout ce qui conditionne l'accès au contenu avant même qu'il soit évalué.",
     takeaways: [
@@ -128,6 +137,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   geo: {
+    metaTitle: "GEO : être cité par les moteurs de réponse",
     answer:
       "Le GEO (Generative Engine Optimization) rend un contenu compréhensible, vérifiable et citable par les moteurs de réponse comme ChatGPT, Perplexity, Gemini ou les AI Overviews de Google. Il ne remplace pas le SEO : il en prolonge les fondamentaux vers un mode de découverte où l'utilisateur lit une synthèse plutôt qu'une liste de liens.",
     takeaways: [
@@ -165,6 +175,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "geo-referencement-ia": {
+    metaTitle: "Référencement IA : ChatGPT, Gemini, Perplexity",
     answer:
       "Se rendre visible dans ChatGPT, Gemini et Perplexity demande trois choses : une base SEO indexable, des contenus qui apportent une information qu'on ne trouve pas ailleurs, et un protocole d'observation stable pour mesurer les citations sans se raconter d'histoires.",
     takeaways: [
@@ -202,6 +213,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "data-web": {
+    metaTitle: "Data web : GA4, GTM et tableaux de bord",
     answer:
       "La mesure web relie ce que font les visiteurs à ce qui compte pour l'entreprise. GA4, Google Tag Manager et Looker Studio ne produisent de la valeur que si les événements collectés correspondent à des succès réels et si les limites de l'attribution sont explicites.",
     takeaways: [
@@ -240,6 +252,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "plan-marquage-ga4": {
+    metaTitle: "Plan de marquage GA4 et Tag Manager",
     answer:
       "Un plan de marquage GA4 traduit des objectifs commerciaux en événements testables. Il documente, pour chaque interaction suivie, son déclencheur, ses paramètres, sa finalité et sa règle de consentement — avant qu'une seule balise ne soit créée.",
     takeaways: [
@@ -273,6 +286,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "dashboard-seo": {
+    metaTitle: "Dashboard SEO : reporting et décisions",
     answer:
       "Un tableau de bord SEO utile rassemble visibilité, acquisition et conversions avec des définitions stables, des segments cohérents et un commentaire qui explique les variations. Sans ce commentaire, un graphique n'est pas une recommandation.",
     takeaways: [
@@ -306,6 +320,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "seo-local": {
+    metaTitle: "SEO local : être visible dans sa zone",
     answer:
       "Le SEO local rend une entreprise visible dans la zone qu'elle dessert réellement. Il articule trois éléments : une fiche d'établissement exacte, des pages locales qui apportent une information distincte, et un suivi des contacts par zone.",
     takeaways: [
@@ -339,6 +354,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "strategie-contenu-seo": {
+    metaTitle: "Stratégie de contenu SEO et sémantique",
     answer:
       "Une stratégie de contenu SEO regroupe les requêtes qui appellent la même réponse, leur associe une page de référence unique et définit ce que chaque page doit prouver. Elle évite ainsi que plusieurs pages du même site se disputent la même intention.",
     takeaways: [
@@ -372,6 +388,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   netlinking: {
+    metaTitle: "Netlinking : stratégie d’acquisition de liens",
     answer:
       "Le netlinking développe la popularité d'un site par des liens obtenus dans des contextes pertinents. L'analyse doit privilégier la cohérence éditoriale et le trafic réel des pages liantes plutôt qu'un score d'autorité propriétaire.",
     takeaways: [
@@ -405,6 +422,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "refonte-seo": {
+    metaTitle: "Refonte SEO : migration sans perte",
     answer:
       "Une refonte protège les acquis SEO quand elle commence avant le design : export des URL utiles, mapping vers la nouvelle structure, redirections permanentes et recette après mise en ligne. La perte de trafic après refonte vient presque toujours d'un mapping incomplet.",
     takeaways: [
@@ -438,6 +456,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "consultant-seo-freelance": {
+    metaTitle: "Consultant SEO freelance : accompagnement",
     answer:
       "Un consultant SEO freelance est l'interlocuteur unique qui conçoit la stratégie de visibilité et suit son exécution. Le format convient quand le périmètre est défini et que les ressources de production — développement, rédaction — peuvent être mobilisées séparément.",
     takeaways: [
@@ -475,6 +494,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "consultant-seo-marseille": {
+    metaTitle: "Agence SEO Marseille : référencement naturel",
     answer:
       "L'accompagnement SEO à Marseille cible les entreprises dont les clients se trouvent dans la métropole et sa zone d'influence. Le travail porte sur la qualification des requêtes locales, la cohérence des informations d'établissement et les parcours de contact.",
     takeaways: [
@@ -508,6 +528,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "consultant-seo-paris": {
+    metaTitle: "Agence SEO Paris : référencement naturel",
     answer:
       "À Paris, la densité concurrentielle rend les requêtes génériques coûteuses à conquérir. La stratégie efficace consiste à croiser service, segment de clientèle et zone réellement desservie plutôt qu'à viser une expression large.",
     takeaways: [
@@ -541,6 +562,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "methode-seo": {
+    metaTitle: "Méthode SEO : du diagnostic à la mesure",
     answer:
       "La méthode suit un cycle court en quatre temps : comprendre le contexte et les données, prioriser par impact et effort, déployer avec vos équipes, mesurer et réajuster. Chaque recommandation est reliée à un problème observable.",
     takeaways: [
@@ -574,6 +596,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "livrables-seo": {
+    metaTitle: "Livrables SEO : rapports et feuille de route",
     answer:
       "Les livrables sont des documents exploitables par vos équipes : un rapport de diagnostic avec exemples d'URL, une feuille de route avec responsables et critères de recette, des briefs éditoriaux et un reporting mensuel qui se termine par des décisions.",
     takeaways: [
@@ -603,6 +626,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "consultant-seo-ou-agence": {
+    metaTitle: "Consultant SEO ou agence : comment choisir",
     answer:
       "Le choix entre consultant freelance et agence dépend du périmètre, des ressources internes disponibles et du besoin de coordination entre métiers. Un freelance offre continuité et interlocuteur direct ; une agence apporte volume de production et pluralité de compétences.",
     takeaways: [
@@ -635,6 +659,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   tarifs: {
+    metaTitle: "Tarifs SEO, GEO et data web",
     answer:
       "Un tarif SEO se déduit d'un périmètre : taille du site, complexité technique, marchés ciblés et niveau d'exécution attendu. En France, le tarif journalier moyen d'un consultant se situe autour de 570 €, et un accompagnement annuel se situe fréquemment entre 10 000 € et 50 000 €.",
     takeaways: [
@@ -672,6 +697,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "a-propos": {
+    metaTitle: "Agence SEO, GEO et data web",
     answer:
       "Med Issam Chaoui est consultant indépendant en SEO, GEO et mesure web. Son approche relie ces trois disciplines plutôt que de les traiter en silos, avec des recommandations qui distinguent explicitement les constats, les hypothèses et les résultats observés.",
     takeaways: [
@@ -695,6 +721,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "etudes-de-cas": {
+    metaTitle: "Cas pratiques SEO, GEO et data",
     answer:
       "Ces scénarios illustrent une démarche de diagnostic face à trois situations fréquentes : une baisse après refonte, du trafic sans demandes, et une marque absente des réponses IA. Ce sont des cas pédagogiques, pas des résultats clients revendiqués.",
     takeaways: [
@@ -725,6 +752,7 @@ export const enrichment: Record<string, Enrichment> = {
   // ---------------------------------------------------------------- guides
 
   "blog/seo-vs-geo": {
+    metaTitle: "SEO et GEO : différences et priorités",
     answer:
       "Le SEO optimise l'accès à vos contenus dans les moteurs de recherche ; le GEO optimise leur compréhension et leur reprise dans les réponses générées. Les deux reposent sur les mêmes fondamentaux techniques : une page inaccessible n'est ni classée, ni citée.",
     takeaways: [
@@ -753,6 +781,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "blog/core-web-vitals": {
+    metaTitle: "Core Web Vitals : LCP, INP et CLS",
     answer:
       "Les Core Web Vitals mesurent trois dimensions de l'expérience : le LCP pour le chargement du contenu principal, l'INP pour la réactivité aux interactions, le CLS pour la stabilité visuelle. Les seuils recommandés sont 2,5 s, 200 ms et 0,1 au 75e percentile.",
     takeaways: [
@@ -786,6 +815,7 @@ export const enrichment: Record<string, Enrichment> = {
   },
 
   "blog/plan-mesure-ga4": {
+    metaTitle: "Plan de mesure GA4 : par où commencer",
     answer:
       "Un plan de mesure GA4 part d'une question métier, pas d'une liste d'événements. Il définit ce qu'est un succès réel, documente les paramètres attendus et prévoit la recette des parcours d'échec autant que des parcours nominaux.",
     takeaways: [

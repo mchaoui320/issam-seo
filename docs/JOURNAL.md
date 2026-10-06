@@ -72,6 +72,19 @@ consomme 13 caractères. Correction transverse, attribuée à une seule personne
 93 fichiers modifiés non commités sur une base 12 commits en retard. Non
 touché — voir la décision D0 en tête de `docs/TODO.md`.
 
+**Correction transverse des `title` faite.** 31/31 pages sous 60 caractères.
+Cause réelle : le H1 et la balise `title` partageaient le même champ. Champ
+`metaTitle` séparé ajouté, helper `entryMetadata()` créé, 22 pages basculées,
+24 titres rédigés sous 47 caractères. `/a-propos` affichait « Med Issam
+Chaoui » en titre, contraire à la règle de marque — corrigé.
+
+**Worktree Codex abandonné** sur décision d'Issam (option A). 93 fichiers
+écartés, worktree et branche périmée supprimés. Patch de secours conservé hors
+dépôt dans le scratchpad de session.
+
+**Restent après cette passe :** 21 pages sous le seuil de mots, 31 sans image,
+11 avec moins de 4 questions de FAQ.
+
 **Prochaine action :** cycle 1, lot A — `/geo`, `/geo-referencement-ia`,
 `/audit-visibilite-ia`, `/analyse-concurrentielle-seo-geo`, `/contact`, plus
 la correction transverse des `title`.

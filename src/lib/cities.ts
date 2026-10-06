@@ -43,7 +43,7 @@ export function keywordVariants(market: LocalMarket) {
 
 /** Title tag. Compact : le gabarit ajoute « | MIC SIGNAL ». */
 export function marketTitle(market: LocalMarket) {
-  return `Agence SEO ${market.city} — Référencement naturel & IA`;
+  return `Agence SEO ${market.city} : référencement naturel`;
 }
 
 export function marketDescription(market: LocalMarket) {

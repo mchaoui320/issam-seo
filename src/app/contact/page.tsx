@@ -1,7 +1,7 @@
 import { Contact } from "@/components/site/Contact";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata(
-  "Contact : parlons de votre projet SEO, GEO ou data",
+  "Contact : parlons de votre projet",
   "Décrivez votre site, vos objectifs et votre besoin en audit SEO, référencement IA ou analytics à Med Issam Chaoui.",
   "/contact",
 );

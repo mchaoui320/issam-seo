@@ -53,3 +53,17 @@ export function pageMetadata(
     },
   };
 }
+
+/**
+ * Métadonnées d'une page de contenu.
+ *
+ * Utilise `metaTitle` quand il existe, sinon retombe sur le H1. Les deux sont
+ * volontairement distincts : un H1 peut être long et éditorial, une balise
+ * title doit tenir dans l'affichage des résultats et porter le mot-clé en tête.
+ */
+export function entryMetadata(
+  entry: { title: string; intro: string; metaTitle?: string },
+  path: string,
+) {
+  return pageMetadata(entry.metaTitle ?? entry.title, entry.intro, path);
+}

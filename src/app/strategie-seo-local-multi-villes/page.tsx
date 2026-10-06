@@ -2,7 +2,7 @@ import { InsightServicePage } from "@/components/site/InsightServicePage";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata(
-  "Stratégie SEO local multi-villes : pages, Google Maps et data",
+  "SEO local multi-villes et multi-sites",
   "Construisez une couverture locale multi-villes utile : zones réellement servies, pages distinctes, Google Business Profile, avis et mesure des leads.",
   "/strategie-seo-local-multi-villes",
 );

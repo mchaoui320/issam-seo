@@ -94,11 +94,23 @@ nombres, elle ne dégénère pas en débat d'opinion.
 **Première passe, 2026-10-06 : 0/31 pages conformes.** Détail dans
 `docs/REPARTITION.md` section 2.
 
-## 0.3 `[ ]` 🤖 C — Corriger les `title` trop longs (TRANSVERSE)
+## 0.3 `[x]` 🤖 C — Corriger les `title` trop longs (TRANSVERSE)
 
 Les 31 pages dépassent 60 caractères, parce que le gabarit `%s | MIC SIGNAL`
 en consomme 13. **Une seule personne fait cette correction**, sinon conflit
 garanti sur toutes les métadonnées. Attribuée à Claude, cycle 1.
+
+**Fait le 2026-10-06.** 31/31 pages sous 60 caractères.
+
+Le fond du problème était architectural : le H1 et la balise `title`
+partageaient le même champ. Un H1 peut être long et éditorial, un `title` doit
+tenir dans l'affichage des résultats et porter le mot-clé en tête. Un champ
+`metaTitle` distinct a été ajouté à `Entry`, avec repli sur `title` quand il
+est absent, via le nouvel helper `entryMetadata()`. 22 pages basculées dessus,
+24 `metaTitle` rédigés, plus les titres écrits en dur et le gabarit des villes.
+
+Au passage, `/a-propos` s'intitulait « Med Issam Chaoui — SEO, GEO & data web »,
+ce qui violait la règle de marque. Corrigé.
 
 ## 0.4 `[ ]` 🤖 C — Composant image réutilisable
 

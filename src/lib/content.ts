@@ -22,6 +22,15 @@ export type Entry = {
   /** Format ISO. Alimente datePublished / dateModified. */
   published?: string;
   updated?: string;
+  /**
+   * Titre de la balise `<title>`, distinct du H1.
+   *
+   * Le H1 peut être éditorial et long ; la balise title doit tenir dans
+   * l'affichage des résultats et placer le mot-clé en tête. Le gabarit ajoute
+   * « | MIC SIGNAL », soit 13 caractères : ce champ doit donc rester sous
+   * 47 caractères.
+   */
+  metaTitle?: string;
 };
 const rawEntries: Entry[] = [
   {
