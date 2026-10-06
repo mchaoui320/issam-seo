@@ -356,17 +356,20 @@ détaillée. Pas de résultat client inventé.
 **Fait le 2026-10-06.** 6 AVIF en 1 600 × 900, de 31 à 87 Ko, dans
 `public/images/piliers/`.
 
-### 4.2 `[ ]` — Schémas explicatifs (8)
+### 4.2 `[~]` 🤖 **X** — Schémas explicatifs (8)
 Fonctionnement d'un crawl · RAG et citation LLM · pipeline GA4 → BigQuery →
 Looker · cocon sémantique · plan de redirections · profil de liens ·
 pack local · Core Web Vitals
 
-### 4.3 `[ ]` — Visuels des 10 villes
+### 4.3 `[~]` 🤖 **X** — Visuels des 10 villes
 Abstraits et distincts, pas de carte postale.
 
-### 4.4 `[ ]` — Portrait `/a-propos`
+### 4.4 `[~]` 🤖 **X** — Portrait `/a-propos`
 ### 4.5 `[ ]` — Open Graph par page type
-### 4.6 `[ ]` — Intégration `next/image` + `alt` rédigés 🤖 **C**
+### 4.6 `[~]` 🤖 **X** — Intégration `next/image` + `alt` rédigés
+
+Réattribué à Codex par Issam le 2026-10-06 : couverture visuelle de l’ensemble
+du site, avec un visuel pertinent par contexte et un texte alternatif descriptif.
 
 ---
 
