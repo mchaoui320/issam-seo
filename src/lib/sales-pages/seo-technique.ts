@@ -27,6 +27,42 @@ export const seoTechniquePage: SalesPageData = {
     "Les Core Web Vitals se jugent au 75e percentile sur des données de terrain lorsque celles-ci existent.",
     "Une correction technique n’est terminée qu’après recette sur les templates et surveillance en production.",
   ],
+  offer: {
+    title: "Nous fiabilisons le socle technique de votre référencement.",
+    intro:
+      "Nous intervenons avec vos développeurs et responsables produit pour identifier les blocages, spécifier les correctifs et vérifier leur comportement réel. La prestation peut cibler un incident précis, couvrir tout le socle technique ou accompagner une évolution sensible. Chaque recommandation est reliée à des URL, des templates et un test de recette.",
+    items: [
+      {
+        title: "Investigation crawl et indexation",
+        detail:
+          "Nous analysons architecture, profondeur, statuts, directives, canonicals, sitemaps et comportement observé dans Search Console.",
+        deliverable: "une matrice des règles attendues et la liste des anomalies par template.",
+      },
+      {
+        title: "Audit rendu et performance",
+        detail:
+          "Nous comparons HTML initial, rendu JavaScript, données terrain et laboratoire pour isoler les causes des problèmes de contenu ou de CWV.",
+        deliverable: "des tickets techniques avec exemples, dépendances et résultat attendu.",
+      },
+      {
+        title: "Accompagnement des développements",
+        detail:
+          "Nous relisons les choix d’implémentation, les cas limites et les environnements avant la mise en production.",
+        deliverable: "un cahier de recette applicable en préproduction puis en production.",
+      },
+      {
+        title: "Surveillance des régressions",
+        detail:
+          "Nous définissons les contrôles sur les erreurs, directives, templates, performance, crawl et passages robots.",
+        deliverable: "un plan d’alertes avec seuils, fréquence et procédure de traitement.",
+      },
+    ],
+    forWho: [
+      "votre site génère beaucoup d’URL, utilise fortement JavaScript ou dépend de plusieurs templates ;",
+      "des pages restent absentes de l’index ou les équipes ne savent pas si le problème vient du rendu ;",
+      "vous voulez des spécifications directement utilisables par les développeurs, puis réellement recettées.",
+    ],
+  },
   sections: [
     {
       id: "crawl-architecture",

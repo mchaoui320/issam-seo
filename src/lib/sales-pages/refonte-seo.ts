@@ -27,6 +27,42 @@ export const refonteSeoPage: SalesPageData = {
     "La préproduction doit rester protégée tout en étant accessible aux outils de recette autorisés.",
     "Les clics, conversions, logs et groupes de pages sont suivis ensemble après la mise en ligne.",
   ],
+  offer: {
+    title: "Nous sécurisons votre refonte avant, pendant et après le lancement.",
+    intro:
+      "Nous travaillons avec le produit, le contenu, la data et le développement dès que l’arborescence et les URL commencent à changer. Notre rôle est de conserver ce qui crée déjà de la valeur, de rendre chaque décision traçable et de détecter rapidement les écarts en production. La prestation couvre le changement graphique, la migration de CMS, le changement de domaine ou la fusion de sites.",
+    items: [
+      {
+        title: "Inventaire et décisions URL",
+        detail:
+          "Nous rassemblons crawl, CMS, Search Console, analytics et backlinks, puis nous qualifions chaque route à conserver, fusionner ou retirer.",
+        deliverable: "l’inventaire de référence avec décision cible, données utiles et justification.",
+      },
+      {
+        title: "Mapping des redirections",
+        detail:
+          "Nous relions chaque ancienne URL utile à son équivalent le plus proche et testons les règles, paramètres, chaînes et cas limites.",
+        deliverable: "un mapping 301 versionné, prêt à implémenter et à recetter.",
+      },
+      {
+        title: "Recette de préproduction",
+        detail:
+          "Nous comparons les templates, contenus, directives, données structurées, liens, performances et événements de conversion.",
+        deliverable: "la liste des écarts bloquants et la checklist partagée du lancement.",
+      },
+      {
+        title: "Surveillance post-lancement",
+        detail:
+          "Nous suivons erreurs serveur, redirections, logs, indexation, clics et conversions par groupe de pages.",
+        deliverable: "un tableau de surveillance et des corrections priorisées pendant la phase sensible.",
+      },
+    ],
+    forWho: [
+      "vous changez de CMS, de domaine, d’arborescence ou de technologie de rendu ;",
+      "des pages qui génèrent des demandes risquent d’être fusionnées, déplacées ou supprimées ;",
+      "vous avez besoin d’un interlocuteur qui coordonne la conservation SEO avec plusieurs équipes.",
+    ],
+  },
   sections: [
     {
       id: "inventaire-avant-refonte",

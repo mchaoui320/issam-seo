@@ -15,7 +15,9 @@
 
 - Nouveau gabarit `SalesServicePage` : réponse directe, sommaire, schéma,
   sections longues, liens contextuels, outils, livrables, méthode, périmètres,
-  FAQ visible et balisée, trois CTA dans le corps de page.
+  FAQ visible et balisée, quatre CTA dans le corps de page.
+- Bloc commercial ajouté haut dans chaque page : quatre volets de prestation,
+  livrable remis pour chacun et profils de clients concernés.
 - Contenu séparé par page dans `src/lib/sales-pages/` pour éviter un fichier
   éditorial monolithique.
 - Six diagrammes techniques clairs générés puis convertis en AVIF 1 600 × 900 :
@@ -25,10 +27,10 @@
 
 | Page | Mots | Densité dominante | CTA | FAQ | Liens | Images |
 |---|---:|---:|---:|---:|---:|---:|
-| `/netlinking` | 2 605 | 0,88 % | 5 | 5 | 28 | 1 |
-| `/audit-seo` | 2 622 | 0,69 % | 5 | 5 | 30 | 1 |
-| `/seo-technique` | 2 466 | 0,57 % | 5 | 5 | 28 | 1 |
-| `/refonte-seo` | 2 399 | 0,75 % | 5 | 5 | 29 | 1 |
+| `/netlinking` | 2 888 | 0,90 % | 6 | 5 | 28 | 1 |
+| `/audit-seo` | 2 871 | 0,66 % | 6 | 5 | 30 | 1 |
+| `/seo-technique` | 2 719 | 0,59 % | 6 | 5 | 28 | 1 |
+| `/refonte-seo` | 2 665 | 0,75 % | 6 | 5 | 29 | 1 |
 
 **Contrôles :** 4/4 pages conformes dans `npm run audit` · TypeScript vert ·
 ESLint vert · build Next.js vert · une seule feuille CSS · aucune adresse

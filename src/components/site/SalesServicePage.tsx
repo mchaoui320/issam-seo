@@ -141,6 +141,7 @@ export function SalesServicePage({
         <nav className="sales-service__toc" aria-label="Sommaire de la page">
           <div className="wrap">
             <a href="#en-bref">En bref</a>
+            <a href="#prestation">Notre prestation</a>
             {data.sections.map((section) => (
               <a key={section.id} href={`#${section.id}`}>
                 {section.title}
@@ -166,6 +167,37 @@ export function SalesServicePage({
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="sales-service__offer" id="prestation">
+          <div className="wrap">
+            <header>
+              <p className="sales-service__label">NOTRE PRESTATION</p>
+              <h2>{data.offer.title}</h2>
+              <p>{data.offer.intro}</p>
+            </header>
+            <div className="sales-service__offer-grid">
+              {data.offer.items.map((item, index) => (
+                <article key={item.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.detail}</p>
+                  <strong>Vous recevez — {item.deliverable}</strong>
+                </article>
+              ))}
+            </div>
+            <div className="sales-service__fit">
+              <p>Cette mission est faite pour vous si</p>
+              <ul>
+                {data.offer.forWho.map((item) => (
+                  <li key={item}><Check size={16} aria-hidden="true" />{item}</li>
+                ))}
+              </ul>
+              <Link href="/contact">
+                Vérifier l’adéquation <ArrowUpRight size={18} />
+              </Link>
+            </div>
           </div>
         </section>
 

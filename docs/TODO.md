@@ -146,7 +146,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Ajouter : grille de prix par taille de site, durée, accès nécessaires
 - FAQ : prix, durée, accès, que se passe-t-il après
 
-**Fait le 2026-10-06.** 2 622 mots · 5 CTA · 5 FAQ · 30 liens internes ·
+**Fait le 2026-10-06.** 2 871 mots · 6 CTA · 5 FAQ · 30 liens internes ·
 1 image · audit conforme.
 
 ### 1.3 `[x]` 🤖 **X** — `/seo-technique`
@@ -155,7 +155,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Outils : Botify, Oncrawl, Lighthouse, PageSpeed, analyse de logs
 - Seuils CWV à citer : LCP ≤ 2,5 s, INP ≤ 200 ms, CLS ≤ 0,1 au 75e percentile
 
-**Fait le 2026-10-06.** 2 466 mots · 5 CTA · 5 FAQ · 28 liens internes ·
+**Fait le 2026-10-06.** 2 719 mots · 6 CTA · 5 FAQ · 28 liens internes ·
 1 image · audit conforme.
 
 ### 1.4 `[ ]` — `/seo-local`
@@ -182,7 +182,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Synergie SEO / SEA sur les requêtes concurrentielles (présent au CV)
 - FAQ : faut-il acheter des liens, combien de liens, délai, risque de pénalité
 
-**Fait le 2026-10-06.** 2 605 mots · 5 CTA · 5 FAQ · 28 liens internes ·
+**Fait le 2026-10-06.** 2 888 mots · 6 CTA · 5 FAQ · 28 liens internes ·
 1 image · audit conforme.
 
 ### 1.7 `[x]` 🤖 **X** — `/refonte-seo`
@@ -191,7 +191,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
   surveillance post-lancement
 - **Checklist de migration** en contenu : c'est ce que les gens cherchent
 
-**Fait le 2026-10-06.** 2 399 mots · 5 CTA · 5 FAQ · 29 liens internes ·
+**Fait le 2026-10-06.** 2 665 mots · 6 CTA · 5 FAQ · 29 liens internes ·
 1 image · audit conforme.
 
 ## GEO / IA

@@ -27,6 +27,42 @@ export const netlinkingPage: SalesPageData = {
     "Un placement payé doit être qualifié comme sponsorisé ; masquer la contrepartie déplace le risque vers le site bénéficiaire.",
     "Le désaveu répond à un problème documenté ou à une action manuelle, jamais à la simple peur d’un score toxique.",
   ],
+  offer: {
+    title: "Nous construisons et pilotons votre stratégie de netlinking.",
+    intro:
+      "Notre mission ne consiste pas à revendre un catalogue de domaines. Nous partons de vos pages commerciales, de votre profil actuel et de vos concurrents pour définir les citations à rechercher, les actifs à produire et les risques à éviter. Nous pouvons intervenir sur un diagnostic ponctuel ou piloter l’acquisition dans la durée avec vos équipes.",
+    items: [
+      {
+        title: "Audit du profil existant",
+        detail:
+          "Nous consolidons Ahrefs, Semrush et Majestic, puis nous analysons les domaines référents, les ancres, les pages cibles, les liens perdus et les redirections.",
+        deliverable: "une cartographie filtrable avec les problèmes, les occasions et leur priorité.",
+      },
+      {
+        title: "Stratégie d’acquisition",
+        detail:
+          "Nous choisissons les pages à soutenir, les types de sources pertinentes, les angles éditoriaux et un rythme compatible avec votre capacité de production.",
+        deliverable: "un plan d’acquisition documenté, relié à vos objectifs et à vos contenus.",
+      },
+      {
+        title: "Qualification des supports",
+        detail:
+          "Nous examinons chaque support au niveau de la page, de l’audience et du contexte. Les contreparties et attributs sponsorisés restent visibles dans le registre.",
+        deliverable: "une liste validée, les motifs de sélection et les conditions de publication.",
+      },
+      {
+        title: "Suivi des publications",
+        detail:
+          "Nous vérifions les URL, ancres, attributs et destinations, puis nous rapprochons trafic référent, visibilité et autres changements du site.",
+        deliverable: "un tableau de suivi et des arbitrages pour la séquence suivante.",
+      },
+    ],
+    forWho: [
+      "vous avez déjà des contenus et souhaitez développer leur popularité sans acheter à l’aveugle ;",
+      "vous héritez d’anciennes campagnes et voulez distinguer le risque réel du bruit des outils ;",
+      "vous cherchez un pilotage transparent, avec validation des supports et mesure des publications.",
+    ],
+  },
   sections: [
     {
       id: "audit-profil",

@@ -22,6 +22,12 @@ export type SalesPageData = {
   image: SalesPageImage;
   answer: string;
   takeaways: string[];
+  offer: {
+    title: string;
+    intro: string;
+    items: { title: string; detail: string; deliverable: string }[];
+    forWho: string[];
+  };
   sections: SalesPageSection[];
   tools: { name: string; role: string }[];
   deliverables: { title: string; detail: string }[];

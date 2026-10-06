@@ -27,6 +27,42 @@ export const auditSeoPage: SalesPageData = {
     "Les blocages d’exploration et d’indexation passent avant les ajustements de balises ou de formulation.",
     "La valeur commerciale sert à départager deux corrections techniquement comparables.",
   ],
+  offer: {
+    title: "Nous réalisons l’audit SEO complet de votre site.",
+    intro:
+      "Nous prenons en charge la collecte, l’analyse et la priorisation. Vous n’achetez pas un export automatique : vous recevez un diagnostic expliqué, une feuille de route compatible avec vos ressources et des critères précis pour vérifier les corrections. La mission s’adapte au site vitrine, au catalogue, à l’e-commerce ou au grand patrimoine éditorial.",
+    items: [
+      {
+        title: "Collecte multi-source",
+        detail:
+          "Nous réunissons crawl, sitemaps, CMS, Search Console, analytics, backlinks et logs disponibles dans un inventaire dédupliqué.",
+        deliverable: "la base URL complète, segmentée par template et par finalité.",
+      },
+      {
+        title: "Diagnostic technique et éditorial",
+        detail:
+          "Nous investiguons exploration, indexation, rendu, architecture, contenus, popularité, performance et qualité de la mesure.",
+        deliverable: "un rapport illustré par des URL, des preuves et les causes probables.",
+      },
+      {
+        title: "Priorisation avec vos équipes",
+        detail:
+          "Nous croisons impact, effort, valeur métier et dépendances pour transformer les constats en décisions réalisables.",
+        deliverable: "une feuille de route ordonnée avec responsable et niveau de priorité.",
+      },
+      {
+        title: "Restitution et recette",
+        detail:
+          "Nous présentons les arbitrages, répondons aux équipes puis définissons le test qui permettra de fermer chaque action.",
+        deliverable: "les tickets de référence et un plan de validation après déploiement.",
+      },
+    ],
+    forWho: [
+      "votre trafic ou vos demandes stagnent et les causes restent difficiles à isoler ;",
+      "vos équipes accumulent des recommandations sans ordre commun ni méthode de validation ;",
+      "vous préparez une feuille de route, une refonte ou un investissement éditorial important.",
+    ],
+  },
   sections: [
     {
       id: "inventaire-url",
