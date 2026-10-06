@@ -7681,3 +7681,402 @@ body::before {
     gap: 24px;
   }
 }
+
+/* ===============================================================
+   Blocs de données des pages de vente — chiffres, tableaux,
+   graphiques, processus, prestations, grille de prix.
+   =============================================================== */
+.data-stats,
+.data-table,
+.data-chart,
+.data-process,
+.data-prestations,
+.data-prix {
+  padding-block: clamp(48px, 6vw, 84px);
+  border-top: 1px solid var(--line);
+}
+.data-stats h2,
+.data-table h2,
+.data-chart h2,
+.data-process h2,
+.data-prestations h2,
+.data-prix h2 {
+  margin: 0 0 14px;
+}
+
+/* --- chiffres clés --- */
+.data-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 22px;
+}
+.data-stats__grid > div {
+  background: rgba(255, 255, 255, 0.82);
+  padding: 26px 24px;
+}
+.data-stats__grid strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.1rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: var(--grad-iris);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.data-stats__grid span {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.data-stats__grid small {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* --- tableau --- */
+.data-table__intro,
+.data-chart__intro,
+.data-process__intro,
+.data-prestations__intro,
+.data-prix__intro {
+  max-width: 64ch;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+.data-table__scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.82);
+}
+.data-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 560px;
+}
+.data-table th,
+.data-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.data-table thead th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(69, 54, 224, 0.045);
+  white-space: nowrap;
+}
+.data-table tbody th {
+  font-weight: 600;
+  width: 1%;
+  white-space: nowrap;
+}
+.data-table tbody tr:last-child th,
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.data-table .is-oui {
+  color: #1f8a4c;
+}
+.data-table .is-non {
+  color: #c2410c;
+}
+.data-table .is-na {
+  color: var(--muted);
+}
+.data-table__note {
+  margin: 14px 0 0;
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* --- graphique en barres --- */
+.data-chart__barres {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 11px;
+}
+.data-chart__barres li {
+  display: grid;
+  grid-template-columns: minmax(130px, 210px) 1fr auto;
+  align-items: center;
+  gap: 14px;
+}
+.data-chart__libelle {
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+.data-chart__piste {
+  height: 10px;
+  border-radius: 99px;
+  background: rgba(10, 12, 24, 0.07);
+  overflow: hidden;
+}
+.data-chart__remplissage {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #8b3dff, #2aa6c4);
+}
+.data-chart__barres li.is-accent .data-chart__remplissage {
+  background: var(--grad-iris);
+}
+.data-chart__valeur {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.data-chart__barres li.is-accent .data-chart__valeur {
+  color: var(--accent);
+  font-weight: 600;
+}
+.data-chart__source {
+  margin: 16px 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* --- processus --- */
+.data-process__flux {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+.data-process__flux li {
+  position: relative;
+  padding: 22px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+}
+.data-process__index {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--accent);
+}
+.data-process__flux h3 {
+  margin: 8px 0 8px;
+  font-size: 0.96rem;
+  line-height: 1.35;
+}
+.data-process__flux p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.data-process__fleche {
+  position: absolute;
+  right: -11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-size: 1rem;
+  z-index: 1;
+}
+@media (max-width: 760px) {
+  .data-process__fleche {
+    display: none;
+  }
+}
+
+/* --- prestations --- */
+.data-prestations__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+}
+.data-prestations__grid article {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+}
+.data-prestations__num {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--accent);
+}
+.data-prestations__grid h3 {
+  margin: 8px 0 10px;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+.data-prestations__grid > article > p {
+  margin: 0 0 14px;
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.data-prestations__grid ul,
+.data-prix__grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+}
+.data-prestations__grid li,
+.data-prix__grid li {
+  display: flex;
+  align-items: start;
+  gap: 8px;
+  font-size: 0.79rem;
+  line-height: 1.6;
+}
+.data-prestations__grid li svg,
+.data-prix__grid li svg {
+  color: var(--accent);
+  flex: none;
+  margin-top: 3px;
+}
+.data-prestations__grid article > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+
+/* --- grille de prix --- */
+.data-prix__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  gap: 14px;
+}
+.data-prix__grid article {
+  display: flex;
+  flex-direction: column;
+  padding: 26px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+}
+.data-prix__grid article.is-avant {
+  border-color: rgba(69, 54, 224, 0.32);
+  box-shadow: var(--glow-soft);
+  background: rgba(255, 255, 255, 0.92);
+}
+.data-prix__grid h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+.data-prix__montant {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 12px 0 6px;
+}
+.data-prix__pour {
+  margin: 0 0 16px;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.data-prix__grid .button {
+  margin-top: auto;
+  align-self: start;
+}
+.data-prix__grid ul {
+  margin-bottom: 20px;
+}
+.data-prix__note {
+  margin: 16px 0 0;
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* --- Maillage de fin de page netlinking --- */
+.netlinking-liens {
+  padding-block: clamp(48px, 6vw, 84px);
+  border-top: 1px solid var(--line);
+}
+.netlinking-liens > p {
+  max-width: 62ch;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 10px 0 24px;
+}
+.netlinking-liens__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  gap: 12px;
+}
+.netlinking-liens__grid a {
+  position: relative;
+  display: block;
+  padding: 20px 44px 20px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+  transition: 0.15s;
+}
+.netlinking-liens__grid a:hover {
+  border-color: var(--accent);
+}
+.netlinking-liens__grid strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 7px;
+}
+.netlinking-liens__grid span {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.netlinking-liens__grid svg {
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  color: var(--accent);
+}
+
+/* Graphique en barres sur petit écran : le libellé passe au-dessus, sinon il
+   mange la place de la barre et le graphique ne se lit plus. */
+@media (max-width: 620px) {
+  .data-chart__barres li {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "libelle valeur"
+      "piste   piste";
+    gap: 6px 12px;
+  }
+  .data-chart__libelle {
+    grid-area: libelle;
+  }
+  .data-chart__valeur {
+    grid-area: valeur;
+  }
+  .data-chart__piste {
+    grid-area: piste;
+  }
+}
