@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
+import { CONTACT_EMAIL } from "@/lib/contact";
 import { ArrowUpRight } from "lucide-react";
 export function Contact() {
   const [body, setBody] = useState("");
+  const [copied, setCopied] = useState(false);
   return (
     <form
       className="contact-form"
@@ -71,12 +73,33 @@ export function Contact() {
           <h3>Votre demande est prête</h3>
           <p>Relisez-la puis ouvrez votre messagerie pour l’envoyer.</p>
           <pre>{body}</pre>
-          <a
-            className="button"
-            href={`mailto:issam@issam-chaoui.fr?subject=${encodeURIComponent("Projet SEO, GEO & data web")}&body=${encodeURIComponent(body)}`}
-          >
-            Ouvrir ma messagerie <ArrowUpRight size={16} />
-          </a>
+          {CONTACT_EMAIL ? (
+            <a
+              className="button"
+              href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Projet SEO, GEO & data web")}&body=${encodeURIComponent(body)}`}
+            >
+              Ouvrir ma messagerie <ArrowUpRight size={16} />
+            </a>
+          ) : (
+            /* Tant que le domaine n'est pas arbitré, aucune adresse n'est
+               publiée. La copie presse-papiers permet quand même d'aboutir. */
+            <button
+              type="button"
+              className="button"
+              onClick={async () => {
+                try {
+                  await navigator.clipboard.writeText(body);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2500);
+                } catch {
+                  setCopied(false);
+                }
+              }}
+            >
+              {copied ? "Message copié" : "Copier le message"}
+              <ArrowUpRight size={16} />
+            </button>
+          )}
         </div>
       )}
     </form>

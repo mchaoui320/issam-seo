@@ -21,9 +21,9 @@ export default function Page() {
           Un site à faire grandir, une visibilité à reconstruire ou des données
           à clarifier ? Racontez-moi.
         </p>
-        <a className="contact-email" href="mailto:issam@issam-chaoui.fr">
-          issam@issam-chaoui.fr ↗
-        </a>
+        {/* Aucune adresse en clair tant que le domaine n'est pas arbitré :
+            une adresse publiée est moissonnée en quelques jours et ne se
+            reprend pas. Le formulaire est le seul point d'entrée. */}
         <p className="mono muted">MARSEILLE · PARIS · À DISTANCE</p>
       </section>
       <Contact />

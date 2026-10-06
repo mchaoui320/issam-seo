@@ -486,7 +486,7 @@ export const enrichment: Record<string, Enrichment> = {
     faq: [
       [
         "Intervenez-vous uniquement à Marseille ?",
-        "Non. Marseille est un marché que je connais, mais l'accompagnement se fait à distance partout en France. Ce qui détermine la stratégie n'est pas ma localisation mais la zone où vos clients se trouvent réellement.",
+        "Non. Marseille est un marché qu'on connaît bien, mais l'accompagnement se fait à distance partout en France. Ce qui détermine la stratégie n'est pas notre localisation mais la zone où vos clients se trouvent réellement.",
       ],
       [
         "Comment se positionner sur des requêtes locales à Marseille ?",

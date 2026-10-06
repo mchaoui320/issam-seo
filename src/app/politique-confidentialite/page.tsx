@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = {
   ...pageMetadata(
@@ -32,8 +33,8 @@ export default function Page() {
           Le formulaire prépare un brouillon. Lorsque vous ouvrez votre
           messagerie puis envoyez le message, les informations sont transmises
           par votre service de messagerie au destinataire indiqué. Vous pouvez
-          également écrire directement à{" "}
-          <a href="mailto:issam@issam-chaoui.fr">issam@issam-chaoui.fr</a>.
+          exercer vos droits en passant par le{" "}
+          <Link href="/contact">formulaire de contact</Link>.
         </p>
         <h2>Hébergement et traitement des demandes</h2>
         <p>

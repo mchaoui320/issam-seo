@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = {
   ...pageMetadata(
@@ -21,8 +22,8 @@ export default function Page() {
       <div className="legal-content">
         <h2>Contact éditorial</h2>
         <p>
-          Med Issam Chaoui —{" "}
-          <a href="mailto:issam@issam-chaoui.fr">issam@issam-chaoui.fr</a>.
+          Med Issam Chaoui — toute demande passe par le{" "}
+          <Link href="/contact">formulaire de contact</Link>.
         </p>
         <h2>Informations à confirmer</h2>
         <p>
