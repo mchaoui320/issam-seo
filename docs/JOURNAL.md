@@ -9,6 +9,61 @@
 
 ---
 
+## 2026-10-06 · 🤖 ChatGPT Codex — couverture visuelle du site
+
+**Toutes les pages disposent maintenant d'un visuel contextuel avec un texte
+alternatif descriptif.**
+
+- 10 illustrations locales distinctes en AVIF 1 600 × 900, fondées sur le tissu
+  économique de chaque ville plutôt que sur une carte postale.
+- 2 schémas dédiés ajoutés pour le mapping de redirections et les Core Web
+  Vitals ; les 8 sujets explicatifs prévus sont désormais couverts.
+- 1 portrait éditorial abstrait pour `/a-propos` et 1 visuel de système pour les
+  pages transverses.
+- `Figure.tsx` centralise `next/image`, les dimensions, `sizes`, la légende et
+  rend `alt` obligatoire dans le type TypeScript.
+- Mesure avant/après sur l'audit complet : **4/31 → 31/31 pages avec image**.
+  Les 9 routes autonomes ou hors audit ont aussi été contrôlées : 1 image et un
+  `alt` non vide sur chacune.
+- Validation : TypeScript vert · ESLint vert · build 52 routes vert · audit du
+  lot B 4/4 conforme · 0 balise `<img>` écrite directement.
+
+Fichiers principaux : `src/components/site/Figure.tsx`,
+`src/lib/editorial-images.ts`, `public/images/villes/`,
+`public/images/schemas/`, `public/images/editorial/`.
+
+## 2026-10-06 · 🤖 ChatGPT Codex — cycle 1, lot B
+
+**Quatre pages de vente reconstruites et six visuels de pilier livrés.**
+
+- Nouveau gabarit `SalesServicePage` : réponse directe, sommaire, schéma,
+  sections longues, liens contextuels, outils, livrables, méthode, périmètres,
+  FAQ visible et balisée, quatre CTA dans le corps de page.
+- Bloc commercial ajouté haut dans chaque page : quatre volets de prestation,
+  livrable remis pour chacun et profils de clients concernés.
+- Contenu séparé par page dans `src/lib/sales-pages/` pour éviter un fichier
+  éditorial monolithique.
+- Six diagrammes techniques clairs générés puis convertis en AVIF 1 600 × 900 :
+  `/seo`, `/geo`, `/data-web`, `/netlinking`, `/seo-local`, `/audit-seo`.
+- Aucun montant inventé : les blocs de chiffrage expliquent les variables et
+  restent « sur devis » tant que la décision D4 n'est pas tranchée.
+
+| Page | Mots | Densité dominante | CTA | FAQ | Liens | Images |
+|---|---:|---:|---:|---:|---:|---:|
+| `/netlinking` | 2 888 | 0,90 % | 6 | 5 | 28 | 1 |
+| `/audit-seo` | 2 871 | 0,66 % | 6 | 5 | 30 | 1 |
+| `/seo-technique` | 2 719 | 0,59 % | 6 | 5 | 28 | 1 |
+| `/refonte-seo` | 2 665 | 0,75 % | 6 | 5 | 29 | 1 |
+
+**Contrôles :** 4/4 pages conformes dans `npm run audit` · TypeScript vert ·
+ESLint vert · build Next.js vert · une seule feuille CSS · aucune adresse
+e-mail interdite · aucun `<img>` manuel · voix d'agence respectée. Le rendu
+mobile a été vérifié à 341 px sans débordement horizontal visible.
+
+Fichiers principaux : `src/components/site/SalesServicePage.tsx`,
+`src/lib/sales-pages/`, `src/app/globals.css`, les quatre routes du lot et
+`public/images/piliers/`.
+
 ## 2026-10-06 · 🤖 Claude Code
 
 **Mise en place du pilotage partagé.**
