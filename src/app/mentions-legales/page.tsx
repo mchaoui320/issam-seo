@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Figure } from "@/components/site/Figure";
+import { standaloneVisuals } from "@/lib/editorial-images";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = {
   ...pageMetadata(
@@ -19,6 +21,7 @@ export default function Page() {
           et d’hébergement confirmées avant la publication commerciale.
         </p>
       </section>
+      <Figure image={standaloneVisuals.privacy} />
       <div className="legal-content">
         <h2>Contact éditorial</h2>
         <p>

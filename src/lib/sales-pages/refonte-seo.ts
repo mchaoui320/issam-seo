@@ -14,10 +14,10 @@ export const refonteSeoPage: SalesPageData = {
     { value: "Watch", label: "logs, indexation, conversions" },
   ],
   image: {
-    src: "/images/piliers/audit-seo.avif",
-    alt: "Entonnoir de contrôle reliant les URL découvertes aux pages indexées lors d’une refonte",
+    src: "/images/schemas/plan-redirections.avif",
+    alt: "Plan de migration reliant l’inventaire des anciennes URL au mapping des redirections 301 et à la nouvelle architecture",
     caption:
-      "La migration surveille chaque étape : réponse serveur, exploration, indexabilité, indexation et maintien des pages utiles.",
+      "Le mapping associe chaque ancienne URL à une destination utile, puis contrôle les chaînes, les boucles et les pages orphelines.",
   },
   answer:
     "Une refonte SEO est un protocole de conservation et de contrôle appliqué à un changement de site. Il inventorie les anciennes URL, décide lesquelles conserver, fusionner, rediriger ou supprimer, prépare une correspondance vers les nouvelles routes, compare les templates en préproduction et surveille le lancement. Le risque zéro n’existe pas, mais un mapping explicite et une recette mesurée évitent la plupart des pertes évitables.",

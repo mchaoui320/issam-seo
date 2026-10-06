@@ -14,10 +14,10 @@ export const seoTechniquePage: SalesPageData = {
     { value: "Logs", label: "robots et erreurs serveur" },
   ],
   image: {
-    src: "/images/piliers/seo.avif",
-    alt: "Plan d’architecture montrant une page pilier, des pages service, des guides et leur profondeur de clic",
+    src: "/images/schemas/core-web-vitals.avif",
+    alt: "Chronologie des Core Web Vitals montrant le chargement du contenu principal, la réponse à l’interaction et la stabilité visuelle",
     caption:
-      "Une architecture lisible rapproche les pages stratégiques, distribue les liens internes et limite les branches inutiles.",
+      "LCP, INP et CLS décrivent trois expériences différentes : voir le contenu, obtenir une réponse et garder une interface stable.",
   },
   answer:
     "Le SEO technique couvre les mécanismes qui permettent aux moteurs de découvrir une URL, d’obtenir une réponse serveur, de rendre son contenu, de comprendre ses directives et de choisir une version canonique. Il inclut aussi la performance réelle, les données structurées visibles, les migrations et la surveillance. Son rôle est de fiabiliser l’accès au contenu, pas de promettre un classement.",

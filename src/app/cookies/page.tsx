@@ -1,4 +1,6 @@
 import { pageMetadata } from "@/lib/seo";
+import { Figure } from "@/components/site/Figure";
+import { standaloneVisuals } from "@/lib/editorial-images";
 export const metadata = {
   ...pageMetadata(
     "Cookies",
@@ -18,6 +20,7 @@ export default function Page() {
           mesure d’audience.
         </p>
       </section>
+      <Figure image={standaloneVisuals.privacy} />
       <div className="legal-content">
         <h2>Fonctionnement actuel</h2>
         <p>
