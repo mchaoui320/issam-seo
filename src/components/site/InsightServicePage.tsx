@@ -17,6 +17,7 @@ export function InsightServicePage({
   deliverables,
   faq,
   path,
+  pricing,
 }: {
   code: string;
   eyebrow: string;
@@ -29,6 +30,11 @@ export function InsightServicePage({
   deliverables: readonly string[];
   faq: readonly (readonly [string, string])[];
   path: string;
+  /**
+   * Repère de prix. Aucun concurrent du marché n'en affiche : c'est
+   * précisément pour ça qu'on le fait.
+   */
+  pricing?: { fourchette: string; variables: readonly string[] };
 }) {
   return (
     <>
@@ -152,6 +158,40 @@ export function InsightServicePage({
             </ul>
           </div>
         </section>
+
+        {pricing && (
+          <section className="insight-pricing">
+            <div className="wrap insight-pricing__grid">
+              <div>
+                <p className="atlas-label">BUDGET</p>
+                <h2>Combien ça coûte</h2>
+                <p className="insight-pricing__montant">
+                  {pricing.fourchette}
+                </p>
+                <p className="insight-pricing__note">
+                  Une fourchette n’est pas un devis. Le chiffrage se fait après
+                  un premier échange, et la proposition précise le périmètre,
+                  les livrables et ce qui n’est pas inclus.
+                </p>
+                <Link href="/contact" className="button">
+                  Demander un chiffrage <ArrowUpRight size={17} />
+                </Link>
+              </div>
+              <div className="insight-pricing__variables">
+                <p className="mono muted">CE QUI FAIT VARIER LE PRIX</p>
+                <ul>
+                  {pricing.variables.map((v) => (
+                    <li key={v}>{v}</li>
+                  ))}
+                </ul>
+                <p className="insight-pricing__source">
+                  Repère marché : le tarif journalier moyen d’un consultant SEO
+                  en France s’établit autour de 570 € en 2025 (baromètre Malt).
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="insight-faq">
           <div className="wrap insight-faq__grid">
