@@ -1,4 +1,6 @@
 import { Contact } from "@/components/site/Contact";
+import { Figure } from "@/components/site/Figure";
+import { standaloneVisuals } from "@/lib/editorial-images";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata(
   "Contact : parlons de votre projet",
@@ -7,8 +9,9 @@ export const metadata = pageMetadata(
 );
 export default function Page() {
   return (
-    <div className="wrap contact-layout">
-      <section className="page-hero">
+    <>
+      <div className="wrap contact-layout">
+        <section className="page-hero">
         <span className="eyebrow">UN PREMIER ÉCHANGE</span>
         <h1>
           Votre ambition.
@@ -25,8 +28,12 @@ export default function Page() {
             une adresse publiée est moissonnée en quelques jours et ne se
             reprend pas. Le formulaire est le seul point d'entrée. */}
         <p className="mono muted">MARSEILLE · PARIS · À DISTANCE</p>
+        </section>
+        <Contact />
+      </div>
+      <section className="wrap editorial-visual-section">
+        <Figure image={standaloneVisuals.contact} />
       </section>
-      <Contact />
-    </div>
+    </>
   );
 }

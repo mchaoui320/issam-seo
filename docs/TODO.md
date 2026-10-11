@@ -138,7 +138,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Outils à citer : Screaming Frog, Oncrawl, Semrush, Search Console
 - FAQ : délai, garantie de position, coût, SEO vs SEA, SEO vs GEO
 
-### 1.2 `[ ]` — `/audit-seo`
+### 1.2 `[x]` 🤖 **X** — `/audit-seo`
 - Requête : « audit SEO », « audit référencement »
 - Détailler **ce que contient livrablement** l'audit : inventaire URL, statuts
   HTTP, robots, canonicals, profondeur de clic, duplications, logs
@@ -146,11 +146,17 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Ajouter : grille de prix par taille de site, durée, accès nécessaires
 - FAQ : prix, durée, accès, que se passe-t-il après
 
-### 1.3 `[ ]` — `/seo-technique`
+**Fait le 2026-10-06.** 2 871 mots · 6 CTA · 5 FAQ · 30 liens internes ·
+1 image · audit conforme.
+
+### 1.3 `[x]` 🤖 **X** — `/seo-technique`
 - Requête : « SEO technique », « Core Web Vitals », « indexation »
 - Détailler : crawl, rendu JS, budget de crawl, logs serveur, migrations
 - Outils : Botify, Oncrawl, Lighthouse, PageSpeed, analyse de logs
 - Seuils CWV à citer : LCP ≤ 2,5 s, INP ≤ 200 ms, CLS ≤ 0,1 au 75e percentile
+
+**Fait le 2026-10-06.** 2 719 mots · 6 CTA · 5 FAQ · 28 liens internes ·
+1 image · audit conforme.
 
 ### 1.4 `[ ]` — `/seo-local`
 - Requête : « SEO local », « référencement local »
@@ -164,7 +170,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Outils : YourTextGuru, 1.fr, Search Console, Google Trends
 - **Différenciant à exploiter** : scoring sémantique développé en Python
 
-### 1.6 `[ ]` — `/netlinking` ⚠️ **explicitement demandé**
+### 1.6 `[x]` 🤖 **X** — `/netlinking` ⚠️ **explicitement demandé**
 - Requête : « netlinking », « acquisition de liens », « backlinks »
 - Actuellement très mince. Doit devenir une vraie page de vente.
 - Détailler : audit du profil existant, domaines référents, répartition des
@@ -176,11 +182,17 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Synergie SEO / SEA sur les requêtes concurrentielles (présent au CV)
 - FAQ : faut-il acheter des liens, combien de liens, délai, risque de pénalité
 
-### 1.7 `[ ]` — `/refonte-seo`
+**Fait le 2026-10-06.** 2 888 mots · 6 CTA · 5 FAQ · 28 liens internes ·
+1 image · audit conforme.
+
+### 1.7 `[x]` 🤖 **X** — `/refonte-seo`
 - Requête : « refonte SEO », « migration site », « redirections 301 »
 - Détailler : export préalable, mapping, plan de redirections, recette,
   surveillance post-lancement
 - **Checklist de migration** en contenu : c'est ce que les gens cherchent
+
+**Fait le 2026-10-06.** 2 665 mots · 6 CTA · 5 FAQ · 29 liens internes ·
+1 image · audit conforme.
 
 ## GEO / IA
 
@@ -338,20 +350,41 @@ détaillée. Pas de résultat client inventé.
 
 > Le site a **zéro image**. Brief complet dans `docs/PROMPT-CODEX.md`.
 
-### 4.1 `[ ]` — Visuels de pilier (6)
+### 4.1 `[x]` 🤖 **X** — Visuels de pilier (6)
 `/seo` · `/geo` · `/data-web` · `/netlinking` · `/seo-local` · `/audit-seo`
 
-### 4.2 `[ ]` — Schémas explicatifs (8)
+**Fait le 2026-10-06.** 6 AVIF en 1 600 × 900, de 31 à 87 Ko, dans
+`public/images/piliers/`.
+
+### 4.2 `[x]` 🤖 **X** — Schémas explicatifs (8)
 Fonctionnement d'un crawl · RAG et citation LLM · pipeline GA4 → BigQuery →
 Looker · cocon sémantique · plan de redirections · profil de liens ·
 pack local · Core Web Vitals
 
-### 4.3 `[ ]` — Visuels des 10 villes
+**Fait le 2026-10-06.** Les 6 visuels de pilier couvrent crawl, RAG, data,
+cocon, liens et local ; 2 schémas dédiés ont été ajoutés pour le mapping de
+redirections et les Core Web Vitals.
+
+### 4.3 `[x]` 🤖 **X** — Visuels des 10 villes
 Abstraits et distincts, pas de carte postale.
 
-### 4.4 `[ ]` — Portrait `/a-propos`
+**Fait le 2026-10-06.** 10 AVIF distincts en 1 600 × 900, chacun construit
+autour du tissu économique réel de la ville plutôt que d'un monument.
+
+### 4.4 `[x]` 🤖 **X** — Portrait `/a-propos`
+
+**Fait le 2026-10-06.** Portrait éditorial abstrait autour de la recherche, du
+code et de la data. Il évite d'inventer un visage en attendant une vraie photo.
 ### 4.5 `[ ]` — Open Graph par page type
-### 4.6 `[ ]` — Intégration `next/image` + `alt` rédigés 🤖 **C**
+### 4.6 `[x]` 🤖 **X** — Intégration `next/image` + `alt` rédigés
+
+Réattribué à Codex par Issam le 2026-10-06 : couverture visuelle de l’ensemble
+du site, avec un visuel pertinent par contexte et un texte alternatif descriptif.
+
+**Fait le 2026-10-06.** `Figure.tsx` impose un `alt` typé non optionnel.
+31/31 pages de l'audit ont une image ; accueil, blog, Lab, glossaire, pages
+légales et pages hors audit ont aussi été contrôlés. 0 balise `<img>` écrite à
+la main ; tous les fichiers utilisent AVIF et `next/image`.
 
 ---
 

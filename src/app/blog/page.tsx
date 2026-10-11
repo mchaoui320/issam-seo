@@ -1,4 +1,6 @@
 import { ResourceList } from "@/components/site/ResourceList";
+import { Figure } from "@/components/site/Figure";
+import { standaloneVisuals } from "@/lib/editorial-images";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata(
   "Guides SEO, GEO & analytics",
@@ -20,6 +22,7 @@ export default function Page() {
           À lire, à tester et à appliquer.
         </p>
       </section>
+      <Figure image={standaloneVisuals.signal} />
       <div className="section-bottom">
         <ResourceList />
       </div>

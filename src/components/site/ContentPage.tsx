@@ -5,6 +5,8 @@ import { siteUrl } from "@/lib/seo";
 import { JsonLd } from "@/components/site/JsonLd";
 import { ServiceSales } from "@/components/site/ServiceSales";
 import { getServiceSales } from "@/lib/services-sales";
+import { Figure } from "@/components/site/Figure";
+import { contentVisuals } from "@/lib/editorial-images";
 import {
   article,
   breadcrumb,
@@ -31,6 +33,7 @@ export function ContentPage({ entry }: { entry: Entry }) {
   const path = `/${entry.slug}`;
   const isGuide = entry.slug.startsWith("blog/");
   const vente = getServiceSales(entry.slug);
+  const visual = contentVisuals[entry.slug];
 
   const nodes = [
     person(),
@@ -117,6 +120,12 @@ export function ContentPage({ entry }: { entry: Entry }) {
           Discuter de votre projet <ArrowUpRight size={18} />
         </Link>
       </section>
+
+      {visual ? (
+        <section className="wrap editorial-visual-section">
+          <Figure image={visual} />
+        </section>
+      ) : null}
 
       <div className="wrap article-layout">
         <aside>

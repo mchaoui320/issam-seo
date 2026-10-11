@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import { JsonLd } from "@/components/site/JsonLd";
+import { Figure } from "@/components/site/Figure";
+import { insightVisuals } from "@/lib/editorial-images";
 import { siteUrl } from "@/lib/seo";
 
 type Item = { title: string; text: string };
@@ -36,6 +38,8 @@ export function InsightServicePage({
    */
   pricing?: { fourchette: string; variables: readonly string[] };
 }) {
+  const visual = insightVisuals[path];
+
   return (
     <>
       <JsonLd
@@ -89,6 +93,12 @@ export function InsightServicePage({
             </aside>
           </div>
         </section>
+
+        {visual ? (
+          <section className="wrap editorial-visual-section">
+            <Figure image={visual} />
+          </section>
+        ) : null}
 
         <section className="insight-tensions">
           <div className="wrap">

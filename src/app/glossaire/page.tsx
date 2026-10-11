@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Glossary } from "@/components/site/Glossary";
 import { JsonLd } from "@/components/site/JsonLd";
+import { Figure } from "@/components/site/Figure";
+import { standaloneVisuals } from "@/lib/editorial-images";
 import { pageMetadata, siteUrl } from "@/lib/seo";
 import { terms } from "@/lib/glossary";
 import { breadcrumb, graph, person, website } from "@/lib/schema";
@@ -76,6 +78,8 @@ export default function Page() {
             Un terme manque ? Dites-le <ArrowUpRight size={18} />
           </Link>
         </section>
+
+        <Figure image={standaloneVisuals.glossary} />
 
         <div className="section-bottom">
           <Glossary />

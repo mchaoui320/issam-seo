@@ -1,6 +1,8 @@
 import { Tools } from "@/components/site/Tools";
 import { VisibilityWorkbench } from "@/components/site/VisibilityWorkbench";
 import { CitabilityAnalyzer } from "@/components/site/CitabilityAnalyzer";
+import { Figure } from "@/components/site/Figure";
+import { standaloneVisuals } from "@/lib/editorial-images";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata(
   "MIC Lab — outils SEO, GEO, LLM et SEO local",
@@ -27,6 +29,7 @@ export default function Page() {
             <span><strong>100%</strong> navigateur</span>
           </div>
         </section>
+        <Figure image={standaloneVisuals.signal} />
       </div>
       <div className="wrap workbench-wrap">
         <VisibilityWorkbench />

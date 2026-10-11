@@ -4,6 +4,8 @@ import type { LocalMarket } from "@/lib/cities";
 import { marketPath } from "@/lib/cities";
 import { getCitySales, SERVICES } from "@/lib/cities-sales";
 import { JsonLd } from "@/components/site/JsonLd";
+import { Figure } from "@/components/site/Figure";
+import { cityVisuals } from "@/lib/editorial-images";
 import {
   breadcrumb,
   faqPage,
@@ -17,6 +19,7 @@ import { siteUrl } from "@/lib/seo";
 export function CityPage({ market }: { market: LocalMarket }) {
   const path = marketPath(market);
   const sales = getCitySales(market.slug);
+  const visual = cityVisuals[market.slug];
   const byId = new Map(SERVICES.map((sv) => [sv.id, sv]));
   // Les prestations prioritaires d'abord, le reste du catalogue ensuite :
   // l'ordre porte l'information, chaque marché n'appelle pas le même premier geste.
@@ -113,6 +116,12 @@ export function CityPage({ market }: { market: LocalMarket }) {
           </aside>
         </div>
       </section>
+
+      {visual ? (
+        <section className="wrap editorial-visual-section editorial-visual-section--city">
+          <Figure image={visual} />
+        </section>
+      ) : null}
 
       {/* Prestations. C'est ce qui fait d'une page locale une page de vente :
           le visiteur doit voir ce qu'on vend. Les intitulés portent les entités

@@ -10,10 +10,12 @@ import {
   SearchCheck,
 } from "lucide-react";
 import { SignalHero } from "@/components/site/SignalHero";
+import { Figure } from "@/components/site/Figure";
 import { QueryAtlas } from "@/components/site/QueryAtlas";
 import { TerritoryMap } from "@/components/site/TerritoryMap";
 import { JsonLd } from "@/components/site/JsonLd";
 import { pageMetadata } from "@/lib/seo";
+import { standaloneVisuals } from "@/lib/editorial-images";
 import {
   faqPage,
   graph,
@@ -117,6 +119,9 @@ export default function Home() {
         data={graph(person(), website(), professionalService(), faqPage(faq))}
       />
       <SignalHero />
+      <section className="wrap editorial-visual-section editorial-visual-section--home">
+        <Figure image={standaloneVisuals.signal} />
+      </section>
 
       <section
         className="pressure-strip"
