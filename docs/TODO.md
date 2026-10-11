@@ -131,7 +131,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 
 ## SEO
 
-### 1.1 `[ ]` — `/seo` — pilier SEO
+### 1.1 `[x]` 🤖 C — `/seo` — pilier SEO
 - Requête : « agence SEO », « référencement naturel »
 - Actuellement : ~230 mots. **Objectif 1 800** (c'est le pilier).
 - Doit renvoyer vers les 6 pages SEO filles
@@ -158,13 +158,13 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 **Fait le 2026-10-06.** 2 719 mots · 6 CTA · 5 FAQ · 28 liens internes ·
 1 image · audit conforme.
 
-### 1.4 `[ ]` — `/seo-local`
+### 1.4 `[~]` 🤖 **X** — `/seo-local`
 - Requête : « SEO local », « référencement local »
 - Détailler : fiche d'établissement, NAP, pack local, avis, pages locales
 - Renvoyer vers les 10 pages villes
 - FAQ : page par ville ?, adresse obligatoire ?, avis, multi-établissements
 
-### 1.5 `[ ]` — `/strategie-contenu-seo`
+### 1.5 `[~]` 🤖 **X** — `/strategie-contenu-seo`
 - Requête : « stratégie de contenu SEO », « cocon sémantique »
 - Détailler : cartographie d'intentions, cocons, anti-cannibalisation, briefs
 - Outils : YourTextGuru, 1.fr, Search Console, Google Trends
@@ -196,7 +196,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 
 ## GEO / IA
 
-### 1.8 `[ ]` — `/geo` — pilier GEO
+### 1.8 `[x]` 🤖 C — `/geo` — pilier GEO
 - Requête : « GEO », « Generative Engine Optimization », « référencement IA »
 - Actuellement **215 mots**. Objectif **2 000** — c'est le territoire à occuper.
 - Détailler : comment les moteurs de réponse choisissent leurs sources, RAG,
@@ -207,46 +207,46 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - FAQ : qu'est-ce que le GEO, remplace-t-il le SEO, llms.txt obligatoire ?,
   comment mesurer, combien de temps
 
-### 1.9 `[ ]` — `/geo-referencement-ia`
+### 1.9 `[x]` 🤖 C — `/geo-referencement-ia`
 - Requête : « apparaître dans ChatGPT », « référencement IA », « citation IA »
 - Détailler moteur par moteur : ChatGPT/OAI-SearchBot, Perplexity (pondère la
   fraîcheur), Gemini/AI Overviews, Claude, Mistral
 - Protocole de suivi : panel de questions, langue, date, moteur, relevé
 - Distinguer : mention de marque / lien cité / visite référente
 
-### 1.10 `[ ]` — `/audit-visibilite-ia`
+### 1.10 `[x]` 🤖 C — `/audit-visibilite-ia`
 - Requête : « audit visibilité IA », « part de voix LLM »
 - C'est une **offre vendable** : panel de requêtes, relevé, analyse des sources
   citées, plan d'action
 - Détailler le livrable et le prix
 
-### 1.11 `[ ]` — `/analyse-concurrentielle-seo-geo`
+### 1.11 `[x]` 🤖 C — `/analyse-concurrentielle-seo-geo`
 - Requête : « analyse concurrentielle SEO », « benchmark visibilité »
 - Détailler : gap analysis de mots-clés et de contenus, comparaison des sources
   citées par les LLM, écart de couverture
 
 ## DATA
 
-### 1.12 `[ ]` — `/data-web`
+### 1.12 `[~]` 🤖 **X** — `/data-web`
 - Requête : « data web », « web analytics », « plan de mesure »
 - Outils : GA4, GTM, BigQuery, Looker Studio, Power BI, AT Internet, Matomo
 - **Différenciant** : Master 2 Data Analytics, SQL et BigQuery réels
 
-### 1.13 `[ ]` — `/plan-marquage-ga4`
+### 1.13 `[~]` 🤖 **X** — `/plan-marquage-ga4`
 - Requête : « plan de marquage GA4 », « dataLayer », « tracking GA4 »
 - Détailler : nommage des événements, paramètres, consentement, recette
 - Insister : une conversion = confirmation serveur, pas un clic sur « Envoyer »
 
-### 1.14 `[ ]` — `/dashboard-seo`
+### 1.14 `[~]` 🤖 **X** — `/dashboard-seo`
 - Requête : « dashboard SEO », « reporting SEO », « Looker Studio »
 - Détailler : indicateurs, segmentation marque / hors marque, annotations
 
 ## OFFRE & CONVERSION
 
-### 1.15 `[ ]` — `/consultant-seo-freelance`
+### 1.15 `[~]` 🤖 **X** — `/consultant-seo-freelance`
 - Requête : « consultant SEO freelance », « tarif consultant SEO »
 
-### 1.16 `[ ]` — `/tarifs`
+### 1.16 `[~]` 🤖 **X** — `/tarifs`
 - **Faille concurrentielle n°1** : le seul concurrent crédible est celui qui
   publie ses prix. On publie une grille complète et sourcée.
 - Repères marché : TJM moyen France 570 € (Malt 2025), accompagnement annuel
@@ -254,7 +254,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 - Grille par prestation **et** par taille de structure
 - Dire ce qui n'est **pas** inclus
 
-### 1.17 `[ ]` — `/methode-seo` · 1.18 `[ ]` — `/livrables-seo`
+### 1.17 `[~]` 🤖 **X** — `/methode-seo` · 1.18 `[~]` 🤖 **X** — `/livrables-seo`
 - Montrer les livrables réels : extraits de rapport, structure de feuille de
   route, exemple de brief
 
@@ -264,7 +264,7 @@ Chaque page a besoin de son propre contenu dans un fichier de données. Ne pas
 
 > Structure déjà en place (`CityPage` + `cities-sales.ts`). À approfondir.
 
-### 2.1 `[ ]` — Approfondir les 10 villes
+### 2.1 `[~]` 🤖 **X** — Approfondir les 10 villes
 Marseille · Paris · Lyon · Toulouse · Nice · Nantes · Montpellier ·
 Strasbourg · Bordeaux · Lille
 
@@ -275,12 +275,12 @@ Pour chacune, ajouter :
 - Un cas supplémentaire
 - Objectif **1 500 mots** par ville
 
-### 2.2 `[ ]` — Contrôle chiffré des 10 villes
+### 2.2 `[~]` 🤖 **X** — Contrôle chiffré des 10 villes
 Mesurer et consigner dans `docs/JOURNAL.md` : mots, densité du mot-clé,
 liens internes, présence `FAQPage`, nombre de CTA.
 Référence Marseille : 1 559 mots, 2,31 %, 13 liens, FAQPage ✅.
 
-### 2.3 `[ ]` — `/strategie-seo-local-multi-villes`
+### 2.3 `[~]` 🤖 **X** — `/strategie-seo-local-multi-villes`
 Page de vente pour les réseaux et franchises. Gouvernance des fiches, règles
 d'unicité, suivi par établissement.
 
@@ -288,7 +288,7 @@ d'unicité, suivi par établissement.
 
 # PHASE 3 — Pages nouvelles ou à refaire
 
-### 3.1 `[ ]` — `/mises-a-jour` ⚠️ **page à créer**
+### 3.1 `[~]` 🤖 **X** — `/mises-a-jour` ⚠️ **page à créer**
 
 Journal **chronologique inversé** des évolutions :
 - Mises à jour Google (core updates, spam updates, helpful content…)
@@ -306,7 +306,7 @@ Technique :
   pondère le plus
 - Ajouter au `sitemap.ts` et à `llms.txt`
 
-### 3.2 `[ ]` — `/contact` — **refonte complète**
+### 3.2 `[~]` 🤖 **X** — `/contact` — **refonte complète**
 
 Actuel : 32 lignes, un `mailto`. Insuffisant.
 
@@ -323,7 +323,7 @@ Actuel : 32 lignes, un `mailto`. Insuffisant.
 - Schema `ContactPage` + `ContactPoint`
 - **Aucune adresse e-mail en clair** tant que le domaine n'est pas choisi
 
-### 3.3 `[ ]` — `/a-propos` — **refonte complète**
+### 3.3 `[~]` 🤖 **X** — `/a-propos` — **refonte complète**
 
 Actuel : **129 mots**. C'est la page EEAT la plus importante du site.
 
@@ -340,7 +340,7 @@ Actuel : **129 mots**. C'est la page EEAT la plus importante du site.
 - Objectif **1 200 mots**
 - **Photo** (voir phase 4)
 
-### 3.4 `[ ]` — `/etudes-de-cas`
+### 3.4 `[~]` 🤖 **X** — `/etudes-de-cas`
 Étoffer. Cas pédagogiques signalés comme tels, avec méthode de diagnostic
 détaillée. Pas de résultat client inventé.
 
@@ -375,7 +375,7 @@ autour du tissu économique réel de la ville plutôt que d'un monument.
 
 **Fait le 2026-10-06.** Portrait éditorial abstrait autour de la recherche, du
 code et de la data. Il évite d'inventer un visage en attendant une vraie photo.
-### 4.5 `[ ]` — Open Graph par page type
+### 4.5 `[~]` 🤖 **X** — Open Graph par page type
 ### 4.6 `[x]` 🤖 **X** — Intégration `next/image` + `alt` rédigés
 
 Réattribué à Codex par Issam le 2026-10-06 : couverture visuelle de l’ensemble
@@ -390,11 +390,11 @@ la main ; tous les fichiers utilisent AVIF et `next/image`.
 
 # PHASE 5 — Vérification
 
-### 5.1 `[ ]` — Audit chiffré de chaque page
+### 5.1 `[~]` 🤖 **X** — Audit chiffré de chaque page
 Tableau dans `docs/JOURNAL.md` : mots, densité, CTA, liens internes, FAQPage,
 images, schema.
 
-### 5.2 `[ ]` — Contrôle anti-régression
+### 5.2 `[~]` 🤖 **X** — Contrôle anti-régression
 ```bash
 grep -rnE "\b(J[’']|Je |je |Mon |Ma |Mes )" src/     # voix
 grep -rn "issam@issam-chaoui" src/                    # e-mail interdit
@@ -403,11 +403,11 @@ ls src/app/*.css                                      # un seul fichier
 npm run build
 ```
 
-### 5.3 `[ ]` — Contrôle GEO
+### 5.3 `[~]` 🤖 **X** — Contrôle GEO
 `llms.txt` et `llms-full.txt` à jour · toutes les FAQ balisées · dates réelles ·
 `/mises-a-jour` dans le sitemap
 
-### 5.4 `[ ]` — Mobile
+### 5.4 `[~]` 🤖 **X** — Mobile
 Aucun débordement horizontal à 375 px · CTA atteignable au pouce ·
 contrastes AA
 
